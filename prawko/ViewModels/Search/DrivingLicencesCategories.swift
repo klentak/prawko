@@ -10,4 +10,5 @@ import Foundation
 public struct DrivingLicenceCategory : Decodable, Hashable, Identifiable {
     public let id : String
     public let name : String
+    public let icon : String
 }

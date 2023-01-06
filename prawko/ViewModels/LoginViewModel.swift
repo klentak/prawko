@@ -35,7 +35,6 @@ class LoginViewModel : ObservableObject {
     
     func processLogin(email: String, password: String, completion: @escaping (Result<String, LoginError>) -> Void) {
         self.getCsrfCode() { result in
-            print(result)
             switch result {
             case .success(let csrf):
                 self.login(email: email, password: password, csrf: csrf) { result in
@@ -79,8 +78,21 @@ class LoginViewModel : ObservableObject {
                     completion(.failure(LoginError.bearer))
                     return
                 }
-                
-                completion(.success(bearer))
+
+                let regex = try! NSRegularExpression(
+                    pattern: ".*(&token_type)"
+                )
+
+                let results = regex.matches(
+                    in: bearer,
+                    range: NSRange(bearer.startIndex..., in: bearer)
+                )
+
+                let result = results.map {
+                    String(bearer[Range($0.range, in: bearer)!])
+                }.first?.components(separatedBy: "&")[0]
+
+                completion(.success(result!))
             }
     }
     
