@@ -13,49 +13,51 @@ struct ExamRow: View {
     let category: DrivingLicenceCategory
 
     var body: some View {
-        HStack {
+        VStack {
             HStack {
                 switch examType {
                 case ExamTypeEnum.theory:
-                    Image(systemName: "doc.text")
-                    Text("Teoria |")
+                    Label("Teoria", systemImage: "doc.text")
+                        .font(.largeTitle)
                 case ExamTypeEnum.practice:
-                    Image(systemName: category.icon)
-                    Text("Praktyka |")
+                    Label("Praktyka", systemImage: category.icon)
+                        .font(.largeTitle)
                 case ExamTypeEnum.none:
                     Image(systemName: "car")
                 }
             }
-            HStack {
-                Group {
-                    Spacer()
-                    Image(systemName: "clock")
-                    Text(formatDate(date:exam.date, formatFrom: "yyyy-MM-dd'T'HH:mm:ss", formatTo: "HH:mm"))
-                }
-                
-                
-//                Group {
-//                    Spacer()
-//                    Image(systemName: "info.circle")
-//                    Text(exam.additionalInfo ?? "-")
-//                }
-                
-                Group {
-                    Spacer()
-                    Image(systemName: "person")
-                    Text(String(exam.places))
-                    Spacer()
-                }
-                
-//                Group {
-//                    Spacer()
-//                    Image(systemName: "banknote")
-//                    Text(String(exam.amount) + "zł")
-//                    Spacer()
-//                }
+            .frame(width: 120)
+            
+            Spacer()
+
+            Group {
+                Label("Dnia", systemImage: "calendar")
+                Text(formatDate(
+                    date: exam.date,
+                    formatFrom: "yyyy-MM-dd'T'HH:mm:ss",
+                    formatTo: "dd.MM-yyyy, HH:mm"
+                ))
+                .bold()
             }
+                
+            Spacer()
+                
+            Group {
+                Label("Wolnych miejsc", systemImage: "person")
+                Text(String(exam.places))
+                    .bold()
+            }
+            
+            Spacer()
+                
+            Group {
+                Label("Cena", systemImage: "banknote")
+                Text(String(exam.amount) + " zł")
+                    .bold()
+            }
+            Spacer()
         }
-        .listRowInsets(EdgeInsets())
+        .frame(width: 500, height: 200)
     }
 }
 

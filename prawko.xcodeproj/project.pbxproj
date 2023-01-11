@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		015BE367159F949F8D3E802C /* Pods_prawko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5AC9C239FBD4A4CAEC00116 /* Pods_prawko.framework */; };
-		A707EE30295663FA00CC4BDE /* DrivingLicencesCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707EE2F295663FA00CC4BDE /* DrivingLicencesCategories.swift */; };
+		A707EE30295663FA00CC4BDE /* DrivingLicenceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707EE2F295663FA00CC4BDE /* DrivingLicenceCategory.swift */; };
 		A707EE32295730C600CC4BDE /* ScheduledDayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */; };
 		A707EE362957702800CC4BDE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707EE352957702800CC4BDE /* SearchResultsView.swift */; };
 		A70E0C272965F657004528AA /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E0C262965F657004528AA /* DateExtensions.swift */; };
+		A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72AB69E296E1303000279EA /* WatchlistRepository.swift */; };
 		A758E66429491E7000C269DD /* prawkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66329491E7000C269DD /* prawkoApp.swift */; };
 		A758E66629491E7000C269DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66529491E7000C269DD /* ContentView.swift */; };
 		A758E66829491E7300C269DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A758E66729491E7300C269DD /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		A758E67A2949313200C269DD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E6792949313100C269DD /* LoginView.swift */; };
 		A76D12F4295123FC0007B11B /* ProviencesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D12F3295123FC0007B11B /* ProviencesDTO.swift */; };
 		A76D12F6295124460007B11B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D12F5295124460007B11B /* SearchViewModel.swift */; };
+		A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */; };
 		A79A3719294942750012930F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A3718294942750012930F /* LoginViewModel.swift */; };
 		A79A371B294943BE0012930F /* UrlConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A371A294943BE0012930F /* UrlConst.swift */; };
 		A7ACD7962966025F0009E62A /* ExamRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ACD7952966025F0009E62A /* ExamRow.swift */; };
@@ -30,16 +32,20 @@
 		A7B030882968A44800B79BDC /* CommonMethodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B030872968A44800B79BDC /* CommonMethodsService.swift */; };
 		A7B0308B2968A4D800B79BDC /* ExamCategoryConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0308A2968A4D800B79BDC /* ExamCategoryConst.swift */; };
 		A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */; };
+		A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C3E94D296CAABB0047E08E /* ExamView.swift */; };
+		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
+		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
 		A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10A3F31058C79D874E76FE0A /* Pods-prawko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prawko.debug.xcconfig"; path = "Target Support Files/Pods-prawko/Pods-prawko.debug.xcconfig"; sourceTree = "<group>"; };
 		8C907A30438571DD09CEC698 /* Pods-prawko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prawko.release.xcconfig"; path = "Target Support Files/Pods-prawko/Pods-prawko.release.xcconfig"; sourceTree = "<group>"; };
-		A707EE2F295663FA00CC4BDE /* DrivingLicencesCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLicencesCategories.swift; sourceTree = "<group>"; };
+		A707EE2F295663FA00CC4BDE /* DrivingLicenceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLicenceCategory.swift; sourceTree = "<group>"; };
 		A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledDayDTO.swift; sourceTree = "<group>"; };
 		A707EE352957702800CC4BDE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		A70E0C262965F657004528AA /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		A72AB69E296E1303000279EA /* WatchlistRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepository.swift; sourceTree = "<group>"; };
 		A758E66029491E7000C269DD /* prawko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prawko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A758E66329491E7000C269DD /* prawkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prawkoApp.swift; sourceTree = "<group>"; };
 		A758E66529491E7000C269DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +57,7 @@
 		A758E6792949313100C269DD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A76D12F3295123FC0007B11B /* ProviencesDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviencesDTO.swift; sourceTree = "<group>"; };
 		A76D12F5295124460007B11B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistElementDTO.swift; sourceTree = "<group>"; };
 		A79A3718294942750012930F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A79A371A294943BE0012930F /* UrlConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlConst.swift; sourceTree = "<group>"; };
 		A7ACD7952966025F0009E62A /* ExamRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamRow.swift; sourceTree = "<group>"; };
@@ -59,6 +66,9 @@
 		A7B030872968A44800B79BDC /* CommonMethodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethodsService.swift; sourceTree = "<group>"; };
 		A7B0308A2968A4D800B79BDC /* ExamCategoryConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCategoryConst.swift; sourceTree = "<group>"; };
 		A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLicencesCategoriesConst.swift; sourceTree = "<group>"; };
+		A7C3E94D296CAABB0047E08E /* ExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamView.swift; sourceTree = "<group>"; };
+		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
+		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
 		A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		E5AC9C239FBD4A4CAEC00116 /* Pods_prawko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prawko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,6 +100,14 @@
 				A70E0C262965F657004528AA /* DateExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A72AB69D296E12E3000279EA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A72AB69E296E1303000279EA /* WatchlistRepository.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		A758E65729491E7000C269DD = {
@@ -159,7 +177,6 @@
 				A758E673294922FD00C269DD /* SearchView.swift */,
 				A707EE352957702800CC4BDE /* SearchResultsView.swift */,
 				A7ACD7952966025F0009E62A /* ExamRow.swift */,
-				A7ACD79729660F510009E62A /* ExamTypeEnum.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -168,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				A758E6752949231500C269DD /* NotificationsSettingsView.swift */,
+				A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */,
 			);
 			path = NotificationsSettings;
 			sourceTree = "<group>";
@@ -185,6 +203,7 @@
 			children = (
 				A7B0308529688A1700B79BDC /* VerticalLabelStyle.swift */,
 				A7B030872968A44800B79BDC /* CommonMethodsService.swift */,
+				A7C3E94D296CAABB0047E08E /* ExamView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -192,20 +211,55 @@
 		A76D12F2295123950007B11B /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				A76D12F3295123FC0007B11B /* ProviencesDTO.swift */,
 				A76D12F5295124460007B11B /* SearchViewModel.swift */,
-				A707EE2F295663FA00CC4BDE /* DrivingLicencesCategories.swift */,
-				A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */,
 				A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */,
 				A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
 		};
+		A78CFA1D296C910D004BDD61 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				A76D12F3295123FC0007B11B /* ProviencesDTO.swift */,
+				A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		A78CFA1E296C9140004BDD61 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				A7ACD79729660F510009E62A /* ExamTypeEnum.swift */,
+				A707EE2F295663FA00CC4BDE /* DrivingLicenceCategory.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		A78CFA1F296C916B004BDD61 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				A78CFA1D296C910D004BDD61 /* DTO */,
+				A7DE9BFC296B5393000C212A /* NotificationsSettings */,
+				A76D12F2295123950007B11B /* Search */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		A78CFA20296C96A6004BDD61 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		A79A37172949419C0012930F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A76D12F2295123950007B11B /* Search */,
+				A72AB69D296E12E3000279EA /* Common */,
+				A78CFA1E296C9140004BDD61 /* Enum */,
+				A78CFA1F296C916B004BDD61 /* Tabs */,
 				A79A371A294943BE0012930F /* UrlConst.swift */,
 				A79A3718294942750012930F /* LoginViewModel.swift */,
 			);
@@ -218,6 +272,15 @@
 				A7B0308A2968A4D800B79BDC /* ExamCategoryConst.swift */,
 			);
 			path = Const;
+			sourceTree = "<group>";
+		};
+		A7DE9BFC296B5393000C212A /* NotificationsSettings */ = {
+			isa = PBXGroup;
+			children = (
+				A78CFA20296C96A6004BDD61 /* DTO */,
+				A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */,
+			);
+			path = NotificationsSettings;
 			sourceTree = "<group>";
 		};
 		C0A40CA7B20CFDB01187526B /* Frameworks */ = {
@@ -342,7 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A707EE30295663FA00CC4BDE /* DrivingLicencesCategories.swift in Sources */,
+				A707EE30295663FA00CC4BDE /* DrivingLicenceCategory.swift in Sources */,
 				A76D12F6295124460007B11B /* SearchViewModel.swift in Sources */,
 				A758E6762949231500C269DD /* NotificationsSettingsView.swift in Sources */,
 				A758E674294922FD00C269DD /* SearchView.swift in Sources */,
@@ -350,16 +413,21 @@
 				A707EE362957702800CC4BDE /* SearchResultsView.swift in Sources */,
 				A758E66629491E7000C269DD /* ContentView.swift in Sources */,
 				A79A371B294943BE0012930F /* UrlConst.swift in Sources */,
+				A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */,
 				A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */,
 				A707EE32295730C600CC4BDE /* ScheduledDayDTO.swift in Sources */,
+				A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */,
+				A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */,
 				A76D12F4295123FC0007B11B /* ProviencesDTO.swift in Sources */,
 				A758E67A2949313200C269DD /* LoginView.swift in Sources */,
 				A7ACD7962966025F0009E62A /* ExamRow.swift in Sources */,
 				A7B030882968A44800B79BDC /* CommonMethodsService.swift in Sources */,
 				A70E0C272965F657004528AA /* DateExtensions.swift in Sources */,
+				A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */,
 				A758E6782949241100C269DD /* UserInformationsView.swift in Sources */,
 				A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */,
 				A758E66429491E7000C269DD /* prawkoApp.swift in Sources */,
+				A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */,
 				A7B0308629688A1700B79BDC /* VerticalLabelStyle.swift in Sources */,
 				A7B0308B2968A4D800B79BDC /* ExamCategoryConst.swift in Sources */,
 				A79A3719294942750012930F /* LoginViewModel.swift in Sources */,

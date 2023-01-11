@@ -45,7 +45,7 @@ public struct ScheduledHoursDTO : Decodable, Hashable, Identifiable {
     }
 }
 
-public struct ExamDTO : Decodable, Hashable, Identifiable {
+public struct ExamDTO : Decodable, Hashable, Identifiable, Encodable {
     public var id = UUID()
 
     public let additionalInfo : String?

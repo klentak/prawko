@@ -23,7 +23,7 @@ struct ContentView: View {
             LoginView(loginVM: loginVM)
         } else {
             TabView(selection: $selection) {
-                SearchView()
+                SearchView(notificationView: false)
                     .tabItem {
                         Label("", systemImage: "magnifyingglass")
                     }

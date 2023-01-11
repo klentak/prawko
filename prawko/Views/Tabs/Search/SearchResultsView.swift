@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchResultsView: View {
     @StateObject var searchResultVM = SearchResultViewModel() 
+    @State var loading = true
     
     let category : DrivingLicenceCategory
     let wordId : String
@@ -16,7 +17,7 @@ struct SearchResultsView: View {
     
     var body: some View {
         VStack {
-            if (searchResultVM.scheduledDays.isEmpty) {
+            if (loading) {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .gray))
                     .scaleEffect(3)
@@ -70,7 +71,9 @@ struct SearchResultsView: View {
             searchResultVM.getScheduledDays(
                 category: category,
                 wordId: wordId
-            )
+            ) { completion in
+                loading = false
+            }
         }
     }
 }

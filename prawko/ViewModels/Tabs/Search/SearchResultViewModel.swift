@@ -12,7 +12,7 @@ import KeychainSwift
 class SearchResultViewModel : ObservableObject {
     @Published var scheduledDays: [ScheduleDayDTO] = [ScheduleDayDTO]()
     
-    func getScheduledDays(category: DrivingLicenceCategory, wordId: String) {
+    func getScheduledDays(category: DrivingLicenceCategory, wordId: String, completion: @escaping (Bool) -> Void) {
         var dateComponent = DateComponents()
         dateComponent.month = 1
 
@@ -42,15 +42,18 @@ class SearchResultViewModel : ObservableObject {
             if (response.response?.statusCode == 401) {
                 let loginViewModel = LoginViewModel()
                 
-                loginViewModel.actualBearerCode() { completion in
-                    self.getScheduledDays(category: category, wordId: wordId)
+                loginViewModel.actualBearerCode() { _ in
+                    self.getScheduledDays(category: category, wordId: wordId, completion: completion)
                 }
-                print("Petla logowanie")
-                self.getScheduledDays(category: category, wordId: wordId)
             }
             
-            guard let result = response.value else { return }
+            // TODO: obsługa błędów
+            guard let result = response.value else {
+                completion(false)
+                return
+            }
             self.scheduledDays = result.schedule.scheduledDays
+            completion(true)
         }
     }
     

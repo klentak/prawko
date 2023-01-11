@@ -8,9 +8,28 @@
 import SwiftUI
 
 struct NotificationsSettingsView: View {
-
+    private var userDefaults = UserDefaults.standard
+    
     var body: some View {
-        Text("NotificationsSettings")
+        NavigationView {
+            VStack {
+//                ForEach(userDefaults.object(forKey: "watchlist") as! [WatchlistElement], id: \.id) {
+//                    ExamView(exam: $0)
+//                }
+                Text("test")
+            }
+                .navigationTitle(Text("Obserwuj"))
+                .navigationBarTitleDisplayMode(
+                    NavigationBarItem.TitleDisplayMode.automatic
+                )
+                .toolbar {
+                    ToolbarItemGroup(placement: .confirmationAction) {
+                        NavigationLink(destination: SearchView(notificationView: true)) {
+                            Label("Dodaj", systemImage: "plus")
+                        }
+                    }
+                }
+        }
     }
 }
 
