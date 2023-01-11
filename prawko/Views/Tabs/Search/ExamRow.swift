@@ -4,7 +4,6 @@
 //
 //  Created by Jakub Klentak on 04/01/2023.
 //
-
 import SwiftUI
 
 struct ExamRow: View {
@@ -13,51 +12,49 @@ struct ExamRow: View {
     let category: DrivingLicenceCategory
 
     var body: some View {
-        VStack {
+        HStack {
             HStack {
                 switch examType {
                 case ExamTypeEnum.theory:
-                    Label("Teoria", systemImage: "doc.text")
-                        .font(.largeTitle)
+                    Image(systemName: "doc.text")
+                    Text("Teoria |")
                 case ExamTypeEnum.practice:
-                    Label("Praktyka", systemImage: category.icon)
-                        .font(.largeTitle)
+                    Image(systemName: category.icon)
+                    Text("Praktyka |")
                 case ExamTypeEnum.none:
                     Image(systemName: "car")
                 }
             }
-            .frame(width: 120)
-            
-            Spacer()
-
-            Group {
-                Label("Dnia", systemImage: "calendar")
-                Text(formatDate(
-                    date: exam.date,
-                    formatFrom: "yyyy-MM-dd'T'HH:mm:ss",
-                    formatTo: "dd.MM-yyyy, HH:mm"
-                ))
-                .bold()
-            }
+            HStack {
+                Group {
+                    Spacer()
+                    Image(systemName: "clock")
+                    Text(formatDate(date:exam.date, formatFrom: "yyyy-MM-dd'T'HH:mm:ss", formatTo: "HH:mm"))
+                }
                 
-            Spacer()
                 
-            Group {
-                Label("Wolnych miejsc", systemImage: "person")
-                Text(String(exam.places))
-                    .bold()
-            }
-            
-            Spacer()
+//                Group {
+//                    Spacer()
+//                    Image(systemName: "info.circle")
+//                    Text(exam.additionalInfo ?? "-")
+//                }
                 
-            Group {
-                Label("Cena", systemImage: "banknote")
-                Text(String(exam.amount) + " zł")
-                    .bold()
+                Group {
+                    Spacer()
+                    Image(systemName: "person")
+                    Text(String(exam.places))
+                    Spacer()
+                }
+                
+//                Group {
+//                    Spacer()
+//                    Image(systemName: "banknote")
+//                    Text(String(exam.amount) + "zł")
+//                    Spacer()
+//                }
             }
-            Spacer()
         }
-        .frame(width: 500, height: 200)
+        .listRowInsets(EdgeInsets())
     }
 }
 
