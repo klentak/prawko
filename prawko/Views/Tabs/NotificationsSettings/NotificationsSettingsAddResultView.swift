@@ -24,10 +24,13 @@ struct NotificationsSettingsAddResultView: View {
                     .scaleEffect(3)
             } else {
                 if (notificationsSettingsAddResultVM.exam == nil) {
-                    Text("Aktualnie brak terminów")
-                    Spacer()
-                    Text("Poinformujemy Cię gdy jakiś się pojawi")
-                    Spacer()
+                    VStack {
+                        Text("Aktualnie brak terminów.")
+                        Spacer()
+                        Text("Poinformujemy Cię gdy jakiś się pojawi.")
+                        Spacer()
+                    }
+                    .frame(height: 100)
                 } else {
                     ExamView(
                         exam: notificationsSettingsAddResultVM.exam!,
@@ -37,11 +40,10 @@ struct NotificationsSettingsAddResultView: View {
                     
                     Spacer()
                     
-                    Text("Poinformujemy Cię gdy pojawi zwolni się wcześniejszy termin")
-            
-                    Spacer()
+                    Text("Poinformujemy Cię gdy zwolni się wcześniejszy termin")
                 }
             }
+            Spacer()
         }
         .onAppear() {
             notificationsSettingsAddResultVM.getScheduledDays(

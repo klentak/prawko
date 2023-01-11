@@ -15,37 +15,45 @@ struct ExamView: View {
     var body: some View {
         VStack {
             Text(examType.rawValue)
-            Group {
-                Image(systemName: "clock")
-                Text(formatDate(
-                    date: exam.date,
-                    formatFrom: "yyyy-MM-dd'T'HH:mm:ss",
-                    formatTo: "HH:mm")
+                .font(.largeTitle)
+                .textCase(.uppercase)
+            Spacer()
+            HStack {
+                Label("", systemImage: "calendar")
+                    .bold()
+                Text(
+                    formatDate(
+                        date: exam.date,
+                        formatFrom: "yyyy-MM-dd'T'HH:mm:ss",
+                        formatTo: "dd-MM-yyyy HH:mm"
+                    )
                 )
+                .bold()
             }
             
-            Group {
-                Spacer()
-                Image(systemName: "info.circle")
+            Spacer()
+            
+            HStack {
+                Label("Informacje: ", systemImage: "info.circle")
                 Text(exam.additionalInfo ?? "-")
             }
             
             Spacer()
                 
-            Group {
-                Image(systemName: "person")
+            HStack {
+                Label("Miejsc: ", systemImage: "person")
                 Text(String(exam.places))
             }
             
             Spacer()
             
-            Group {
-                Spacer()
-                Image(systemName: "banknote")
+            HStack {
+                Label("Cena", systemImage: "banknote")
                 Text(String(exam.amount) + "zł")
-                Spacer()
             }
+            Spacer()
         }
+        .frame(height: 200)
     }
 }
 

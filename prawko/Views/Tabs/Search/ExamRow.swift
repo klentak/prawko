@@ -25,6 +25,8 @@ struct ExamRow: View {
                     Image(systemName: "car")
                 }
             }
+            .frame(width: 140)
+            
             HStack {
                 Group {
                     Spacer()
@@ -32,26 +34,12 @@ struct ExamRow: View {
                     Text(formatDate(date:exam.date, formatFrom: "yyyy-MM-dd'T'HH:mm:ss", formatTo: "HH:mm"))
                 }
                 
-                
-//                Group {
-//                    Spacer()
-//                    Image(systemName: "info.circle")
-//                    Text(exam.additionalInfo ?? "-")
-//                }
-                
                 Group {
                     Spacer()
                     Image(systemName: "person")
                     Text(String(exam.places))
                     Spacer()
                 }
-                
-//                Group {
-//                    Spacer()
-//                    Image(systemName: "banknote")
-//                    Text(String(exam.amount) + "zł")
-//                    Spacer()
-//                }
             }
         }
         .listRowInsets(EdgeInsets())

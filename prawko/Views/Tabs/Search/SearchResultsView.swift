@@ -24,7 +24,6 @@ struct SearchResultsView: View {
             } else if (searchResultVM.noResultsByExamType(examType: examType)) {
                 HStack {
                     Label {
-                        // Put the "text" here
                         Text("Brak terminów :(")
                             .font(.system(size: 16, weight: .semibold, design: .rounded))
                     } icon: {

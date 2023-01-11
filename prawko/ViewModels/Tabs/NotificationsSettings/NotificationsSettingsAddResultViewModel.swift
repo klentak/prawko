@@ -64,16 +64,15 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
             case .practice:
                 self.exam = result.schedule.scheduledDays.first?.scheduledHours.first?.practiceExams.first
                 
-                self.addToUserDefaults(category: category, wordId: wordId, latestExam: self.exam, type: type)
             case .theory:
                 self.exam = result.schedule.scheduledDays.first?.scheduledHours.first?.theoryExams.first
-                
-                self.addToUserDefaults(category: category, wordId: wordId, latestExam: self.exam, type: type)
+    
             case .none:
                 completion(false)
                 return
             }
             
+            self.addToUserDefaults(category: category, wordId: wordId, latestExam: self.exam, type: type)
             completion(true)
         }
     }
