@@ -13,11 +13,11 @@ struct NotificationsSettingsView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                ForEach(userDefaults.object(forKey: "watchlist") as! [WatchlistElement], id: \.id) {
-//                    ExamView(exam: $0)
-//                }
-                Text("test")
-            }
+                List {
+                    ForEach(WatchlistRepository.get(), id: \.self) { watchlistElement in
+                        NotificationRow(watchlistElement: watchlistElement)
+                    }
+                }
                 .navigationTitle(Text("Obserwuj"))
                 .navigationBarTitleDisplayMode(
                     NavigationBarItem.TitleDisplayMode.automatic
@@ -29,6 +29,7 @@ struct NotificationsSettingsView: View {
                         }
                     }
                 }
+            }
         }
     }
 }

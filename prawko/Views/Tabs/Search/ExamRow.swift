@@ -34,12 +34,14 @@ struct ExamRow: View {
                     Text(formatDate(date:exam.date, formatFrom: "yyyy-MM-dd'T'HH:mm:ss", formatTo: "HH:mm"))
                 }
                 
+                Spacer()
+
                 Group {
-                    Spacer()
                     Image(systemName: "person")
                     Text(String(exam.places))
-                    Spacer()
                 }
+                
+                Spacer()
             }
         }
         .listRowInsets(EdgeInsets())
