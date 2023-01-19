@@ -63,7 +63,7 @@ struct ExamView_Previews: PreviewProvider {
             exam: ExamDTO(
                 additionalInfo: nil,
                 amount: 23,
-                date: "2022-10-26T18:28:10.727Z",
+                date: "2022-10-26T18:28:10",
                 places: 2
             ),
             examType: ExamTypeEnum.practice,

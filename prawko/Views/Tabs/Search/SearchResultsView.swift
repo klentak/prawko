@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SearchResultsView: View {
-    @StateObject var searchResultVM = SearchResultViewModel() 
+    @ObservedObject var searchResultVM = SearchResultViewModel() 
     @State var loading = true
+    @State var downloadDataAlert = false
     
     let category : DrivingLicenceCategory
     let wordId : String
@@ -18,9 +19,7 @@ struct SearchResultsView: View {
     var body: some View {
         VStack {
             if (loading) {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .gray))
-                    .scaleEffect(3)
+                CommonProgressView()
             } else if (searchResultVM.noResultsByExamType(examType: examType)) {
                 HStack {
                     Label {
@@ -38,24 +37,34 @@ struct SearchResultsView: View {
                 List {
                     ForEach(searchResultVM.scheduledDays) { scheduledDay in
                         if (searchResultVM.showGroup(scheduleDay: scheduledDay, examType: examType)) {
-                            DisclosureGroup(formatDate(date: scheduledDay.day,formatFrom: "yyyy-MM-dd",formatTo: "E, dd.MM")) {
+                            DisclosureGroup(
+                                formatDate(
+                                    date: scheduledDay.day,
+                                    formatFrom: "yyyy-MM-dd",
+                                    formatTo: "E, dd.MM"
+                                )
+                            ) {
                                 ForEach(scheduledDay.scheduledHours) { scheduledHour in
                                     switch examType {
                                     case .practice:
                                         ForEach(scheduledHour.practiceExams) { practiceExam in
-                                            ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category)
+                                            ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category
+                                            )
                                         }
                                     case .theory:
                                         ForEach(scheduledHour.theoryExams) { theoryExam in
-                                            ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category)
+                                            ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category
+                                            )
                                         }
                                     case .none:
                                         ForEach(scheduledHour.theoryExams) { theoryExam in
-                                            ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category)
+                                            ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category
+                                            )
                                         }
                                         
                                         ForEach(scheduledHour.practiceExams) { practiceExam in
-                                            ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category)
+                                            ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category
+                                            )
                                         }
                                     }
                                 }
@@ -71,8 +80,19 @@ struct SearchResultsView: View {
                 category: category,
                 wordId: wordId
             ) { completion in
-                loading = false
+                if (completion) {
+                    loading = false
+                } else {
+                    downloadDataAlert = true
+                }
             }
+        }
+        .alert(isPresented: $downloadDataAlert) {
+            Alert(
+                title: Text("Błąd systemu info-share"),
+                message: Text("Spróbuj ponownie później"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }

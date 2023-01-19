@@ -20,8 +20,8 @@ class SearchResultViewModel : ObservableObject {
         let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())!
         
         let keyChain = KeychainSwift()
-        
         var headers = HTTPHeaders.default
+        
         headers.add(HTTPHeader(
             name: "Authorization",
             value: "Bearer " + keyChain.get("bearer")!
@@ -42,8 +42,14 @@ class SearchResultViewModel : ObservableObject {
             if (response.response?.statusCode == 401) {
                 let loginViewModel = LoginViewModel()
                 
-                loginViewModel.actualBearerCode() { _ in
-                    self.getScheduledDays(category: category, wordId: wordId, completion: completion)
+                loginViewModel.actualBearerCode() { loginResult in
+                    switch loginResult {
+                    case .failure(let encodingError):
+                        completion(false)
+                        return
+                    case .success:
+                        return self.getScheduledDays(category: category, wordId: wordId, completion: completion)
+                    }
                 }
             }
             
@@ -61,23 +67,22 @@ class SearchResultViewModel : ObservableObject {
         switch examType {
         case .theory:
            for scheduledHour in scheduleDay.scheduledHours {
-                for _ in scheduledHour.theoryExams {
-                    return true
-                }
+               if (!scheduledHour.theoryExams.isEmpty) {
+                   return true
+               }
             }
         case .practice:
             for scheduledHour in scheduleDay.scheduledHours {
-                 for _ in scheduledHour.practiceExams {
-                     return true
-                 }
+                if (!scheduledHour.practiceExams.isEmpty) {
+                    return true
+                }
              }
         case .none:
             for scheduledHour in scheduleDay.scheduledHours {
-                for _ in scheduledHour.theoryExams {
-                    return true
-                }
-                
-                for _ in scheduledHour.practiceExams {
+                if (
+                    !scheduledHour.theoryExams.isEmpty
+                    && !scheduledHour.practiceExams.isEmpty
+                ) {
                     return true
                 }
             }
@@ -91,23 +96,22 @@ class SearchResultViewModel : ObservableObject {
             switch examType {
             case .theory:
                 for scheduledHour in scheduleDay.scheduledHours {
-                    for _ in scheduledHour.theoryExams {
+                    if (!scheduledHour.theoryExams.isEmpty) {
                         return false
                     }
                 }
             case .practice:
                 for scheduledHour in scheduleDay.scheduledHours {
-                    for _ in scheduledHour.practiceExams {
+                    if (!scheduledHour.practiceExams.isEmpty) {
                         return false
                     }
                 }
             case .none:
                 for scheduledHour in scheduleDay.scheduledHours {
-                    for _ in scheduledHour.theoryExams {
-                        return false
-                    }
-                    
-                    for _ in scheduledHour.practiceExams {
+                    if (
+                        !scheduledHour.practiceExams.isEmpty
+                        || !scheduledHour.theoryExams.isEmpty
+                    ) {
                         return false
                     }
                 }

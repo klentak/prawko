@@ -11,7 +11,7 @@ import Foundation
 struct WatchlistRepository {
     static let key = "watchlist"
     
-    static func get() -> [WatchlistElement] {
+    static func getList() -> [WatchlistElement] {
         guard let data = UserDefaults.standard.data(forKey: key),
               let savedWatchlist = try? JSONDecoder().decode(
                 [WatchlistElement].self, from: data
@@ -33,8 +33,19 @@ struct WatchlistRepository {
     
     static func addElement(_ value: WatchlistElement) {
         do {
-            var savedData = get()
+            var savedData = getList()
             savedData.append(value)
+            let data = try JSONEncoder().encode(savedData)
+            UserDefaults.standard.set(data, forKey: key)
+        } catch {
+            print(error)
+        }
+    }
+    
+    static func removeElement(_ offsets: IndexSet) {
+        do {
+            var savedData = getList()
+            savedData.remove(atOffsets: offsets)
             let data = try JSONEncoder().encode(savedData)
             UserDefaults.standard.set(data, forKey: key)
         } catch {

@@ -25,7 +25,7 @@ class LoginViewModel : ObservableObject {
         self.isAuthenticated = !(self.keyChain.get("bearer") == nil)
     }
     
-    public func actualBearerCode(completion: @escaping (Result<String, LoginError>) -> Void) {
+    public func actualBearerCode(completion: @escaping (Result<Bool, LoginError>) -> Void) {
         self.processLogin(
             email: keyChain.get("email")!,
             password: keyChain.get("password")!,
@@ -33,7 +33,7 @@ class LoginViewModel : ObservableObject {
         )
     }
     
-    func processLogin(email: String, password: String, completion: @escaping (Result<String, LoginError>) -> Void) {
+    func processLogin(email: String, password: String, completion: @escaping (Result<Bool, LoginError>) -> Void) {
         self.getCsrfCode() { result in
             switch result {
             case .success(let csrf):
@@ -45,8 +45,9 @@ class LoginViewModel : ObservableObject {
                             case .success(let bearer):
                                 self.addAuthDataToKeyChain(email: email, password: password, bearer: bearer)
                                 self.isAuthenticated = true
+                                completion(.success(true))
                             default:
-                                completion(result)
+                                completion(.failure(LoginError.bearer))
                             }
                         }
                     default:
@@ -92,7 +93,12 @@ class LoginViewModel : ObservableObject {
                     String(bearer[Range($0.range, in: bearer)!])
                 }.first?.components(separatedBy: "&")[0]
 
-                completion(.success(result!))
+                guard let result = result else {
+                    completion(.failure(LoginError.bearer))
+                    return
+                }
+                
+                completion(.success(result))
             }
     }
     

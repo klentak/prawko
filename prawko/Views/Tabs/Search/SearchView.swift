@@ -81,12 +81,7 @@ struct SearchView: View {
                             ) {
                                 Label("Dodaj do obserwowanych", systemImage: "plus")
                             }
-                            .disabled(
-                                selectedProvince == nil
-                                || selectedWord == nil
-                                || selectedDrivingCategory == nil
-                                || selectedExamType == ExamTypeEnum.none
-                            )
+                            .disabled(isNotificationsSettingsAddResultViewNavigationLiskDisabled())
                         } else {
                             NavigationLink(
                                 destination: SearchResultsView(
@@ -97,11 +92,7 @@ struct SearchView: View {
                             ) {
                                 Label("Szukaj", systemImage: "magnifyingglass")
                             }
-                            .disabled(
-                                selectedProvince == nil
-                                || selectedWord == nil
-                                || selectedDrivingCategory == nil
-                            )
+                            .disabled(isSearchResultsViewNavigationLiskDisabled())
                         }
                     }
                 }
@@ -109,15 +100,26 @@ struct SearchView: View {
                 .navigationTitle(Text("Szukaj"))
                 .navigationBarHidden(notificationView)
             } else {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .gray))
-                    .scaleEffect(3)
+                CommonProgressView()
             }
         }
         .onAppear() {
             SearchVM.getProviences() { completion in
             }
         }
+    }
+    
+    func isNotificationsSettingsAddResultViewNavigationLiskDisabled() -> Bool {
+        return selectedProvince == nil
+            || selectedWord == nil
+            || selectedDrivingCategory == nil
+            || selectedExamType == ExamTypeEnum.none
+    }
+    
+    func isSearchResultsViewNavigationLiskDisabled() -> Bool {
+        return selectedProvince == nil
+            || selectedWord == nil
+            || selectedDrivingCategory == nil
     }
 }
 

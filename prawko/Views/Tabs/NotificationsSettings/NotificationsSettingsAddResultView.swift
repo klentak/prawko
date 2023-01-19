@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct NotificationsSettingsAddResultView: View {
-    var notificationsSettingsAddResultVM = NotificationsSettingsAddResultViewModel()
+    @ObservedObject var notificationsSettingsAddResultVM = NotificationsSettingsAddResultViewModel()
     
     let category : DrivingLicenceCategory
     let wordId : String
     let type : ExamTypeEnum
     
     @State var loading = true
+    @State var downloadDataAlert = false
     
     var body: some View {
         VStack {
             if (loading) {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .gray))
-                    .scaleEffect(3)
+                CommonProgressView()
             } else {
                 if (notificationsSettingsAddResultVM.exam == nil) {
                     VStack {
@@ -30,8 +29,13 @@ struct NotificationsSettingsAddResultView: View {
                         Text("Poinformujemy Cię gdy jakiś się pojawi.")
                         Spacer()
                     }
-                    .frame(height: 100)
+                        .frame(height: 100)
                 } else {
+                    Text("Najbliższy termin")
+                        .font(.largeTitle)
+                    
+                    Spacer()
+                    
                     ExamView(
                         exam: notificationsSettingsAddResultVM.exam!,
                         examType: type,
@@ -41,24 +45,37 @@ struct NotificationsSettingsAddResultView: View {
                     Spacer()
                     
                     Text("Poinformujemy Cię gdy zwolni się wcześniejszy termin")
+                        .bold()
+                    
+                    Spacer()
                 }
             }
-            Spacer()
         }
-        .onAppear() {
-            notificationsSettingsAddResultVM.getScheduledDays(
-                category: category,
-                wordId: wordId,
-                type: type
-            ) { completion in
-                loading = false
+            .onAppear() {
+                notificationsSettingsAddResultVM.getScheduledDays(
+                    category: category,
+                    wordId: wordId,
+                    type: type
+                ) { completion in
+                    if (completion) {
+                        loading = false
+                    } else {
+                        downloadDataAlert = true
+                    }
+                }
             }
-        }
-        .navigationBarHidden(true)
+            .navigationBarHidden(true)
+            .alert(isPresented: $downloadDataAlert) {
+                Alert(
+                    title: Text("Błąd systemu info-share"),
+                     message: Text("Spróbuj ponownie później"),
+                     dismissButton: .default(Text("OK"))
+                )
+            }
     }
 }
 
-struct NotificationsSettingsAddResultView_Previews: PreviewProvider {
+struct NotificatiopnsSettingsAddResultView_Previews: PreviewProvider {
     static var previews: some View {
         NotificationsSettingsAddResultView(
             category: DrivingLicencesCategoriesConst.values.first!,

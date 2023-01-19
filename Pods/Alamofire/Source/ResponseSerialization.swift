@@ -261,12 +261,14 @@ extension DataRequest {
                     case let .doNotRetryWithError(retryError):
                         let result: AFResult<Serializer.SerializedObject> = .failure(retryError.asAFError(orFailWith: "Received retryError was not already AFError"))
 
-                        let response = DataResponse(request: self.request,
-                                                    response: self.response,
-                                                    data: self.data,
-                                                    metrics: self.metrics,
-                                                    serializationDuration: end - start,
-                                                    result: result)
+                        let response = DataResponse(
+                            request: self.request,
+                            response: self.response,
+                            data: self.data,
+                            metrics: self.metrics,
+                            serializationDuration: end - start,
+                            result: result
+                        )
 
                         didComplete = { completionHandler(response) }
 

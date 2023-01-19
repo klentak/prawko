@@ -25,11 +25,12 @@ struct ExamRow: View {
                     Image(systemName: "car")
                 }
             }
-            .frame(width: 140)
+            .frame(width: 120)
             
             HStack {
+                Spacer()
+                
                 Group {
-                    Spacer()
                     Image(systemName: "clock")
                     Text(formatDate(date:exam.date, formatFrom: "yyyy-MM-dd'T'HH:mm:ss", formatTo: "HH:mm"))
                 }

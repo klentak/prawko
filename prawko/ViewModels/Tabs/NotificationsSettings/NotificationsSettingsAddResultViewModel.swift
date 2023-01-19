@@ -49,8 +49,14 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
             if (response.response?.statusCode == 401) {
                 let loginViewModel = LoginViewModel()
                 
-                loginViewModel.actualBearerCode() { _ in
-                    self.getScheduledDays(category: category, wordId: wordId, type: type, completion: completion)
+                loginViewModel.actualBearerCode() { loginResult in
+                    switch loginResult {
+                    case .failure:
+                        completion(false)
+                        return
+                    case .success:
+                        return self.getScheduledDays(category: category, wordId: wordId, type: type, completion: completion)
+                    }
                 }
             }
             
@@ -62,18 +68,31 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
             
             switch type {
             case .practice:
-                self.exam = result.schedule.scheduledDays.first?.scheduledHours.first?.practiceExams.first
-                
+                for scheduledDay in result.schedule.scheduledDays {
+                    for scheduledHour in scheduledDay.scheduledHours {
+                        if (!scheduledHour.practiceExams.isEmpty) {
+                            self.exam = scheduledHour.practiceExams.first!
+                            self.addToUserDefaults(category: category, wordId: wordId, latestExam: self.exam, type: type)
+                            completion(true)
+                            return
+                        }
+                    }
+                }
             case .theory:
-                self.exam = result.schedule.scheduledDays.first?.scheduledHours.first?.theoryExams.first
-    
+                for scheduledDay in result.schedule.scheduledDays {
+                    for scheduledHour in scheduledDay.scheduledHours {
+                        if (!scheduledHour.theoryExams.isEmpty) {
+                            self.exam = scheduledHour.theoryExams.first!
+                            self.addToUserDefaults(category: category, wordId: wordId, latestExam: self.exam, type: type)
+                            completion(true)
+                            return
+                        }
+                    }
+                }
             case .none:
                 completion(false)
                 return
             }
-            
-            self.addToUserDefaults(category: category, wordId: wordId, latestExam: self.exam, type: type)
-            completion(true)
         }
     }
     
