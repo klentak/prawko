@@ -13,65 +13,55 @@ struct NotificationRowView: View {
     
     var body: some View {
         HStack {
-            VStack{
-                HStack {
+            Group {
+                switch watchlistElement.type {
+                case ExamTypeEnum.theory:
+                    Label("", systemImage: "doc.text")
+                        .font(.largeTitle)
+                case ExamTypeEnum.practice:
+                    Label("", systemImage: watchlistElement.category.icon)
+                        .font(.largeTitle)
+                case ExamTypeEnum.none:
+                    Image(systemName: "x.circle.fill")
+                }
+            }
+            .padding(.leading, 15.0)
+            
+            VStack {
+                Group {
+                    Text(wordName)
+                        .font(.title2)
+                    
                     switch watchlistElement.type {
                     case ExamTypeEnum.theory:
-                        Label("Teoria", systemImage: "doc.text")
+                        Text("Teoria")
                             .bold()
                     case ExamTypeEnum.practice:
-                        Label("Praktyka", systemImage: watchlistElement.category.icon)
+                        Text("Praktyka")
                             .bold()
                     case ExamTypeEnum.none:
                         Image(systemName: "x.circle.fill")
                     }
-                }
-                Text(
-                    "Kategoria: " + watchlistElement.category.name
-                )
-                    .padding(.top)
-                    .fontWeight(.light)
-                
-            }
-            .frame(width: 140)
-            
-            Spacer()
-            
-            VStack {
-                HStack {
-                    Image(systemName: "clock")
-                        .frame(width: 50)
-                    VStack {
-                        Text("Najbliższy termin:")
-                            .bold()
-                        Text(
-                            (watchlistElement.latestExam?.date != nil)
-                                ? formatDate(
-                                    date: watchlistElement.latestExam!.date,
-                                    formatFrom: "yyyy-MM-dd'T'HH:mm:ss",
-                                    formatTo: "dd-MM-yyyy HH:mm"
-                                ) : "-"
-                        )
-                    }
-                }
-                HStack {
-                    Image(systemName: "house.and.flag")
-                        .frame(width: 50)
-                    VStack {
-                        Text("Word:")
-                            .bold()
-                        
-                        Text(wordName)
-                    }
-                }
-                
-                HStack {
                     
+                    Text("Najbliższy termin:")
+                        .font(.subheadline)
+                    
+                    Text(
+                        (watchlistElement.latestExam?.date != nil)
+                        ? formatDate(
+                            date: watchlistElement.latestExam!.date,
+                            formatFrom: "yyyy-MM-dd'T'HH:mm:ss",
+                            formatTo: "dd-MM-yyyy HH:mm"
+                        ) : "-"
+                    )
+                    .font(.subheadline)
                 }
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             
             Spacer()
         }
+        .padding(.vertical, 5.0)
         .listRowInsets(EdgeInsets())
     }
 }
