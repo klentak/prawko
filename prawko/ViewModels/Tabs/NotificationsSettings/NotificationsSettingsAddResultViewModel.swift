@@ -49,13 +49,13 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
             if (response.response?.statusCode == 401) {
                 let loginViewModel = LoginViewModel()
                 
-                loginViewModel.actualBearerCode() { loginResult in
+                return loginViewModel.actualBearerCode() { loginResult in
                     switch loginResult {
                     case .failure:
                         completion(false)
                         return
                     case .success:
-                        return self.getScheduledDays(category: category, wordId: wordId, type: type, completion: completion)
+                        self.getScheduledDays(category: category, wordId: wordId, type: type, completion: completion)
                     }
                 }
             }

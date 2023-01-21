@@ -30,7 +30,7 @@ struct NotificationRowView: View {
             VStack {
                 Group {
                     Text(wordName)
-                        .font(.title2)
+                        .bold()
                     
                     switch watchlistElement.type {
                     case ExamTypeEnum.theory:
@@ -38,13 +38,13 @@ struct NotificationRowView: View {
                             .bold()
                     case ExamTypeEnum.practice:
                         Text("Praktyka")
-                            .bold()
+                            .font(.subheadline)
                     case ExamTypeEnum.none:
                         Image(systemName: "x.circle.fill")
                     }
                     
                     Text("Najbliższy termin:")
-                        .font(.subheadline)
+                        .font(.caption)
                     
                     Text(
                         (watchlistElement.latestExam?.date != nil)
@@ -54,14 +54,14 @@ struct NotificationRowView: View {
                             formatTo: "dd-MM-yyyy HH:mm"
                         ) : "-"
                     )
-                    .font(.subheadline)
+                    .font(.caption)
                 }
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
             Spacer()
         }
-        .padding(.vertical, 5.0)
+        .padding(.vertical, 4.0)
         .listRowInsets(EdgeInsets())
     }
 }

@@ -42,13 +42,13 @@ class SearchResultViewModel : ObservableObject {
             if (response.response?.statusCode == 401) {
                 let loginViewModel = LoginViewModel()
                 
-                loginViewModel.actualBearerCode() { loginResult in
+                return loginViewModel.actualBearerCode() { loginResult in
                     switch loginResult {
                     case .failure(let encodingError):
                         completion(false)
                         return
                     case .success:
-                        return self.getScheduledDays(category: category, wordId: wordId, completion: completion)
+                        self.getScheduledDays(category: category, wordId: wordId, completion: completion)
                     }
                 }
             }
@@ -63,7 +63,7 @@ class SearchResultViewModel : ObservableObject {
         }
     }
     
-    func showGroup(scheduleDay: ScheduleDayDTO, examType: ExamTypeEnum) -> Bool {
+    func showDayGroup(scheduleDay: ScheduleDayDTO, examType: ExamTypeEnum) -> Bool {
         switch examType {
         case .theory:
            for scheduledHour in scheduleDay.scheduledHours {
@@ -81,7 +81,7 @@ class SearchResultViewModel : ObservableObject {
             for scheduledHour in scheduleDay.scheduledHours {
                 if (
                     !scheduledHour.theoryExams.isEmpty
-                    && !scheduledHour.practiceExams.isEmpty
+                    || !scheduledHour.practiceExams.isEmpty
                 ) {
                     return true
                 }
@@ -110,7 +110,7 @@ class SearchResultViewModel : ObservableObject {
                 for scheduledHour in scheduleDay.scheduledHours {
                     if (
                         !scheduledHour.practiceExams.isEmpty
-                        || !scheduledHour.theoryExams.isEmpty
+                        && !scheduledHour.theoryExams.isEmpty
                     ) {
                         return false
                     }

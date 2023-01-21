@@ -31,12 +31,13 @@ struct SearchResultsView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 50)
-                    }.labelStyle(VerticalLabelStyle())
+                    }
+                    .labelStyle(VerticalLabelStyle())
                 }
             } else {
                 List {
                     ForEach(searchResultVM.scheduledDays) { scheduledDay in
-                        if (searchResultVM.showGroup(scheduleDay: scheduledDay, examType: examType)) {
+                        if (searchResultVM.showDayGroup(scheduleDay: scheduledDay, examType: examType)) {
                             DisclosureGroup(
                                 formatDate(
                                     date: scheduledDay.day,
@@ -48,23 +49,19 @@ struct SearchResultsView: View {
                                     switch examType {
                                     case .practice:
                                         ForEach(scheduledHour.practiceExams) { practiceExam in
-                                            ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category
-                                            )
+                                            ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category)
                                         }
                                     case .theory:
                                         ForEach(scheduledHour.theoryExams) { theoryExam in
-                                            ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category
-                                            )
+                                            ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category)
                                         }
                                     case .none:
                                         ForEach(scheduledHour.theoryExams) { theoryExam in
-                                            ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category
-                                            )
+                                            ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category)
                                         }
                                         
                                         ForEach(scheduledHour.practiceExams) { practiceExam in
-                                            ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category
-                                            )
+                                            ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category)
                                         }
                                     }
                                 }
