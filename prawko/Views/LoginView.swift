@@ -17,7 +17,7 @@ struct LoginView: View {
             Text("Zaloguj się do serwisu Info-Car")
                 .font(.title)
                 .padding(.top, 20)
-            Text("Aby korzystać z aplikacji muisz zalogować się systemu info-car.pl")
+            Text("Zaloguj się za pomocą tego samego loginu oraz hasła z którego korzystasz przy logowaniu na stronę info-car.pl")
                 .fontWeight(.light)
                 .padding(.top, 5)
             Form {
@@ -37,6 +37,7 @@ struct LoginView: View {
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                 }
+                
                 Button("Zaloguj") {
                     // TODO: make alerts on error
                     loginVM.processLogin(email: email, password: password) { result in
@@ -44,6 +45,11 @@ struct LoginView: View {
                     }
                 }
             }
+            Text("Twoje dane są zapisywane lokalnie, tylko na Twoim urządzeniu i nie są nikomu udostępniane.")
+                .fontWeight(.ultraLight)
+                .padding(.top, 5)
+                .multilineTextAlignment(.center)
+            Spacer()
         }
     }
 }
