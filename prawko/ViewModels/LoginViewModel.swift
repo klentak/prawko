@@ -18,17 +18,22 @@ enum LoginError: Error {
 }
 
 class LoginViewModel : ObservableObject {
-    private var keyChain: KeychainSwift = KeychainSwift()
+    private var keychain: KeychainSwift = KeychainSwift()
     @Published var isAuthenticated: Bool = false
 
     init () {
-        self.isAuthenticated = !(self.keyChain.get("bearer") == nil)
+        self.isAuthenticated = !(self.keychain.get("bearer") == nil)
+    }
+    
+    func logout() {
+        keychain.clear()
+        isAuthenticated = false
     }
     
     public func actualBearerCode(completion: @escaping (Result<Bool, LoginError>) -> Void) {
         self.processLogin(
-            email: keyChain.get("email")!,
-            password: keyChain.get("password")!,
+            email: keychain.get("email")!,
+            password: keychain.get("password")!,
             completion: completion
         )
     }
@@ -209,8 +214,8 @@ class LoginViewModel : ObservableObject {
         password: String,
         bearer: String
     ) {
-        keyChain.set(bearer, forKey: "bearer")
-        keyChain.set(email, forKey: "email")
-        keyChain.set(password, forKey: "password")
+        keychain.set(bearer, forKey: "bearer")
+        keychain.set(email, forKey: "email")
+        keychain.set(password, forKey: "password")
     }
 }

@@ -9,7 +9,8 @@ import SwiftUI
 import KeychainSwift
 
 struct UserInformationsView: View {
-    private var keyChain: KeychainSwift = KeychainSwift()
+    @StateObject var loginVM : LoginViewModel
+    var keychain: KeychainSwift = KeychainSwift()
 
     var body: some View {
         VStack {
@@ -17,12 +18,12 @@ struct UserInformationsView: View {
             Image(systemName: "person")
                 .font(.system(size: 150, weight: .regular))
             Spacer()
-            Label("\(keyChain.get("email") ?? "mail@test.com")", systemImage: "envelope")
+            Label("\(keychain.get("email") ?? "mail@test.com")", systemImage: "envelope")
                     .font(.title)
                     .labelStyle(.titleAndIcon)
             Spacer()
             Button("Wyloguj") {
-                
+                loginVM.logout()
             }
             Spacer()
         }
@@ -31,6 +32,8 @@ struct UserInformationsView: View {
 
 struct UserInformationsView_Previews: PreviewProvider {
     static var previews: some View {
-        UserInformationsView()
+        UserInformationsView(
+            loginVM: LoginViewModel()
+        )
     }
 }

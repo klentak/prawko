@@ -14,6 +14,12 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
+            Text("Zaloguj się do serwisu Info-Car")
+                .font(.title)
+                .padding(.top, 20)
+            Text("Aby korzystać z aplikacji muisz zalogować się systemu info-car.pl")
+                .fontWeight(.light)
+                .padding(.top, 5)
             Form {
                 Section {
                     TextField(
@@ -39,7 +45,6 @@ struct LoginView: View {
                 }
             }
         }
-        .navigationBarTitle(Text("Zaloguj się do serisu InfoShare"))
     }
 }
 

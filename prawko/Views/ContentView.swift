@@ -35,7 +35,9 @@ struct ContentView: View {
                     }
                     .tag(Tab.notificationSettings)
                 
-                UserInformationsView()
+                UserInformationsView(
+                    loginVM: loginVM
+                )
                     .tabItem {
                         Label("", systemImage: "person")
                     }
