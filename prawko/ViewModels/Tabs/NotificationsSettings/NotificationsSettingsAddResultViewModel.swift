@@ -99,6 +99,6 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
     private func addToUserDefaults(category: DrivingLicenceCategory, wordId: String, latestExam: ExamDTO?, type: ExamTypeEnum) {
         let newWatchlistElement = WatchlistElement(category: category, wordId: wordId, type: type, latestExam: latestExam)
         
-        WatchlistRepository.addElement(newWatchlistElement)
+        WatchlistRepository.shared.addElement(newWatchlistElement)
     }
 }

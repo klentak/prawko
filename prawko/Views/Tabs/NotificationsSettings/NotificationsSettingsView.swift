@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotificationsSettingsView: View {
     @StateObject var notificationsSettingsVM = NotificationsSettingsViewModel()
-    @State var watchlist = WatchlistRepository.getList()
+    @StateObject var watchlist = WatchlistRepository.shared
     @State var downloadDataAlert = false
     @State var loading = true
     
@@ -20,11 +20,11 @@ struct NotificationsSettingsView: View {
             } else {
                 VStack {
                     List {
-                        if (watchlist.isEmpty) {
+                        if ($watchlist.elements.isEmpty) {
                             Text("Dodaj termin do obserwowanych ↗️")
                         }
                         
-                        ForEach(watchlist, id: \.self) { watchlistElement in
+                        ForEach(watchlist.elements, id: \.self) { watchlistElement in
                             NotificationRowView(
                                 watchlistElement: watchlistElement,
                                 wordName: getWordName(wordId: watchlistElement.wordId)
@@ -32,7 +32,7 @@ struct NotificationsSettingsView: View {
                         }
                         .onDelete(perform: delete)
                     }
-                    .navigationTitle(Text("Obserwuj"))
+                    .navigationTitle(Text("Obserwowane"))
                     .navigationBarTitleDisplayMode(
                         NavigationBarItem.TitleDisplayMode.automatic
                     )
@@ -40,9 +40,6 @@ struct NotificationsSettingsView: View {
                         ToolbarItemGroup(placement: .confirmationAction) {
                             NavigationLink(destination: SearchView(notificationView: true)) {
                                 Label("Dodaj", systemImage: "plus")
-                            }
-                            .onDisappear() {
-                                watchlist = WatchlistRepository.getList()
                             }
                         }
                     }
@@ -70,7 +67,7 @@ struct NotificationsSettingsView: View {
     }
     
     func delete(at offsets: IndexSet) {
-        WatchlistRepository.removeElement(offsets)
+        watchlist.removeElement(offsets)
     }
     
     func getWordName(wordId: String) -> String {
