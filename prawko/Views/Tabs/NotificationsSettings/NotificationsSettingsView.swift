@@ -9,7 +9,10 @@ import SwiftUI
 
 struct NotificationsSettingsView: View {
     @StateObject var notificationsSettingsVM = NotificationsSettingsViewModel()
+
     @StateObject var watchlist = WatchlistRepository.shared
+
+    @State var notificationAlertsEnabled = false
     @State var downloadDataAlert = false
     @State var loading = true
     
@@ -20,8 +23,13 @@ struct NotificationsSettingsView: View {
             } else {
                 VStack {
                     List {
-                        if ($watchlist.elements.isEmpty) {
-                            Text("Dodaj termin do obserwowanych ↗️")
+                        if (!notificationAlertsEnabled) {
+                            Text("Aby dodać termin do obserwowanych musisz w ustawieniach nadać aplikacji dostęp do powiadomień!")
+                                .foregroundColor(.red)
+                        } else {
+                            if ($watchlist.elements.isEmpty) {
+                                Text("Dodaj termin do obserwowanych ↗️")
+                            }
                         }
                         
                         ForEach(watchlist.elements, id: \.self) { watchlistElement in
@@ -41,6 +49,7 @@ struct NotificationsSettingsView: View {
                             NavigationLink(destination: SearchView(notificationView: true)) {
                                 Label("Dodaj", systemImage: "plus")
                             }
+                            .disabled(!notificationAlertsEnabled)
                         }
                     }
                 }
@@ -55,6 +64,10 @@ struct NotificationsSettingsView: View {
                     case false:
                         downloadDataAlert = true
                     }
+                }
+                
+                notificationsSettingsVM.isNotificationsEnabled() { completion in
+                    notificationAlertsEnabled = completion
                 }
             }
             .alert(isPresented: $downloadDataAlert) {

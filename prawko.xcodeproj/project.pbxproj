@@ -14,6 +14,7 @@
 		A70E0C272965F657004528AA /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E0C262965F657004528AA /* DateExtensions.swift */; };
 		A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72AB69E296E1303000279EA /* WatchlistRepository.swift */; };
 		A72AB6A129709A12000279EA /* NotificationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72AB6A029709A12000279EA /* NotificationRowView.swift */; };
+		A73AC21E29A22BE100DA96A1 /* NotificationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73AC21D29A22BE100DA96A1 /* NotificationTask.swift */; };
 		A758E66429491E7000C269DD /* prawkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66329491E7000C269DD /* prawkoApp.swift */; };
 		A758E66629491E7000C269DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66529491E7000C269DD /* ContentView.swift */; };
 		A758E66829491E7300C269DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A758E66729491E7300C269DD /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		A70E0C262965F657004528AA /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		A72AB69E296E1303000279EA /* WatchlistRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepository.swift; sourceTree = "<group>"; };
 		A72AB6A029709A12000279EA /* NotificationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRowView.swift; sourceTree = "<group>"; };
+		A73AC21D29A22BE100DA96A1 /* NotificationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTask.swift; sourceTree = "<group>"; };
 		A758E66029491E7000C269DD /* prawko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prawko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A758E66329491E7000C269DD /* prawkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prawkoApp.swift; sourceTree = "<group>"; };
 		A758E66529491E7000C269DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		A73AC21C29A22BAF00DA96A1 /* BackgroundTask */ = {
+			isa = PBXGroup;
+			children = (
+				A73AC21D29A22BE100DA96A1 /* NotificationTask.swift */,
+			);
+			path = BackgroundTask;
+			sourceTree = "<group>";
+		};
 		A758E65729491E7000C269DD = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		A758E66229491E7000C269DD /* prawko */ = {
 			isa = PBXGroup;
 			children = (
+				A73AC21C29A22BAF00DA96A1 /* BackgroundTask */,
 				A70E0C252965F643004528AA /* Extensions */,
 				A79A37172949419C0012930F /* ViewModels */,
 				A758E6712949229200C269DD /* Views */,
@@ -439,6 +450,7 @@
 				A707EE362957702800CC4BDE /* SearchResultsView.swift in Sources */,
 				A770118329745B200058CC52 /* NotificationsSettingsViewModel.swift in Sources */,
 				A758E66629491E7000C269DD /* ContentView.swift in Sources */,
+				A73AC21E29A22BE100DA96A1 /* NotificationTask.swift in Sources */,
 				A79A371B294943BE0012930F /* UrlConst.swift in Sources */,
 				A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */,
 				A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */,

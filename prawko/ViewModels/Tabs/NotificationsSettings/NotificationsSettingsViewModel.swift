@@ -31,4 +31,18 @@ class NotificationsSettingsViewModel : ObservableObject {
         
         return nil
     }
+    
+    func isNotificationsEnabled(completion: @escaping (Bool) -> Void) -> Void {
+        let center = UNUserNotificationCenter.current()
+
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized
+                    || settings.authorizationStatus == .provisional else {
+                completion(false)
+                return
+            }
+            
+            completion(true)
+        }
+    }
 }

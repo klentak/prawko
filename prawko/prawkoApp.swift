@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct prawkoApp: App {
+    @Environment(\.scenePhase) private var phase
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+        .onChange(of: phase) { newPhase in
+           switch newPhase {
+           case .background: notification()
+           default: break
+           }
+       }
     }
 }
