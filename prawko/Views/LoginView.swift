@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject var loginVM : LoginViewModel
     @State private var email: String = ""
     @State private var password: String = ""
     
@@ -40,7 +39,7 @@ struct LoginView: View {
                 
                 Button("Zaloguj") {
                     // TODO: make alerts on error
-                    loginVM.processLogin(email: email, password: password) { result in
+                    LoginService.shared.processLogin(email: email, password: password) { result in
                         print(result)
                     }
                 }
@@ -56,6 +55,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(loginVM: LoginViewModel())
+        LoginView()
     }
 }
