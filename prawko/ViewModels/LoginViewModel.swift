@@ -11,12 +11,6 @@ import CryptoKit
 import KeychainSwift
 
 
-enum LoginError: Error {
-    case csrf
-    case login
-    case bearer
-}
-
 class LoginViewModel : ObservableObject {
     private var keychain: KeychainSwift = KeychainSwift()
     @Published var isAuthenticated: Bool = false

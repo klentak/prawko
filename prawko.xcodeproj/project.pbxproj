@@ -15,6 +15,8 @@
 		A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72AB69E296E1303000279EA /* WatchlistRepository.swift */; };
 		A72AB6A129709A12000279EA /* NotificationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72AB6A029709A12000279EA /* NotificationRowView.swift */; };
 		A73AC21E29A22BE100DA96A1 /* NotificationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73AC21D29A22BE100DA96A1 /* NotificationTask.swift */; };
+		A73C2C3429AE7998008C3B9D /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73C2C3329AE7998008C3B9D /* LoginError.swift */; };
+		A73C2C3629AE79BB008C3B9D /* ApiConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73C2C3529AE79BB008C3B9D /* ApiConnectionError.swift */; };
 		A758E66429491E7000C269DD /* prawkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66329491E7000C269DD /* prawkoApp.swift */; };
 		A758E66629491E7000C269DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66529491E7000C269DD /* ContentView.swift */; };
 		A758E66829491E7300C269DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A758E66729491E7300C269DD /* Assets.xcassets */; };
@@ -28,6 +30,7 @@
 		A770118329745B200058CC52 /* NotificationsSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A770118229745B200058CC52 /* NotificationsSettingsViewModel.swift */; };
 		A78811952978853600DF1030 /* NoExamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78811942978853600DF1030 /* NoExamsView.swift */; };
 		A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */; };
+		A78F9D5C29AA417000B81AC6 /* InfoCarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78F9D5B29AA417000B81AC6 /* InfoCarRepository.swift */; };
 		A79A3719294942750012930F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A3718294942750012930F /* LoginViewModel.swift */; };
 		A79A371B294943BE0012930F /* UrlConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A371A294943BE0012930F /* UrlConst.swift */; };
 		A7A77086297DEB2400074D18 /* UserInformationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A77085297DEB2400074D18 /* UserInformationsViewModel.swift */; };
@@ -54,6 +57,8 @@
 		A72AB69E296E1303000279EA /* WatchlistRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepository.swift; sourceTree = "<group>"; };
 		A72AB6A029709A12000279EA /* NotificationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRowView.swift; sourceTree = "<group>"; };
 		A73AC21D29A22BE100DA96A1 /* NotificationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTask.swift; sourceTree = "<group>"; };
+		A73C2C3329AE7998008C3B9D /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		A73C2C3529AE79BB008C3B9D /* ApiConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConnectionError.swift; sourceTree = "<group>"; };
 		A758E66029491E7000C269DD /* prawko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prawko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A758E66329491E7000C269DD /* prawkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prawkoApp.swift; sourceTree = "<group>"; };
 		A758E66529491E7000C269DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +73,7 @@
 		A770118229745B200058CC52 /* NotificationsSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsViewModel.swift; sourceTree = "<group>"; };
 		A78811942978853600DF1030 /* NoExamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExamsView.swift; sourceTree = "<group>"; };
 		A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistElementDTO.swift; sourceTree = "<group>"; };
+		A78F9D5B29AA417000B81AC6 /* InfoCarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepository.swift; sourceTree = "<group>"; };
 		A79A3718294942750012930F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A79A371A294943BE0012930F /* UrlConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlConst.swift; sourceTree = "<group>"; };
 		A7A77085297DEB2400074D18 /* UserInformationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationsViewModel.swift; sourceTree = "<group>"; };
@@ -114,20 +120,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		A72AB69D296E12E3000279EA /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A72AB69E296E1303000279EA /* WatchlistRepository.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		A73AC21C29A22BAF00DA96A1 /* BackgroundTask */ = {
+		A73AC21C29A22BAF00DA96A1 /* BackgroundTasks */ = {
 			isa = PBXGroup;
 			children = (
 				A73AC21D29A22BE100DA96A1 /* NotificationTask.swift */,
 			);
-			path = BackgroundTask;
+			path = BackgroundTasks;
+			sourceTree = "<group>";
+		};
+		A73C2C3229AE7988008C3B9D /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				A73C2C3329AE7998008C3B9D /* LoginError.swift */,
+				A73C2C3529AE79BB008C3B9D /* ApiConnectionError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		A758E65729491E7000C269DD = {
@@ -151,7 +158,10 @@
 		A758E66229491E7000C269DD /* prawko */ = {
 			isa = PBXGroup;
 			children = (
-				A73AC21C29A22BAF00DA96A1 /* BackgroundTask */,
+				A78CFA1E296C9140004BDD61 /* Enum */,
+				A73C2C3229AE7988008C3B9D /* Errors */,
+				A78F9D5A29AA40AF00B81AC6 /* Respositories */,
+				A73AC21C29A22BAF00DA96A1 /* BackgroundTasks */,
 				A70E0C252965F643004528AA /* Extensions */,
 				A79A37172949419C0012930F /* ViewModels */,
 				A758E6712949229200C269DD /* Views */,
@@ -279,11 +289,18 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
+		A78F9D5A29AA40AF00B81AC6 /* Respositories */ = {
+			isa = PBXGroup;
+			children = (
+				A72AB69E296E1303000279EA /* WatchlistRepository.swift */,
+				A78F9D5B29AA417000B81AC6 /* InfoCarRepository.swift */,
+			);
+			path = Respositories;
+			sourceTree = "<group>";
+		};
 		A79A37172949419C0012930F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A72AB69D296E12E3000279EA /* Common */,
-				A78CFA1E296C9140004BDD61 /* Enum */,
 				A78CFA1F296C916B004BDD61 /* Tabs */,
 				A79A371A294943BE0012930F /* UrlConst.swift */,
 				A79A3718294942750012930F /* LoginViewModel.swift */,
@@ -447,6 +464,8 @@
 				A7A77086297DEB2400074D18 /* UserInformationsViewModel.swift in Sources */,
 				A7ACD79829660F520009E62A /* ExamTypeEnum.swift in Sources */,
 				A78811952978853600DF1030 /* NoExamsView.swift in Sources */,
+				A73C2C3629AE79BB008C3B9D /* ApiConnectionError.swift in Sources */,
+				A78F9D5C29AA417000B81AC6 /* InfoCarRepository.swift in Sources */,
 				A707EE362957702800CC4BDE /* SearchResultsView.swift in Sources */,
 				A770118329745B200058CC52 /* NotificationsSettingsViewModel.swift in Sources */,
 				A758E66629491E7000C269DD /* ContentView.swift in Sources */,
@@ -462,6 +481,7 @@
 				A7ACD7962966025F0009E62A /* ExamRow.swift in Sources */,
 				A7B030882968A44800B79BDC /* CommonMethodsService.swift in Sources */,
 				A70E0C272965F657004528AA /* DateExtensions.swift in Sources */,
+				A73C2C3429AE7998008C3B9D /* LoginError.swift in Sources */,
 				A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */,
 				A758E6782949241100C269DD /* UserInformationsView.swift in Sources */,
 				A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */,

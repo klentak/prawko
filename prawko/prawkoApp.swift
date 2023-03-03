@@ -6,20 +6,27 @@
 //
 
 import SwiftUI
+import BackgroundTasks
 
 @main
 struct prawkoApp: App {
     @Environment(\.scenePhase) private var phase
     
+    private var notificationTask = NotificationTask()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .onChange(of: phase) { newPhase in
-           switch newPhase {
-           case .background: notification()
-           default: break
-           }
-       }
+    }
+    
+    init() {
+        registerBackgroundTask()
+    }
+        
+    func registerBackgroundTask() {
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: UUID().uuidString, using: nil) { task in
+            notificationTask.handleBackgroundTask(task: task as! BGAppRefreshTask)
+        }
     }
 }
