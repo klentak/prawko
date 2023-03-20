@@ -9,7 +9,6 @@ import SwiftUI
 import KeychainSwift
 
 struct UserInformationsView: View {
-    @StateObject var loginVM : LoginViewModel
     var keychain: KeychainSwift = KeychainSwift()
 
     var body: some View {
@@ -23,7 +22,7 @@ struct UserInformationsView: View {
                     .labelStyle(.titleAndIcon)
             Spacer()
             Button("Wyloguj") {
-                loginVM.logout()
+                LoginService.shared.logout()
             }
             Spacer()
         }
@@ -32,8 +31,6 @@ struct UserInformationsView: View {
 
 struct UserInformationsView_Previews: PreviewProvider {
     static var previews: some View {
-        UserInformationsView(
-            loginVM: LoginViewModel()
-        )
+        UserInformationsView()
     }
 }

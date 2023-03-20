@@ -47,9 +47,7 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
             headers: headers
         ).responseDecodable(of: Root.self) { response in
             if (response.response?.statusCode == 401) {
-                let loginViewModel = LoginViewModel()
-                
-                return loginViewModel.actualBearerCode() { loginResult in
+                return LoginService.shared.actualBearerCode() { loginResult in
                     switch loginResult {
                     case .failure:
                         completion(false)
@@ -99,6 +97,6 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
     private func addToUserDefaults(category: DrivingLicenceCategory, wordId: String, latestExam: ExamDTO?, type: ExamTypeEnum) {
         let newWatchlistElement = WatchlistElement(category: category, wordId: wordId, type: type, latestExam: latestExam)
         
-        WatchlistRepository.addElement(newWatchlistElement)
+        WatchlistRepository.shared.addElement(newWatchlistElement)
     }
 }

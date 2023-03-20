@@ -9,7 +9,6 @@ import SwiftUI
 import KeychainSwift
 
 struct ContentView: View {
-    @StateObject private var loginVM = LoginViewModel()
     @State private var selection: Tab = .search
     
     enum Tab {
@@ -19,8 +18,8 @@ struct ContentView: View {
     }
     
     var body: some View {
-        if (!loginVM.isAuthenticated) {
-            LoginView(loginVM: loginVM)
+        if (LoginService.shared.isAuthenticated) {
+            LoginView()
         } else {
             TabView(selection: $selection) {
                 SearchView(notificationView: false)
@@ -35,9 +34,7 @@ struct ContentView: View {
                     }
                     .tag(Tab.notificationSettings)
                 
-                UserInformationsView(
-                    loginVM: loginVM
-                )
+                UserInformationsView()
                     .tabItem {
                         Label("", systemImage: "person")
                     }

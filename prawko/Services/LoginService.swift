@@ -17,11 +17,14 @@ enum LoginError: Error {
     case bearer
 }
 
-class LoginViewModel : ObservableObject {
+class LoginService : ObservableObject {
+    static let shared = LoginService()
+    
     private var keychain: KeychainSwift = KeychainSwift()
+    
     @Published var isAuthenticated: Bool = false
 
-    init () {
+    private init () {
         self.isAuthenticated = !(self.keychain.get("bearer") == nil)
     }
     
