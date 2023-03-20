@@ -19,6 +19,7 @@ struct ContentView: View {
     
     var body: some View {
         if (LoginService.shared.isAuthenticated) {
+            LoginView()
         } else {
             TabView(selection: $selection) {
                 SearchView(notificationView: false)
