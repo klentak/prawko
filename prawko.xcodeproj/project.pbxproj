@@ -158,6 +158,7 @@
 		A758E66229491E7000C269DD /* prawko */ = {
 			isa = PBXGroup;
 			children = (
+
 				A78CFA1E296C9140004BDD61 /* Enum */,
 				A73C2C3229AE7988008C3B9D /* Errors */,
 				A78F9D5A29AA40AF00B81AC6 /* Respositories */,
@@ -303,7 +304,6 @@
 			children = (
 				A78CFA1F296C916B004BDD61 /* Tabs */,
 				A79A371A294943BE0012930F /* UrlConst.swift */,
-				A79A3718294942750012930F /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -490,7 +490,7 @@
 				A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */,
 				A7B0308629688A1700B79BDC /* VerticalLabelStyle.swift in Sources */,
 				A7B0308B2968A4D800B79BDC /* ExamCategoryConst.swift in Sources */,
-				A79A3719294942750012930F /* LoginViewModel.swift in Sources */,
+				A79A3719294942750012930F /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
