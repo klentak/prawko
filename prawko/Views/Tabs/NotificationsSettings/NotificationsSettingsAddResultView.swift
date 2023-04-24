@@ -63,6 +63,8 @@ struct NotificationsSettingsAddResultView: View {
                         downloadDataAlert = true
                     }
                 }
+                
+                BackgroundAppRefresherService.shared.scheduleNotifications()
             }
             .navigationBarHidden(true)
             .alert(isPresented: $downloadDataAlert) {

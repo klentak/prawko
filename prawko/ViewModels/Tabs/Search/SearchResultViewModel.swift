@@ -11,53 +11,18 @@ import KeychainSwift
 
 class SearchResultViewModel : ObservableObject {
     @Published var scheduledDays: [ScheduleDayDTO] = [ScheduleDayDTO]()
+    private var infoCarRepository = InfoCarRepository()
     
     func getScheduledDays(category: DrivingLicenceCategory, wordId: String, completion: @escaping (Bool) -> Void) {
-        var dateComponent = DateComponents()
-        dateComponent.month = 1
-
-        let startDate = Date()
-        let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())!
-        
-        let keyChain = KeychainSwift()
-        var headers = HTTPHeaders.default
-        
-        headers.add(HTTPHeader(
-            name: "Authorization",
-            value: "Bearer " + keyChain.get("bearer")!
-        ))
-        
-        AF.request(
-            UrlConst.mainUrl + UrlConst.examSchedule,
-            method: .put,
-            parameters: [
-                "category": category.name,
-                "endDate": startDate.description,
-                "startDate": endDate.description,
-                "wordId": wordId,
-            ],
-            encoding: JSONEncoding.default,
-            headers: headers
-        ).responseDecodable(of: Root.self) { response in
-            if (response.response?.statusCode == 401) {                
-                return LoginService.shared.actualBearerCode() { loginResult in
-                    switch loginResult {
-                    case .failure(let encodingError):
-                        completion(false)
-                        return
-                    case .success:
-                        self.getScheduledDays(category: category, wordId: wordId, completion: completion)
-                    }
-                }
-            }
-            
-            // TODO: obsługa błędów
-            guard let result = response.value else {
+        infoCarRepository.getScheduledDays(category: category, wordId: wordId) { result in
+            switch result {
+            case .failure(_):
                 completion(false)
                 return
+            case .success(let scheduledDays):
+                self.scheduledDays = scheduledDays
+                completion(true)
             }
-            self.scheduledDays = result.schedule.scheduledDays
-            completion(true)
         }
     }
     

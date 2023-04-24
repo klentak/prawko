@@ -50,7 +50,6 @@ struct NotificationRowView: View {
                         (watchlistElement.latestExam?.date != nil)
                         ? formatDate(
                             date: watchlistElement.latestExam!.date,
-                            formatFrom: "yyyy-MM-dd'T'HH:mm:ss",
                             formatTo: "dd-MM-yyyy HH:mm"
                         ) : "-"
                     )

@@ -31,4 +31,28 @@ class NotificationsSettingsViewModel : ObservableObject {
         
         return nil
     }
+    
+    func setAllowNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set!")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func isNotificationsEnabled(completion: @escaping (Bool) -> Void) -> Void {
+            let center = UNUserNotificationCenter.current()
+
+            center.getNotificationSettings { settings in
+                guard settings.authorizationStatus == .authorized
+                        || settings.authorizationStatus == .provisional else {
+                    completion(false)
+                    return
+                }
+
+                completion(true)
+            }
+        }
 }

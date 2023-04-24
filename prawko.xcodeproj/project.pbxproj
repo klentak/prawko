@@ -27,6 +27,9 @@
 		A770118329745B200058CC52 /* NotificationsSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A770118229745B200058CC52 /* NotificationsSettingsViewModel.swift */; };
 		A78811952978853600DF1030 /* NoExamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78811942978853600DF1030 /* NoExamsView.swift */; };
 		A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */; };
+		A78DC6FF29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC6FE29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift */; };
+		A797360729D5FA7400E97830 /* InfoCarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A797360629D5FA7400E97830 /* InfoCarRepository.swift */; };
+		A797360A29D5FC3C00E97830 /* ApiConectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A797360929D5FC3C00E97830 /* ApiConectionError.swift */; };
 		A79A3719294942750012930F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A3718294942750012930F /* LoginService.swift */; };
 		A79A371B294943BE0012930F /* UrlConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A371A294943BE0012930F /* UrlConst.swift */; };
 		A7A77086297DEB2400074D18 /* UserInformationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A77085297DEB2400074D18 /* UserInformationsViewModel.swift */; };
@@ -37,6 +40,8 @@
 		A7B030882968A44800B79BDC /* CommonMethodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B030872968A44800B79BDC /* CommonMethodsService.swift */; };
 		A7B0308B2968A4D800B79BDC /* ExamCategoryConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0308A2968A4D800B79BDC /* ExamCategoryConst.swift */; };
 		A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */; };
+		A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */; };
+		A7B992C029EDC1C7004B0510 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992BF29EDC1C7004B0510 /* LoginError.swift */; };
 		A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C3E94D296CAABB0047E08E /* ExamView.swift */; };
 		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
 		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
@@ -66,6 +71,10 @@
 		A770118229745B200058CC52 /* NotificationsSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsViewModel.swift; sourceTree = "<group>"; };
 		A78811942978853600DF1030 /* NoExamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExamsView.swift; sourceTree = "<group>"; };
 		A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistElementDTO.swift; sourceTree = "<group>"; };
+		A78DC6FE29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAppRefreshService.swift; sourceTree = "<group>"; };
+		A797360429D4D7A100E97830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A797360629D5FA7400E97830 /* InfoCarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepository.swift; sourceTree = "<group>"; };
+		A797360929D5FC3C00E97830 /* ApiConectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConectionError.swift; sourceTree = "<group>"; };
 		A79A3718294942750012930F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A79A371A294943BE0012930F /* UrlConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlConst.swift; sourceTree = "<group>"; };
 		A7A77085297DEB2400074D18 /* UserInformationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationsViewModel.swift; sourceTree = "<group>"; };
@@ -76,6 +85,8 @@
 		A7B030872968A44800B79BDC /* CommonMethodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethodsService.swift; sourceTree = "<group>"; };
 		A7B0308A2968A4D800B79BDC /* ExamCategoryConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCategoryConst.swift; sourceTree = "<group>"; };
 		A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLicencesCategoriesConst.swift; sourceTree = "<group>"; };
+		A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTask.swift; sourceTree = "<group>"; };
+		A7B992BF29EDC1C7004B0510 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		A7C3E94D296CAABB0047E08E /* ExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamView.swift; sourceTree = "<group>"; };
 		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
 		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
@@ -116,16 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				A79A3718294942750012930F /* LoginService.swift */,
+				A78DC6FE29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		A72AB69D296E12E3000279EA /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A72AB69E296E1303000279EA /* WatchlistRepository.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		A758E65729491E7000C269DD = {
@@ -149,6 +153,10 @@
 		A758E66229491E7000C269DD /* prawko */ = {
 			isa = PBXGroup;
 			children = (
+				A7B992BC29EDBC6E004B0510 /* BackgroundTasks */,
+				A797360829D5FC2A00E97830 /* Errors */,
+				A797360529D5FA5200E97830 /* Repositories */,
+				A797360429D4D7A100E97830 /* Info.plist */,
 				A70E9C3129B22A5200A91389 /* Services */,
 				A70E0C252965F643004528AA /* Extensions */,
 				A79A37172949419C0012930F /* ViewModels */,
@@ -277,10 +285,27 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
+		A797360529D5FA5200E97830 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				A72AB69E296E1303000279EA /* WatchlistRepository.swift */,
+				A797360629D5FA7400E97830 /* InfoCarRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		A797360829D5FC2A00E97830 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				A797360929D5FC3C00E97830 /* ApiConectionError.swift */,
+				A7B992BF29EDC1C7004B0510 /* LoginError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		A79A37172949419C0012930F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A72AB69D296E12E3000279EA /* Common */,
 				A78CFA1E296C9140004BDD61 /* Enum */,
 				A78CFA1F296C916B004BDD61 /* Tabs */,
 				A79A371A294943BE0012930F /* UrlConst.swift */,
@@ -302,6 +327,14 @@
 				A7B0308A2968A4D800B79BDC /* ExamCategoryConst.swift */,
 			);
 			path = Const;
+			sourceTree = "<group>";
+		};
+		A7B992BC29EDBC6E004B0510 /* BackgroundTasks */ = {
+			isa = PBXGroup;
+			children = (
+				A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */,
+			);
+			path = BackgroundTasks;
 			sourceTree = "<group>";
 		};
 		A7DE9BFC296B5393000C212A /* NotificationsSettings */ = {
@@ -453,12 +486,17 @@
 				A707EE32295730C600CC4BDE /* ScheduledDayDTO.swift in Sources */,
 				A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */,
 				A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */,
+				A78DC6FF29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift in Sources */,
+				A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */,
 				A76D12F4295123FC0007B11B /* ProviencesDTO.swift in Sources */,
 				A758E67A2949313200C269DD /* LoginView.swift in Sources */,
 				A7ACD7962966025F0009E62A /* ExamRow.swift in Sources */,
+				A797360729D5FA7400E97830 /* InfoCarRepository.swift in Sources */,
 				A7B030882968A44800B79BDC /* CommonMethodsService.swift in Sources */,
 				A70E0C272965F657004528AA /* DateExtensions.swift in Sources */,
 				A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */,
+				A7B992C029EDC1C7004B0510 /* LoginError.swift in Sources */,
+				A797360A29D5FC3C00E97830 /* ApiConectionError.swift in Sources */,
 				A758E6782949241100C269DD /* UserInformationsView.swift in Sources */,
 				A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */,
 				A72AB6A129709A12000279EA /* NotificationRowView.swift in Sources */,
@@ -599,6 +637,7 @@
 				DEVELOPMENT_TEAM = JND6WKUXP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = prawko/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -630,6 +669,7 @@
 				DEVELOPMENT_TEAM = JND6WKUXP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = prawko/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

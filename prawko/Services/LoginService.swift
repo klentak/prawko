@@ -10,13 +10,6 @@ import Alamofire
 import CryptoKit
 import KeychainSwift
 
-
-enum LoginError: Error {
-    case csrf
-    case login
-    case bearer
-}
-
 class LoginService : ObservableObject {
     static let shared = LoginService()
     
@@ -75,8 +68,6 @@ class LoginService : ObservableObject {
             .redirect(using: Redirector(behavior: .doNotFollow))
             .validate(statusCode: 302..<303)
             .response { resp in
-                
-                // Make sure "Location" header is present and its url is parsed correctly
                 guard let response = resp.response,
                     let location = response.allHeaderFields["Location"] as? String  else {
                     completion(.failure(LoginError.bearer))
@@ -203,7 +194,7 @@ class LoginService : ObservableObject {
         return String(location[index...]);
     }
     
-    private func generateHash()-> String {
+    private func generateHash() -> String {
         let string = "test"
         let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
 

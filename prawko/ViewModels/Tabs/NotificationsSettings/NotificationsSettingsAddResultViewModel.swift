@@ -70,7 +70,7 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
                     for scheduledHour in scheduledDay.scheduledHours {
                         if (!scheduledHour.practiceExams.isEmpty) {
                             self.exam = scheduledHour.practiceExams.first!
-                            self.addToUserDefaults(category: category, wordId: wordId, latestExam: self.exam, type: type)
+                            self.addToUserDefaults(category: category, wordId: wordId, latestExam: nil, type: type)
                             completion(true)
                             return
                         }
@@ -95,7 +95,12 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
     }
     
     private func addToUserDefaults(category: DrivingLicenceCategory, wordId: String, latestExam: ExamDTO?, type: ExamTypeEnum) {
-        let newWatchlistElement = WatchlistElement(category: category, wordId: wordId, type: type, latestExam: latestExam)
+        let newWatchlistElement = WatchlistElement(
+            category: category,
+            wordId: wordId,
+            type: type,
+            latestExam: latestExam
+        )
         
         WatchlistRepository.shared.addElement(newWatchlistElement)
     }

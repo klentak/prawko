@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct prawkoApp: App {
+    let watchlistTask : WatchlistTask = WatchlistTask()
     var body: some Scene {
         WindowGroup {
             ContentView()
+        }
+        .backgroundTask(.appRefresh("wishlistNotification")) {
+            watchlistTask.refreshAppData()
         }
     }
 }
