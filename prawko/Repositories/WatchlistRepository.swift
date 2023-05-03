@@ -55,7 +55,12 @@ class WatchlistRepository : ObservableObject {
         }
     }
     
-    func addElement(_ value: WatchlistElement) {
+    func addElement(_ value: WatchlistElement) throws {
+        if isAlreadyInWishlist(value) {
+            throw WatchlistRespositoryError.alreadyAdded(
+                "Egzamin jest już na liście obserwowanych"
+            )
+        }
         do {
             var savedData = getList()
             savedData.append(value)
@@ -77,5 +82,18 @@ class WatchlistRepository : ObservableObject {
             print(error)
         }
         self.updateList()
+    }
+    
+    func isAlreadyInWishlist(_ value: WatchlistElement) -> Bool {
+        for wishlistElement in getList() {
+            if (
+                value.type == wishlistElement.type
+                && value.category == wishlistElement.category
+                && value.wordId == wishlistElement.wordId
+            ) {
+                return true
+            }
+        }
+        return false
     }
 }

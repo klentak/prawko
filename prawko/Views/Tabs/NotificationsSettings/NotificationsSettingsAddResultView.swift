@@ -13,6 +13,9 @@ struct NotificationsSettingsAddResultView: View {
     let category : DrivingLicenceCategory
     let wordId : String
     let type : ExamTypeEnum
+
+    @State var errorTitle = "Błąd systemu info-share"
+    @State var errorMessage = "Spróbuj ponownie później"
     
     @State var loading = true
     @State var downloadDataAlert = false
@@ -57,9 +60,22 @@ struct NotificationsSettingsAddResultView: View {
                     wordId: wordId,
                     type: type
                 ) { completion in
-                    if (completion) {
+                    switch completion {
+                    case .success:
                         loading = false
-                    } else {
+                    case .failure(let error):
+                        self.notificationsSettingsAddResultVM.showErrorAlert(view: self, error: error)
+                        
+                        switch error {
+                        case WatchlistRespositoryError.alreadyAdded(let error):
+                            self.errorTitle = "Błąd"
+                            self.errorMessage = error.description
+                        default:
+                            print("default")
+                        }
+                        
+                        print(error)
+                        print("tutaj")
                         downloadDataAlert = true
                     }
                 }
@@ -69,9 +85,9 @@ struct NotificationsSettingsAddResultView: View {
             .navigationBarHidden(true)
             .alert(isPresented: $downloadDataAlert) {
                 Alert(
-                    title: Text("Błąd systemu info-share"),
-                     message: Text("Spróbuj ponownie później"),
-                     dismissButton: .default(Text("OK"))
+                    title: Text(self.errorTitle),
+                    message: Text(self.errorMessage),
+                    dismissButton: .default(Text("OK"))
                 )
             }
     }

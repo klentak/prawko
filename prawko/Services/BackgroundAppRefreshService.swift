@@ -12,6 +12,7 @@ class BackgroundAppRefresherService : ObservableObject {
     static let shared = BackgroundAppRefresherService()
     
     public func scheduleNotifications() -> Void {
+        return
         let request = BGAppRefreshTaskRequest(identifier: "wishlistNotification")
         request.earliestBeginDate = Calendar.current.date(byAdding: .minute, value: 10, to: Date())
 

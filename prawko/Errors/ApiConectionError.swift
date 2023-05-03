@@ -8,6 +8,6 @@
 import Foundation
 
 enum ApiConectionError: Error {
-    case parseData
-    case login
+    case parseData(String)
+    case login(String)
 }

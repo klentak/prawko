@@ -42,6 +42,7 @@
 		A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */; };
 		A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */; };
 		A7B992C029EDC1C7004B0510 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992BF29EDC1C7004B0510 /* LoginError.swift */; };
+		A7B992C229F7171C004B0510 /* WatchlistRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */; };
 		A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C3E94D296CAABB0047E08E /* ExamView.swift */; };
 		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
 		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
@@ -87,6 +88,7 @@
 		A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLicencesCategoriesConst.swift; sourceTree = "<group>"; };
 		A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTask.swift; sourceTree = "<group>"; };
 		A7B992BF29EDC1C7004B0510 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepositoryError.swift; sourceTree = "<group>"; };
 		A7C3E94D296CAABB0047E08E /* ExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamView.swift; sourceTree = "<group>"; };
 		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
 		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			children = (
 				A797360929D5FC3C00E97830 /* ApiConectionError.swift */,
 				A7B992BF29EDC1C7004B0510 /* LoginError.swift */,
+				A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				A7AA2B9B2975FF5E00667D89 /* CommonProgressView.swift in Sources */,
 				A76D12F6295124460007B11B /* SearchViewModel.swift in Sources */,
 				A758E6762949231500C269DD /* NotificationsSettingsView.swift in Sources */,
+				A7B992C229F7171C004B0510 /* WatchlistRepositoryError.swift in Sources */,
 				A758E674294922FD00C269DD /* SearchView.swift in Sources */,
 				A7A77086297DEB2400074D18 /* UserInformationsViewModel.swift in Sources */,
 				A7ACD79829660F520009E62A /* ExamTypeEnum.swift in Sources */,
