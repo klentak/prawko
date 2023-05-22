@@ -62,7 +62,7 @@ class WatchlistTask {
     
     func getNearestExamWithDateBeforeWatchlistElement(
         watchlistElement: WatchlistElement,
-        completion: @escaping (Result<(exam: ExamDTO?, watchlistElement: WatchlistElement?), ApiConectionError>) -> Void
+        completion: @escaping (Result<(exam: ExamDTO?, watchlistElement: WatchlistElement?), Error>) -> Void
     ) {
         self.infoCarRepository.getScheduledDays(category: watchlistElement.category, wordId: watchlistElement.wordId) { result in
             switch result {

@@ -5,9 +5,9 @@
 //  Created by Jakub Klentak on 08/01/2023.
 //
 
+import SwiftUI
 import Alamofire
 import KeychainSwift
-
 
 class NotificationsSettingsAddResultViewModel : ObservableObject {
     @Published var exam: ExamDTO? = nil
@@ -18,11 +18,11 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
         category: DrivingLicenceCategory,
         wordId: String,
         type: ExamTypeEnum,
-        completion: @escaping (Bool) -> Void
+        completion: @escaping (Result<Bool, Error>) -> Void
     ) {
         var dateComponent = DateComponents()
         dateComponent.month = 1
-
+        
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())!
         
@@ -49,8 +49,8 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
             if (response.response?.statusCode == 401) {
                 return LoginService.shared.actualBearerCode() { loginResult in
                     switch loginResult {
-                    case .failure:
-                        completion(false)
+                    case .failure(let exception):
+                        completion(.failure(exception))
                         return
                     case .success:
                         self.getScheduledDays(category: category, wordId: wordId, type: type, completion: completion)
@@ -58,43 +58,32 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
                 }
             }
             
-            // TODO: obsługa błędów
-            guard let result = response.value else {
-                completion(false)
+            switch response.result {
+            case .failure(let error):
+                completion(.failure(error))
                 return
-            }
-            
-            switch type {
-            case .practice:
-                for scheduledDay in result.schedule.scheduledDays {
-                    for scheduledHour in scheduledDay.scheduledHours {
-                        if (!scheduledHour.practiceExams.isEmpty) {
-                            self.exam = scheduledHour.practiceExams.first!
-                            self.addToUserDefaults(category: category, wordId: wordId, latestExam: nil, type: type)
-                            completion(true)
-                            return
-                        }
-                    }
-                }
-            case .theory:
-                for scheduledDay in result.schedule.scheduledDays {
-                    for scheduledHour in scheduledDay.scheduledHours {
-                        if (!scheduledHour.theoryExams.isEmpty) {
-                            self.exam = scheduledHour.theoryExams.first!
-                            self.addToUserDefaults(category: category, wordId: wordId, latestExam: self.exam, type: type)
-                            completion(true)
-                            return
-                        }
-                    }
-                }
-            case .none:
-                completion(false)
-                return
+            case .success(let result):
+                self.saveResponse(
+                    result: result,
+                    category: category,
+                    wordId: wordId,
+                    type: type,
+                    completion: completion
+                )
             }
         }
     }
     
-    private func addToUserDefaults(category: DrivingLicenceCategory, wordId: String, latestExam: ExamDTO?, type: ExamTypeEnum) {
+    public func showErrorAlert(view: NotificationsSettingsAddResultView, error: Error) {
+        
+    }
+    
+    private func addToUserDefaults(
+        category: DrivingLicenceCategory,
+        wordId: String,
+        latestExam: ExamDTO?,
+        type: ExamTypeEnum
+    ) throws {
         let newWatchlistElement = WatchlistElement(
             category: category,
             wordId: wordId,
@@ -102,6 +91,62 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
             latestExam: latestExam
         )
         
-        WatchlistRepository.shared.addElement(newWatchlistElement)
+        try WatchlistRepository.shared.addElement(newWatchlistElement)
+    }
+    
+    private func saveResponse(
+        result: Root,
+        category: DrivingLicenceCategory,
+        wordId: String,
+        type: ExamTypeEnum,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        switch type {
+        case .practice:
+            for scheduledDay in result.schedule.scheduledDays {
+                for scheduledHour in scheduledDay.scheduledHours {
+                    if (!scheduledHour.practiceExams.isEmpty) {
+                        self.exam = scheduledHour.practiceExams.first!
+                        do {
+                            try self.addToUserDefaults(
+                                category: category,
+                                wordId: wordId,
+                                latestExam: nil,
+                                type: type
+                            )
+                        } catch (let exception) {
+                            completion(.failure(exception))
+                            return
+                        }
+                        completion(.success(true))
+                        return
+                    }
+                }
+            }
+        case .theory:
+            for scheduledDay in result.schedule.scheduledDays {
+                for scheduledHour in scheduledDay.scheduledHours {
+                    if (!scheduledHour.theoryExams.isEmpty) {
+                        self.exam = scheduledHour.theoryExams.first!
+                        do {
+                            try self.addToUserDefaults(
+                                category: category,
+                                wordId: wordId,
+                                latestExam: nil,
+                                type: type
+                            )
+                        } catch (let exception) {
+                            completion(.failure(exception))
+                            return
+                        }
+                        completion(.success(true))
+                        return
+                    }
+                }
+            }
+        case .none:
+            completion(.success(true))
+            return
+        }
     }
 }
