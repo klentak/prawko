@@ -43,10 +43,12 @@
 		A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */; };
 		A7B992C029EDC1C7004B0510 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992BF29EDC1C7004B0510 /* LoginError.swift */; };
 		A7B992C229F7171C004B0510 /* WatchlistRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */; };
+		A7C2C07E2A1D333F00DD60BB /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C2C07D2A1D333F00DD60BB /* Interceptor.swift */; };
 		A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C3E94D296CAABB0047E08E /* ExamView.swift */; };
 		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
 		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
 		A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */; };
+		A7FF8ECB2A1D466300FDBBAA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FF8ECA2A1D466300FDBBAA /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,10 +91,12 @@
 		A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTask.swift; sourceTree = "<group>"; };
 		A7B992BF29EDC1C7004B0510 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepositoryError.swift; sourceTree = "<group>"; };
+		A7C2C07D2A1D333F00DD60BB /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		A7C3E94D296CAABB0047E08E /* ExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamView.swift; sourceTree = "<group>"; };
 		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
 		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
 		A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		A7FF8ECA2A1D466300FDBBAA /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E5AC9C239FBD4A4CAEC00116 /* Pods_prawko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prawko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,7 @@
 		A758E66229491E7000C269DD /* prawko */ = {
 			isa = PBXGroup;
 			children = (
+				A7C2C07C2A1D332100DD60BB /* Network */,
 				A7B992BC29EDBC6E004B0510 /* BackgroundTasks */,
 				A797360829D5FC2A00E97830 /* Errors */,
 				A797360529D5FA5200E97830 /* Repositories */,
@@ -340,6 +345,15 @@
 			path = BackgroundTasks;
 			sourceTree = "<group>";
 		};
+		A7C2C07C2A1D332100DD60BB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A7C2C07D2A1D333F00DD60BB /* Interceptor.swift */,
+				A7FF8ECA2A1D466300FDBBAA /* APIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		A7DE9BFC296B5393000C212A /* NotificationsSettings */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +503,7 @@
 				A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */,
 				A707EE32295730C600CC4BDE /* ScheduledDayDTO.swift in Sources */,
 				A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */,
+				A7C2C07E2A1D333F00DD60BB /* Interceptor.swift in Sources */,
 				A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */,
 				A78DC6FF29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift in Sources */,
 				A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */,
@@ -507,6 +522,7 @@
 				A758E66429491E7000C269DD /* prawkoApp.swift in Sources */,
 				A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */,
 				A7B0308629688A1700B79BDC /* VerticalLabelStyle.swift in Sources */,
+				A7FF8ECB2A1D466300FDBBAA /* APIManager.swift in Sources */,
 				A7B0308B2968A4D800B79BDC /* ExamCategoryConst.swift in Sources */,
 				A79A3719294942750012930F /* LoginService.swift in Sources */,
 			);

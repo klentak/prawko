@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Alamofire
-import KeychainSwift
 
 class NotificationsSettingsAddResultViewModel : ObservableObject {
     @Published var exam: ExamDTO? = nil
@@ -26,15 +25,7 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())!
         
-        let keyChain = KeychainSwift()
-        
-        var headers = HTTPHeaders.default
-        headers.add(HTTPHeader(
-            name: "Authorization",
-            value: "Bearer " + keyChain.get("bearer")!
-        ))
-        
-        AF.request(
+        APIManager.session.request(
             UrlConst.mainUrl + UrlConst.examSchedule,
             method: .put,
             parameters: [
@@ -43,21 +34,8 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
                 "startDate": endDate.description,
                 "wordId": wordId,
             ],
-            encoding: JSONEncoding.default,
-            headers: headers
+            encoding: JSONEncoding.default
         ).responseDecodable(of: Root.self) { response in
-            if (response.response?.statusCode == 401) {
-                return LoginService.shared.actualBearerCode() { loginResult in
-                    switch loginResult {
-                    case .failure(let exception):
-                        completion(.failure(exception))
-                        return
-                    case .success:
-                        self.getScheduledDays(category: category, wordId: wordId, type: type, completion: completion)
-                    }
-                }
-            }
-            
             switch response.result {
             case .failure(let error):
                 completion(.failure(error))
