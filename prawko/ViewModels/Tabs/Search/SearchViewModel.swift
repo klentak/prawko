@@ -13,7 +13,8 @@ class SearchViewModel : ObservableObject {
     @Published var sortedWords: [Word] = [Word]()
     
     func getProviences(completion: @escaping (Bool) -> Void) {
-        AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces).responseDecodable(of: ProviencesDTO.self) { response in
+        AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
+            .responseDecodable(of: ProviencesDTO.self) { response in
             guard let result = response.value else { return }
             self.proviencesDTO = result
             completion(true)

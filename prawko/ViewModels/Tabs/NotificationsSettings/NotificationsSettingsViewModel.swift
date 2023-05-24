@@ -12,7 +12,8 @@ class NotificationsSettingsViewModel : ObservableObject {
     @Published var words: [Word] = [Word]()
     
     func getProviences(completion: @escaping (Bool) -> Void) {
-        AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces).responseDecodable(of: ProviencesDTO.self) { response in
+        AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
+            .responseDecodable(of: ProviencesDTO.self) { response in
             guard let result = response.value else {
                 completion(false)
                 return
