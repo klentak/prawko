@@ -10,20 +10,17 @@ import Alamofire
 import CryptoKit
 import KeychainSwift
 
-class LoginService : ObservableObject {
-    static let shared = LoginService()
-    
+class LoginService : ObservableObject {    
     private var keychain: KeychainSwift = KeychainSwift()
-    
-    @Published var isAuthenticated: Bool = false
 
-    private init () {
-        self.isAuthenticated = !(self.keychain.get("bearer") == nil)
+    
+    init () {
+        AppState.shared.loggedIn = !(self.keychain.get("bearer") == nil)
     }
     
     func logout() {
         keychain.clear()
-        isAuthenticated = false
+        AppState.shared.loggedIn = false
     }
     
     public func actualBearerCode(completion: @escaping (Result<Bool, LoginError>) -> Void) {
@@ -45,14 +42,15 @@ class LoginService : ObservableObject {
                             switch result {
                             case .success(let bearer):
                                 self.addAuthDataToKeyChain(email: email, password: password, bearer: bearer)
-                                self.isAuthenticated = true
+                                AppState.shared.loggedIn = true
+
                                 completion(.success(true))
                             default:
                                 completion(.failure(LoginError.bearer))
                             }
                         }
                     default:
-                        completion(.failure(LoginError.login))
+                        completion(.failure(LoginError.wrongLoginData))
                     }
                 }
             case .failure(let encodingError):
@@ -66,7 +64,7 @@ class LoginService : ObservableObject {
 
         AF.request(url)
             .redirect(using: Redirector(behavior: .doNotFollow))
-            .validate(statusCode: 302..<303)
+            .validate(statusCode: 302 ..< 303)
             .response { resp in
                 guard let response = resp.response,
                     let location = response.allHeaderFields["Location"] as? String  else {
@@ -100,8 +98,7 @@ class LoginService : ObservableObject {
                 completion(.success(result))
             }
     }
-    
-    // TODO: chenge validation to one that make more sense
+
     private func login(email: String, password: String, csrf: String, completion: @escaping (Bool) -> Void) {
         guard let url = URL(string:  UrlConst.mainUrl + UrlConst.Auth.login) else {
             completion(false)
@@ -115,13 +112,14 @@ class LoginService : ObservableObject {
 
         AF.request(request)
             .response { response in
-                print(response)
-                switch response.response!.statusCode {
-                case 200:
-                    completion(true)
-                default:
+                let url = response.response?.url
+                let query = url?.query
+                if query != nil && query!.contains("error") {
                     completion(false)
+                    return
                 }
+                
+                completion(true)
             }
     }
         
