@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Foundation
 
 @main
 struct prawkoApp: App {
     let watchlistTask : WatchlistTask = WatchlistTask()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

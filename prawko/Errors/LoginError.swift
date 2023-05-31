@@ -11,4 +11,5 @@ enum LoginError: Error {
     case csrf
     case login
     case bearer
+    case wrongLoginData
 }

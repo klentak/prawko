@@ -10,6 +10,8 @@ import KeychainSwift
 
 struct UserInformationsView: View {
     var keychain: KeychainSwift = KeychainSwift()
+    private let loginService = LoginService()
+
 
     var body: some View {
         VStack {
@@ -22,7 +24,7 @@ struct UserInformationsView: View {
                     .labelStyle(.titleAndIcon)
             Spacer()
             Button("Wyloguj") {
-                LoginService.shared.logout()
+                loginService.logout()
             }
             Spacer()
         }

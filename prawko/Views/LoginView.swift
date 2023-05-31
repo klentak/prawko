@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @ObservedObject var viewModel = LoginViewModel()
     
     var body: some View {
         VStack {
@@ -23,7 +22,7 @@ struct LoginView: View {
                 Section {
                     TextField(
                         "Email",
-                        text: $email
+                        text: $viewModel.email
                     )
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
@@ -31,17 +30,27 @@ struct LoginView: View {
                 Section {
                     SecureField(
                         "Hasło",
-                        text: $password
+                        text: $viewModel.password
                     )
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                 }
-                
-                Button("Zaloguj") {
-                    // TODO: make alerts on error
-                    LoginService.shared.processLogin(email: email, password: password) { result in
-                        print(result)
+
+                if !viewModel.loading {
+                    Button("Zaloguj") {
+                        viewModel.login()
                     }
+                    .foregroundColor(viewModel.email.isEmpty || viewModel.password.isEmpty ? .red : .blue)
+                    .disabled(viewModel.email.isEmpty || viewModel.password.isEmpty)
+                    .alert(isPresented: $viewModel.wrongLoginData) {
+                        Alert(
+                            title: Text("Podano błędne dane."),
+                            message: Text("Nieprawidłowy e-mail bądź hasło! Popraw dane."),
+                            dismissButton: .default(Text("OK"))
+                        )
+                    }
+                } else {
+                    ProgressView()
                 }
             }
             Text("Twoje dane są zapisywane lokalnie, tylko na Twoim urządzeniu i nie są nikomu udostępniane.")
@@ -49,6 +58,13 @@ struct LoginView: View {
                 .padding(.top, 5)
                 .multilineTextAlignment(.center)
             Spacer()
+        }
+        .alert(isPresented: $viewModel.unexpectedError) {
+            Alert(
+                title: Text("Błąd systemu info-share"),
+                message: Text("Spróbuj ponownie później"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }

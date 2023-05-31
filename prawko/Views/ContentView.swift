@@ -11,6 +11,8 @@ import KeychainSwift
 struct ContentView: View {
     @State private var selection: Tab = .search
     
+    private let loginService = LoginService()
+    
     enum Tab {
         case search
         case notificationSettings
@@ -18,7 +20,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        if (!LoginService.shared.isAuthenticated) {
+        if (!AppState.shared.loggedIn) {
             LoginView()
         } else {
             TabView(selection: $selection) {

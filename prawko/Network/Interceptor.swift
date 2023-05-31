@@ -11,6 +11,7 @@ import KeychainSwift
 
 class Interceptor: RequestInterceptor {
     let retryLimit = 5
+    private let loginService = LoginService()
 
     func retry(
         _ request: Request,
@@ -23,7 +24,7 @@ class Interceptor: RequestInterceptor {
             statusCode == 401,
             request.retryCount < retryLimit
         {
-            LoginService.shared.actualBearerCode() { loginResult in
+            loginService.actualBearerCode() { loginResult in
                 switch loginResult {
                 case .failure(_):
                     completion(.doNotRetry)
@@ -34,7 +35,6 @@ class Interceptor: RequestInterceptor {
                 }
             }
         } else {
-            print("trzy")
             return completion(.doNotRetry)
         }
     }
