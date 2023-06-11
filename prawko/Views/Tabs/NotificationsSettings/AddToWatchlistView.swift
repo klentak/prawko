@@ -20,7 +20,6 @@ struct AddToWatchlistView: View {
             VStack(
                 spacing: 10
             ) {
-                Spacer()
                 Section {
                     WordsForm(formData: $formData)
                     
@@ -43,7 +42,7 @@ struct AddToWatchlistView: View {
                 Spacer()
             }
                 .scrollDisabled(true)
-                .navigationTitle(Text("Szukaj"))
+                .navigationBarHidden(true)
         }
     }
 }
