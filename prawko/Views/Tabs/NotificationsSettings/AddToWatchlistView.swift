@@ -1,13 +1,13 @@
 //
-//  Search.swift
+//  AddToWatchlistView.swift
 //  prawko
 //
-//  Created by Jakub Klentak on 13/12/2022.
+//  Created by Jakub Klentak on 08/06/2023.
 //
 
 import SwiftUI
 
-struct SearchView: View {    
+struct AddToWatchlistView: View {
     @State var formData: WordFormDTO = WordFormDTO(
         selectedWord: nil,
         selectedProvince: nil,
@@ -20,7 +20,6 @@ struct SearchView: View {
             VStack(
                 spacing: 10
             ) {
-                Spacer()
                 Section {
                     WordsForm(formData: $formData)
                     
@@ -31,24 +30,25 @@ struct SearchView: View {
                             examType: formData.selectedExamType
                         )
                     ) {
-                        Label("Szukaj", systemImage: "magnifyingglass")
+                        Label("Dodaj do obserwowanych", systemImage: "plus")
                     }
                     .disabled(
                         formData.selectedProvince == nil
                         || formData.selectedWord == nil
                         || formData.selectedDrivingCategory == nil
+                        || formData.selectedExamType == ExamTypeEnum.none
                     )
                 }
                 Spacer()
             }
                 .scrollDisabled(true)
-                .navigationTitle(Text("Szukaj"))
+                .navigationBarHidden(true)
         }
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
+struct AddToWatchlistView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        AddToWatchlistView()
     }
 }

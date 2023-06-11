@@ -14,6 +14,8 @@
 		A70E0C272965F657004528AA /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E0C262965F657004528AA /* DateExtensions.swift */; };
 		A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72AB69E296E1303000279EA /* WatchlistRepository.swift */; };
 		A72AB6A129709A12000279EA /* NotificationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72AB6A029709A12000279EA /* NotificationRowView.swift */; };
+		A73D83852A30CBA300C70CE9 /* WordFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D83842A30CBA300C70CE9 /* WordFormDTO.swift */; };
+		A73D83872A31BF1B00C70CE9 /* AddToWatchlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D83862A31BF1B00C70CE9 /* AddToWatchlistView.swift */; };
 		A758E66429491E7000C269DD /* prawkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66329491E7000C269DD /* prawkoApp.swift */; };
 		A758E66629491E7000C269DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66529491E7000C269DD /* ContentView.swift */; };
 		A758E66829491E7300C269DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A758E66729491E7300C269DD /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
 		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
 		A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */; };
+		A7E82EBC2A27DDA400305B8F /* WordsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E82EBB2A27DDA400305B8F /* WordsForm.swift */; };
+		A7E82EBF2A2A5D5800305B8F /* WordsFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E82EBE2A2A5D5800305B8F /* WordsFormViewModel.swift */; };
 		A7ECC80A2A23BF5E006A2B22 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ECC8092A23BF5E006A2B22 /* LoginViewModel.swift */; };
 		A7ECC80F2A250B03006A2B22 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ECC80E2A250B03006A2B22 /* AppState.swift */; };
 		A7FF8ECB2A1D466300FDBBAA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FF8ECA2A1D466300FDBBAA /* APIManager.swift */; };
@@ -62,6 +66,8 @@
 		A70E0C262965F657004528AA /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		A72AB69E296E1303000279EA /* WatchlistRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepository.swift; sourceTree = "<group>"; };
 		A72AB6A029709A12000279EA /* NotificationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRowView.swift; sourceTree = "<group>"; };
+		A73D83842A30CBA300C70CE9 /* WordFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFormDTO.swift; sourceTree = "<group>"; };
+		A73D83862A31BF1B00C70CE9 /* AddToWatchlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistView.swift; sourceTree = "<group>"; };
 		A758E66029491E7000C269DD /* prawko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prawko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A758E66329491E7000C269DD /* prawkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prawkoApp.swift; sourceTree = "<group>"; };
 		A758E66529491E7000C269DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
 		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
 		A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		A7E82EBB2A27DDA400305B8F /* WordsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsForm.swift; sourceTree = "<group>"; };
+		A7E82EBE2A2A5D5800305B8F /* WordsFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsFormViewModel.swift; sourceTree = "<group>"; };
 		A7ECC8092A23BF5E006A2B22 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A7ECC80E2A250B03006A2B22 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A7FF8ECA2A1D466300FDBBAA /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 		A758E66229491E7000C269DD /* prawko */ = {
 			isa = PBXGroup;
 			children = (
+				A78CFA1D296C910D004BDD61 /* DTO */,
 				A7ECC80D2A23E17D006A2B22 /* State */,
 				A7B030892968A4A000B79BDC /* Const */,
 				A7C2C07C2A1D332100DD60BB /* Network */,
@@ -227,6 +236,7 @@
 				A758E6752949231500C269DD /* NotificationsSettingsView.swift */,
 				A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */,
 				A72AB6A029709A12000279EA /* NotificationRowView.swift */,
+				A73D83862A31BF1B00C70CE9 /* AddToWatchlistView.swift */,
 			);
 			path = NotificationsSettings;
 			sourceTree = "<group>";
@@ -246,6 +256,7 @@
 				A7B030872968A44800B79BDC /* CommonMethodsService.swift */,
 				A7C3E94D296CAABB0047E08E /* ExamView.swift */,
 				A7AA2B9A2975FF5E00667D89 /* CommonProgressView.swift */,
+				A7E82EBB2A27DDA400305B8F /* WordsForm.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -265,6 +276,7 @@
 			children = (
 				A76D12F3295123FC0007B11B /* ProviencesDTO.swift */,
 				A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */,
+				A73D83842A30CBA300C70CE9 /* WordFormDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -282,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				A7A77084297DEAF300074D18 /* UserInformations */,
-				A78CFA1D296C910D004BDD61 /* DTO */,
 				A7DE9BFC296B5393000C212A /* NotificationsSettings */,
 				A76D12F2295123950007B11B /* Search */,
 			);
@@ -319,6 +330,7 @@
 		A79A37172949419C0012930F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A7E82EBD2A2A5D2000305B8F /* Common */,
 				A78CFA1E296C9140004BDD61 /* Enum */,
 				A78CFA1F296C916B004BDD61 /* Tabs */,
 				A79A371A294943BE0012930F /* UrlConst.swift */,
@@ -368,6 +380,14 @@
 				A770118229745B200058CC52 /* NotificationsSettingsViewModel.swift */,
 			);
 			path = NotificationsSettings;
+			sourceTree = "<group>";
+		};
+		A7E82EBD2A2A5D2000305B8F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A7E82EBE2A2A5D5800305B8F /* WordsFormViewModel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		A7ECC80D2A23E17D006A2B22 /* State */ = {
@@ -517,6 +537,8 @@
 				A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */,
 				A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */,
 				A707EE32295730C600CC4BDE /* ScheduledDayDTO.swift in Sources */,
+				A7E82EBC2A27DDA400305B8F /* WordsForm.swift in Sources */,
+				A7E82EBF2A2A5D5800305B8F /* WordsFormViewModel.swift in Sources */,
 				A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */,
 				A7C2C07E2A1D333F00DD60BB /* Interceptor.swift in Sources */,
 				A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */,
@@ -524,11 +546,13 @@
 				A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */,
 				A76D12F4295123FC0007B11B /* ProviencesDTO.swift in Sources */,
 				A758E67A2949313200C269DD /* LoginView.swift in Sources */,
+				A73D83872A31BF1B00C70CE9 /* AddToWatchlistView.swift in Sources */,
 				A7ACD7962966025F0009E62A /* ExamRow.swift in Sources */,
 				A797360729D5FA7400E97830 /* InfoCarRepository.swift in Sources */,
 				A7B030882968A44800B79BDC /* CommonMethodsService.swift in Sources */,
 				A70E0C272965F657004528AA /* DateExtensions.swift in Sources */,
 				A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */,
+				A73D83852A30CBA300C70CE9 /* WordFormDTO.swift in Sources */,
 				A7ECC80A2A23BF5E006A2B22 /* LoginViewModel.swift in Sources */,
 				A7B992C029EDC1C7004B0510 /* LoginError.swift in Sources */,
 				A797360A29D5FC3C00E97830 /* ApiConectionError.swift in Sources */,
@@ -685,7 +709,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = none.prawko;
+				PRODUCT_BUNDLE_IDENTIFIER = prawko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -717,7 +741,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = none.prawko;
+				PRODUCT_BUNDLE_IDENTIFIER = prawko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

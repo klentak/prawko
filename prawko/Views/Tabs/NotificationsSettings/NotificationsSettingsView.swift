@@ -37,7 +37,7 @@ struct NotificationsSettingsView: View {
                                 wordName: getWordName(wordId: watchlistElement.wordId)
                             )
                         }
-                        .onDelete(perform: delete)
+                            .onDelete(perform: delete)
                     }
                     .navigationTitle(Text("Obserwowane"))
                     .navigationBarTitleDisplayMode(
@@ -45,7 +45,7 @@ struct NotificationsSettingsView: View {
                     )
                     .toolbar {
                         ToolbarItemGroup(placement: .confirmationAction) {
-                            NavigationLink(destination: SearchView(notificationView: true)) {
+                            NavigationLink(destination: AddToWatchlistView()) {
                                 Label("Dodaj", systemImage: "plus")
                             }
                             .disabled(!notificationAlertsEnabled)
