@@ -9,9 +9,29 @@ import SwiftUI
 import KeychainSwift
 
 struct ContentView: View {
-    @State private var selection: Tab = .search
+    @StateObject var appState: AppState
+
+    @State private var selection: Tab
+
+    let loginView: LoginView
+    let searchView: SearchView
+    let notificationsSettingsView: NotificationsSettingsView
+    let userInformationsView: UserInformationsView
     
-    private let loginService = LoginService()
+    init(
+        appState: AppState,
+        loginView: LoginView,
+        searchView: SearchView,
+        notificationsSettingsView: NotificationsSettingsView,
+        userInformationsView: UserInformationsView
+    ) {
+        self._appState = StateObject(wrappedValue: appState)
+        self._selection = State(initialValue: .search)
+        self.loginView = loginView
+        self.searchView = searchView
+        self.notificationsSettingsView = notificationsSettingsView
+        self.userInformationsView = userInformationsView
+    }
     
     enum Tab {
         case search
@@ -20,23 +40,23 @@ struct ContentView: View {
     }
     
     var body: some View {
-        if (!AppState.shared.loggedIn) {
-            LoginView()
+        if (!appState.loggedIn) {
+            loginView
         } else {
             TabView(selection: $selection) {
-                SearchView()
+                searchView
                     .tabItem {
                         Label("", systemImage: "magnifyingglass")
                     }
                     .tag(Tab.search)
                 
-                NotificationsSettingsView()
+                notificationsSettingsView
                     .tabItem {
                         Label("", systemImage: "bell")
                     }
                     .tag(Tab.notificationSettings)
                 
-                UserInformationsView()
+                userInformationsView
                     .tabItem {
                         Label("", systemImage: "person")
                     }
@@ -48,6 +68,26 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(
+            appState: AppState(),
+            loginView: LoginView(
+                viewModel: LoginViewModel(
+                    loginService: LoginService(
+                        appState: AppState()
+                    )
+                )
+            ),
+            searchView: SearchView(),
+            notificationsSettingsView: NotificationsSettingsView(
+                notificationsSettingsVM: NotificationsSettingsViewModel(),
+                watchlist: WatchlistRepository(),
+                addToWatchlistView: AddToWatchlistView()
+            ),
+            userInformationsView: UserInformationsView(
+                loginService: LoginService(
+                    appState: AppState()
+                )
+            )
+        )
     }
 }

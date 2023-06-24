@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct AddToWatchlistView: View {
-    @State var formData: WordFormDTO = WordFormDTO(
-        selectedWord: nil,
-        selectedProvince: nil,
-        selectedDrivingCategory: nil,
-        selectedExamType: .none
-    )
+    @State var formData: WordFormDTO
+    
+    init() {
+        self._formData = State(initialValue: WordFormDTO(
+            selectedWord: nil,
+            selectedProvince: nil,
+            selectedDrivingCategory: nil,
+            selectedExamType: .none
+        ))
+    }
     
     var body: some View {
         NavigationView {
@@ -21,10 +25,14 @@ struct AddToWatchlistView: View {
                 spacing: 10
             ) {
                 Section {
-                    WordsForm(formData: $formData)
+                    WordsForm(
+                        viewModel: CompositionRoot.wordsFormViewModel,
+                        formData: $formData
+                    )
                     
                     NavigationLink(
                         destination: SearchResultsView(
+                            searchResultVM: CompositionRoot.searchResultViewModel,
                             category: formData.selectedDrivingCategory ?? DrivingLicencesCategoriesConst.values.first!,
                             wordId: String(formData.selectedWord?.id ?? 1),
                             examType: formData.selectedExamType

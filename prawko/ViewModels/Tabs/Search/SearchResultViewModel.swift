@@ -10,8 +10,13 @@ import Alamofire
 import KeychainSwift
 
 class SearchResultViewModel : ObservableObject {
-    @Published var scheduledDays: [ScheduleDayDTO] = [ScheduleDayDTO]()
-    private var infoCarRepository = InfoCarRepository()
+    @Published var scheduledDays: [ScheduleDayDTO]
+    private var infoCarRepository: InfoCarRepository
+    
+    init(infoCarRepository: InfoCarRepository) {
+        self.scheduledDays = [ScheduleDayDTO]()
+        self.infoCarRepository = infoCarRepository
+    }
     
     func getScheduledDays(category: DrivingLicenceCategory, wordId: String, completion: @escaping (Bool) -> Void) {
         infoCarRepository.getScheduledDays(category: category, wordId: wordId) { result in

@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct NotificationsSettingsView: View {
-    @StateObject var notificationsSettingsVM = NotificationsSettingsViewModel()
-    @StateObject var watchlist = WatchlistRepository.shared
+    @StateObject var notificationsSettingsVM: NotificationsSettingsViewModel
+    @StateObject var watchlist: WatchlistRepository
+    
+    var addToWatchlistView: AddToWatchlistView
+    
+    init(
+        notificationsSettingsVM: NotificationsSettingsViewModel,
+        watchlist: WatchlistRepository,
+        addToWatchlistView: AddToWatchlistView
+    ) {
+        self._notificationsSettingsVM = StateObject(wrappedValue: notificationsSettingsVM)
+        self._watchlist = StateObject(wrappedValue: watchlist)
+        self.addToWatchlistView = addToWatchlistView
+    }
     
     @State var notificationAlertsEnabled = false
     @State var downloadDataAlert = false
@@ -45,7 +57,7 @@ struct NotificationsSettingsView: View {
                     )
                     .toolbar {
                         ToolbarItemGroup(placement: .confirmationAction) {
-                            NavigationLink(destination: AddToWatchlistView()) {
+                            NavigationLink(destination: addToWatchlistView) {
                                 Label("Dodaj", systemImage: "plus")
                             }
                             .disabled(!notificationAlertsEnabled)
@@ -96,7 +108,10 @@ struct NotificationsSettingsView: View {
 
 struct NotificationsSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsSettingsView()
-
+        NotificationsSettingsView(
+            notificationsSettingsVM: NotificationsSettingsViewModel(),
+            watchlist: WatchlistRepository(),
+            addToWatchlistView: AddToWatchlistView()
+        )
     }
 }

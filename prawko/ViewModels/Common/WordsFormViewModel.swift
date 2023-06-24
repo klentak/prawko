@@ -9,8 +9,13 @@ import Foundation
 import Alamofire
 
 class WordsFormViewModel : ObservableObject {
-    @Published var proviencesDTO: ProviencesDTO = ProviencesDTO(provinces: [Province](), words: [Word]())
-    @Published var sortedWords: [Word] = [Word]()
+    @Published var proviencesDTO: ProviencesDTO
+    @Published var sortedWords: [Word]
+    
+    init() {
+        self.proviencesDTO = ProviencesDTO(provinces: [Province](), words: [Word]())
+        self.sortedWords = [Word]()
+    }
     
     func getProviences(completion: @escaping (Bool) -> Void) {
         AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)

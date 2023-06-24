@@ -13,6 +13,12 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
     
     private var userDefaults = UserDefaults.standard
     
+    private let apiManager: APIManager
+    
+    init(apiManager: APIManager) {
+        self.apiManager = apiManager
+    }
+    
     public func getScheduledDays(
         category: DrivingLicenceCategory,
         wordId: String,
@@ -25,7 +31,7 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())!
         
-        APIManager.session.request(
+        apiManager.session.request(
             UrlConst.mainUrl + UrlConst.examSchedule,
             method: .put,
             parameters: [

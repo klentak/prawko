@@ -9,6 +9,11 @@ import Foundation
 import Alamofire
 
 class InfoCarRepository {
+    private let apiManager: APIManager
+    
+    init(apiManager: APIManager) {
+        self.apiManager = apiManager
+    }
 
     func getScheduledDays(
         category: DrivingLicenceCategory,
@@ -21,7 +26,7 @@ class InfoCarRepository {
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())!
 
-        APIManager.session.request(
+        apiManager.session.request(
             UrlConst.mainUrl + UrlConst.examSchedule,
             method: .put,
             parameters: [

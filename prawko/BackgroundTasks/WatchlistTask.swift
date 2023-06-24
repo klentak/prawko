@@ -11,7 +11,11 @@ import BackgroundTasks
 
 
 class WatchlistTask {
-    private let infoCarRepository = InfoCarRepository()
+    private let infoCarRepository: InfoCarRepository
+    
+    init(infoCarRepository: InfoCarRepository) {
+        self.infoCarRepository = infoCarRepository
+    }
     
     func refreshAppData() {
         for watchlistElement in WatchlistRepository.shared.getList() {
@@ -38,7 +42,7 @@ class WatchlistTask {
     }
     
     func generateNotification(exam: ExamDTO) -> UNMutableNotificationContent {
-        var result = UNMutableNotificationContent()
+        let result = UNMutableNotificationContent()
         
         result.title = "Zwolnił się termin egzaminu!";
         result.subtitle = "Termin: \(formatDate(date: exam.date, formatTo: "dd-MM-yyyy HH:mm"))"
