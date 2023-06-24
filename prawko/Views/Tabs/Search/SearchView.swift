@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchView: View {    
+struct SearchView: View {
     @State var formData: WordFormDTO = WordFormDTO(
         selectedWord: nil,
         selectedProvince: nil,
@@ -22,10 +22,14 @@ struct SearchView: View {
             ) {
                 Spacer()
                 Section {
-                    WordsForm(formData: $formData)
+                    WordsForm(
+                        viewModel: CompositionRoot.wordsFormViewModel,
+                        formData: $formData
+                    )
                     
                     NavigationLink(
                         destination: SearchResultsView(
+                            searchResultVM: CompositionRoot.searchResultViewModel,
                             category: formData.selectedDrivingCategory ?? DrivingLicencesCategoriesConst.values.first!,
                             wordId: String(formData.selectedWord?.id ?? 1),
                             examType: formData.selectedExamType

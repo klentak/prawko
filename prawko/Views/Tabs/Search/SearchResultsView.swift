@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct SearchResultsView: View {
-    @ObservedObject var searchResultVM = SearchResultViewModel() 
-    @State var loading = true
-    @State var downloadDataAlert = false
+    @ObservedObject var searchResultVM: SearchResultViewModel
+
+    @State var loading: Bool
+    @State var downloadDataAlert: Bool
     
-    let category : DrivingLicenceCategory
-    let wordId : String
-    let examType : ExamTypeEnum
+    let category: DrivingLicenceCategory
+    let wordId: String
+    let examType: ExamTypeEnum
+    
+    init(
+        searchResultVM: SearchResultViewModel,
+        category: DrivingLicenceCategory,
+        wordId: String,
+        examType: ExamTypeEnum
+    ) {
+        self.searchResultVM = searchResultVM
+        self.loading = true
+        self.downloadDataAlert = false
+        self.category = category
+        self.wordId = wordId
+        self.examType = examType
+    }
     
     var body: some View {
         VStack {
@@ -97,6 +112,15 @@ struct SearchResultsView: View {
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultsView(
+            searchResultVM: SearchResultViewModel(
+                infoCarRepository: InfoCarRepository(
+                    apiManager: APIManager(
+                        interceptor: Interceptor(
+                            loginService: LoginService(appState: AppState())
+                        )
+                    )
+                )
+            ),
             category: DrivingLicencesCategoriesConst.values.first!,
             wordId: "2",
             examType: ExamTypeEnum.theory

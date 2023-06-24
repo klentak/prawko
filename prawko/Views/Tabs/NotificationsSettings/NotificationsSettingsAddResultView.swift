@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct NotificationsSettingsAddResultView: View {
-    @ObservedObject var notificationsSettingsAddResultVM = NotificationsSettingsAddResultViewModel()
+    @ObservedObject var notificationsSettingsAddResultVM: NotificationsSettingsAddResultViewModel
     
     let category : DrivingLicenceCategory
     let wordId : String
     let type : ExamTypeEnum
+    
+    init(
+        notificationsSettingsAddResultVM: NotificationsSettingsAddResultViewModel,
+        category: DrivingLicenceCategory,
+        wordId: String,
+        type: ExamTypeEnum
+    ) {
+        self.notificationsSettingsAddResultVM = notificationsSettingsAddResultVM
+        self.category = category
+        self.wordId = wordId
+        self.type = type
+    }
 
     @State var errorTitle = "Błąd systemu info-share"
     @State var errorMessage = "Spróbuj ponownie później"
@@ -96,6 +108,13 @@ struct NotificationsSettingsAddResultView: View {
 struct NotificatiopnsSettingsAddResultView_Previews: PreviewProvider {
     static var previews: some View {
         NotificationsSettingsAddResultView(
+            notificationsSettingsAddResultVM: NotificationsSettingsAddResultViewModel(
+                apiManager: APIManager(
+                    interceptor: Interceptor(
+                        loginService: LoginService(appState: AppState())
+                    )
+                )
+            ),
             category: DrivingLicencesCategoriesConst.values.first!,
             wordId: "1",
             type: ExamTypeEnum.theory

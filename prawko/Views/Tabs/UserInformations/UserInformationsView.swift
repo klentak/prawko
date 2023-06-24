@@ -10,7 +10,12 @@ import KeychainSwift
 
 struct UserInformationsView: View {
     var keychain: KeychainSwift = KeychainSwift()
-    private let loginService = LoginService()
+    private let loginService: LoginService
+    
+    init(loginService: LoginService) {
+        self.keychain = KeychainSwift()
+        self.loginService = loginService
+    }
 
 
     var body: some View {
@@ -33,6 +38,10 @@ struct UserInformationsView: View {
 
 struct UserInformationsView_Previews: PreviewProvider {
     static var previews: some View {
-        UserInformationsView()
+        UserInformationsView(
+            loginService: LoginService(
+                appState: AppState()
+            )
+        )
     }
 }

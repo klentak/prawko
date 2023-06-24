@@ -10,11 +10,15 @@ import Foundation
 
 @main
 struct prawkoApp: App {
-    let watchlistTask : WatchlistTask = WatchlistTask()
+    let watchlistTask: WatchlistTask
+    
+    init() {
+        self.watchlistTask = CompositionRoot.watchlistTask
+    }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CompositionRoot.contentView
         }
         .backgroundTask(.appRefresh("wishlistNotification")) {
             watchlistTask.refreshAppData()

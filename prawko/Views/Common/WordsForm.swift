@@ -8,28 +8,33 @@
 import SwiftUI
 
 struct WordsForm: View {
-    @StateObject private var wordsFormViewModel = WordsFormViewModel()
+    @StateObject private var viewModel: WordsFormViewModel
     
     @Binding var formData: WordFormDTO
+    
+    init(viewModel: WordsFormViewModel, formData: Binding<WordFormDTO>) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self._formData = formData
+    }
     
     var body: some View {
         VStack(
             spacing: 10
         ) {
-            if (!wordsFormViewModel.proviencesDTO.words.isEmpty) {
+            if (!viewModel.proviencesDTO.words.isEmpty) {
                 Form {
                     Section(header: Text("Województwo")) {
                         Picker("Województwo", selection: $formData.selectedProvince) {
                             if (formData.selectedProvince == nil) {
                                 Text("").tag(Optional<String>(nil))
                             }
-                            ForEach(wordsFormViewModel.proviencesDTO.provinces, id: \.self) { province in
+                            ForEach(viewModel.proviencesDTO.provinces, id: \.self) { province in
                                 Text(province.name).tag(province as Province?)
                             }
                         }
                         .onChange(of: formData.selectedProvince) { _ in
                             if (formData.selectedProvince != nil) {
-                                wordsFormViewModel.sortWords(province: formData.selectedProvince!) { _ in
+                                viewModel.sortWords(province: formData.selectedProvince!) { _ in
                                 }
                                 formData.selectedWord = nil
                             }
@@ -41,7 +46,7 @@ struct WordsForm: View {
                             if (formData.selectedWord == nil) {
                                 Text("").tag(Optional<String>(nil))
                             }
-                            ForEach(wordsFormViewModel.sortedWords) {
+                            ForEach(viewModel.sortedWords) {
                                 Text($0.name).tag($0 as Word?)
                             }
                         }
@@ -71,7 +76,7 @@ struct WordsForm: View {
             } else {
                 CommonProgressView()
                     .onAppear() {
-                        wordsFormViewModel.getProviences() { completion in
+                        viewModel.getProviences() { completion in
                         }
                     }
             }
@@ -82,6 +87,7 @@ struct WordsForm: View {
 struct WordsForm_Previews: PreviewProvider {
     static var previews: some View {
         WordsForm(
+            viewModel: WordsFormViewModel(),
             formData: .constant(
                 WordFormDTO(
                     selectedWord: nil,

@@ -14,7 +14,7 @@ class WatchlistRepository : ObservableObject {
     var encoder = JSONEncoder()
     let key = "watchlist"
     
-    private init() {
+    init() {
         self.updateList()
     }
     

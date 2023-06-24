@@ -11,7 +11,11 @@ import KeychainSwift
 
 class Interceptor: RequestInterceptor {
     let retryLimit = 5
-    private let loginService = LoginService()
+    private let loginService: LoginService
+    
+    init(loginService: LoginService) {
+        self.loginService = loginService
+    }
 
     func retry(
         _ request: Request,

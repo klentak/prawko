@@ -9,18 +9,21 @@ import Foundation
 import Alamofire
 import CryptoKit
 import KeychainSwift
+import SwiftUI
 
-class LoginService : ObservableObject {    
+class LoginService : ObservableObject {
+    @StateObject var appState: AppState
+
     private var keychain: KeychainSwift = KeychainSwift()
-
     
-    init () {
-        AppState.shared.loggedIn = !(self.keychain.get("bearer") == nil)
+    init (appState: AppState) {
+        appState.loggedIn = !(self.keychain.get("bearer") == nil)
+        self._appState = StateObject(wrappedValue: appState)
     }
     
     func logout() {
         keychain.clear()
-        AppState.shared.loggedIn = false
+        appState.loggedIn = false
     }
     
     public func actualBearerCode(completion: @escaping (Result<Bool, LoginError>) -> Void) {
@@ -42,7 +45,7 @@ class LoginService : ObservableObject {
                             switch result {
                             case .success(let bearer):
                                 self.addAuthDataToKeyChain(email: email, password: password, bearer: bearer)
-                                AppState.shared.loggedIn = true
+                                self.appState.loggedIn = true
 
                                 completion(.success(true))
                             default:
