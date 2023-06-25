@@ -17,6 +17,7 @@
 		A73D83852A30CBA300C70CE9 /* WordFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D83842A30CBA300C70CE9 /* WordFormDTO.swift */; };
 		A73D83872A31BF1B00C70CE9 /* AddToWatchlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D83862A31BF1B00C70CE9 /* AddToWatchlistView.swift */; };
 		A73D838A2A362EEE00C70CE9 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D83892A362EEE00C70CE9 /* CompositionRoot.swift */; };
+		A7581E962A478E94001F7E60 /* NotificationsSettingsAddResultViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7581E952A478E94001F7E60 /* NotificationsSettingsAddResultViewModelProtocol.swift */; };
 		A758E66429491E7000C269DD /* prawkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66329491E7000C269DD /* prawkoApp.swift */; };
 		A758E66629491E7000C269DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66529491E7000C269DD /* ContentView.swift */; };
 		A758E66829491E7300C269DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A758E66729491E7300C269DD /* Assets.xcassets */; };
@@ -48,6 +49,10 @@
 		A7B992C229F7171C004B0510 /* WatchlistRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */; };
 		A7C2C07E2A1D333F00DD60BB /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C2C07D2A1D333F00DD60BB /* Interceptor.swift */; };
 		A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C3E94D296CAABB0047E08E /* ExamView.swift */; };
+		A7DA712E2A48610200AC6F22 /* NotificationsSettingsAddResultVMMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA712D2A48610200AC6F22 /* NotificationsSettingsAddResultVMMock.swift */; };
+		A7DA71322A487FD700AC6F22 /* NotificationsSettingsAddResultVMErrorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA71312A487FD700AC6F22 /* NotificationsSettingsAddResultVMErrorMock.swift */; };
+		A7DA71342A48AA7A00AC6F22 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA71332A48AA7A00AC6F22 /* MockError.swift */; };
+		A7DA71392A48BA1300AC6F22 /* NotificationsSettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA71382A48BA1300AC6F22 /* NotificationsSettingsViewModelProtocol.swift */; };
 		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
 		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
 		A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */; };
@@ -70,6 +75,7 @@
 		A73D83842A30CBA300C70CE9 /* WordFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFormDTO.swift; sourceTree = "<group>"; };
 		A73D83862A31BF1B00C70CE9 /* AddToWatchlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistView.swift; sourceTree = "<group>"; };
 		A73D83892A362EEE00C70CE9 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		A7581E952A478E94001F7E60 /* NotificationsSettingsAddResultViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModelProtocol.swift; sourceTree = "<group>"; };
 		A758E66029491E7000C269DD /* prawko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prawko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A758E66329491E7000C269DD /* prawkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prawkoApp.swift; sourceTree = "<group>"; };
 		A758E66529491E7000C269DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +109,10 @@
 		A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepositoryError.swift; sourceTree = "<group>"; };
 		A7C2C07D2A1D333F00DD60BB /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		A7C3E94D296CAABB0047E08E /* ExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamView.swift; sourceTree = "<group>"; };
+		A7DA712D2A48610200AC6F22 /* NotificationsSettingsAddResultVMMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultVMMock.swift; sourceTree = "<group>"; };
+		A7DA71312A487FD700AC6F22 /* NotificationsSettingsAddResultVMErrorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultVMErrorMock.swift; sourceTree = "<group>"; };
+		A7DA71332A48AA7A00AC6F22 /* MockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
+		A7DA71382A48BA1300AC6F22 /* NotificationsSettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
 		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
 		A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +162,24 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		A7581E912A47862E001F7E60 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A7DA712A2A485F7600AC6F22 /* ViewModels */,
+				A7DA71332A48AA7A00AC6F22 /* MockError.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		A7581E942A478E83001F7E60 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A7DA71382A48BA1300AC6F22 /* NotificationsSettingsViewModelProtocol.swift */,
+				A7581E952A478E94001F7E60 /* NotificationsSettingsAddResultViewModelProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		A758E65729491E7000C269DD = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +201,7 @@
 		A758E66229491E7000C269DD /* prawko */ = {
 			isa = PBXGroup;
 			children = (
+				A7581E912A47862E001F7E60 /* Mocks */,
 				A73D83892A362EEE00C70CE9 /* CompositionRoot.swift */,
 				A78CFA1D296C910D004BDD61 /* DTO */,
 				A7ECC80D2A23E17D006A2B22 /* State */,
@@ -277,6 +306,7 @@
 		A78CFA1D296C910D004BDD61 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */,
 				A76D12F3295123FC0007B11B /* ProviencesDTO.swift */,
 				A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */,
 				A73D83842A30CBA300C70CE9 /* WordFormDTO.swift */,
@@ -301,14 +331,6 @@
 				A76D12F2295123950007B11B /* Search */,
 			);
 			path = Tabs;
-			sourceTree = "<group>";
-		};
-		A78CFA20296C96A6004BDD61 /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */,
-			);
-			path = DTO;
 			sourceTree = "<group>";
 		};
 		A797360529D5FA5200E97830 /* Repositories */ = {
@@ -375,10 +397,51 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		A7DA712A2A485F7600AC6F22 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A7DA712B2A485F9000AC6F22 /* Tabs */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A7DA712B2A485F9000AC6F22 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				A7DA712C2A485F9E00AC6F22 /* NotificationsSettings */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		A7DA712C2A485F9E00AC6F22 /* NotificationsSettings */ = {
+			isa = PBXGroup;
+			children = (
+				A7DA71372A48B9E400AC6F22 /* NotificationsSettingsViewModel */,
+				A7DA71352A48B7C900AC6F22 /* NotificationsSettingsAddResultViewModel */,
+			);
+			path = NotificationsSettings;
+			sourceTree = "<group>";
+		};
+		A7DA71352A48B7C900AC6F22 /* NotificationsSettingsAddResultViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A7DA712D2A48610200AC6F22 /* NotificationsSettingsAddResultVMMock.swift */,
+				A7DA71312A487FD700AC6F22 /* NotificationsSettingsAddResultVMErrorMock.swift */,
+			);
+			path = NotificationsSettingsAddResultViewModel;
+			sourceTree = "<group>";
+		};
+		A7DA71372A48B9E400AC6F22 /* NotificationsSettingsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NotificationsSettingsViewModel;
+			sourceTree = "<group>";
+		};
 		A7DE9BFC296B5393000C212A /* NotificationsSettings */ = {
 			isa = PBXGroup;
 			children = (
-				A78CFA20296C96A6004BDD61 /* DTO */,
+				A7581E942A478E83001F7E60 /* Protocols */,
 				A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */,
 				A770118229745B200058CC52 /* NotificationsSettingsViewModel.swift */,
 			);
@@ -528,6 +591,7 @@
 				A76D12F6295124460007B11B /* SearchViewModel.swift in Sources */,
 				A758E6762949231500C269DD /* NotificationsSettingsView.swift in Sources */,
 				A7B992C229F7171C004B0510 /* WatchlistRepositoryError.swift in Sources */,
+				A7DA712E2A48610200AC6F22 /* NotificationsSettingsAddResultVMMock.swift in Sources */,
 				A758E674294922FD00C269DD /* SearchView.swift in Sources */,
 				A73D838A2A362EEE00C70CE9 /* CompositionRoot.swift in Sources */,
 				A7A77086297DEB2400074D18 /* UserInformationsViewModel.swift in Sources */,
@@ -537,6 +601,7 @@
 				A707EE362957702800CC4BDE /* SearchResultsView.swift in Sources */,
 				A770118329745B200058CC52 /* NotificationsSettingsViewModel.swift in Sources */,
 				A758E66629491E7000C269DD /* ContentView.swift in Sources */,
+				A7DA71392A48BA1300AC6F22 /* NotificationsSettingsViewModelProtocol.swift in Sources */,
 				A79A371B294943BE0012930F /* UrlConst.swift in Sources */,
 				A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */,
 				A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */,
@@ -546,6 +611,7 @@
 				A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */,
 				A7C2C07E2A1D333F00DD60BB /* Interceptor.swift in Sources */,
 				A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */,
+				A7DA71342A48AA7A00AC6F22 /* MockError.swift in Sources */,
 				A78DC6FF29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift in Sources */,
 				A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */,
 				A76D12F4295123FC0007B11B /* ProviencesDTO.swift in Sources */,
@@ -563,11 +629,13 @@
 				A758E6782949241100C269DD /* UserInformationsView.swift in Sources */,
 				A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */,
 				A72AB6A129709A12000279EA /* NotificationRowView.swift in Sources */,
+				A7581E962A478E94001F7E60 /* NotificationsSettingsAddResultViewModelProtocol.swift in Sources */,
 				A758E66429491E7000C269DD /* prawkoApp.swift in Sources */,
 				A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */,
 				A7B0308629688A1700B79BDC /* VerticalLabelStyle.swift in Sources */,
 				A7FF8ECB2A1D466300FDBBAA /* APIManager.swift in Sources */,
 				A7B0308B2968A4D800B79BDC /* ExamCategoryConst.swift in Sources */,
+				A7DA71322A487FD700AC6F22 /* NotificationsSettingsAddResultVMErrorMock.swift in Sources */,
 				A79A3719294942750012930F /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
