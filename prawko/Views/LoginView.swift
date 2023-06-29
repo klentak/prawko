@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct LoginView: View {
-    @ObservedObject var viewModel: LoginViewModel
+struct LoginView<LoginViewModelAlias>: View
+where LoginViewModelAlias: LoginVMProtocol{
+    @ObservedObject var viewModel: LoginViewModelAlias
     
-    init(viewModel: LoginViewModel) {
+    init(viewModel: LoginViewModelAlias) {
         self.viewModel = viewModel
     }
     
@@ -76,9 +77,9 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(
-            viewModel: LoginViewModel(
-                loginService: LoginService(
-                    appState: AppState()
+            viewModel: LoginVMMock(
+                loginService: LoginServiceMock(
+                    appState: AppState(loggedIn: false)
                 )
             )
         )

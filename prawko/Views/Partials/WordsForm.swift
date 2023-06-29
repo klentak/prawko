@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct WordsForm: View {
-    @StateObject private var viewModel: WordsFormViewModel
+struct WordsForm<WordsFormVM>: View
+where WordsFormVM: WordsFormVMProtocol {
+    @StateObject private var viewModel: WordsFormVM
     
     @Binding var formData: WordFormDTO
     
-    init(viewModel: WordsFormViewModel, formData: Binding<WordFormDTO>) {
+    init(viewModel: WordsFormVM, formData: Binding<WordFormDTO>) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self._formData = formData
     }
@@ -87,7 +88,13 @@ struct WordsForm: View {
 struct WordsForm_Previews: PreviewProvider {
     static var previews: some View {
         WordsForm(
-            viewModel: WordsFormViewModel(),
+            viewModel: WordsFormVMMock(
+                proviencesDTO: ProviencesDTO(
+                    provinces: [Province(id: 1, name: "Test")],
+                    words: [Word(id: 1, name: "Test", provinceId: 1)]
+                ),
+                sortedWords: []
+            ),
             formData: .constant(
                 WordFormDTO(
                     selectedWord: nil,

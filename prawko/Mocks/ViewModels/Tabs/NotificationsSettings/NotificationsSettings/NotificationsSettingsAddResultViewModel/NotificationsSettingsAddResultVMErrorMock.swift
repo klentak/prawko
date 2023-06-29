@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NotificationsSettingsAddResultVMErrorMock: ObservableObject, NotificationsSettingsAddResultViewModelProtocol {
+class NotificationsSettingsAddResultVMErrorMock: ObservableObject, NotificationsSettingsAddResultVMProtocol {
     @Published var exam: ExamDTO?
 
     init(exam: ExamDTO? = nil) {

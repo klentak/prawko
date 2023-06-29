@@ -1,5 +1,5 @@
 //
-//  LoginViewModel.swift
+//  LoginService.swift
 //  prawko
 //
 //  Created by Jakub Klentak on 14/12/2022.
@@ -11,7 +11,7 @@ import CryptoKit
 import KeychainSwift
 import SwiftUI
 
-class LoginService : ObservableObject {
+class LoginService: LoginServiceProtocol {
     @StateObject var appState: AppState
 
     private var keychain: KeychainSwift = KeychainSwift()
@@ -26,7 +26,7 @@ class LoginService : ObservableObject {
         appState.loggedIn = false
     }
     
-    public func actualBearerCode(completion: @escaping (Result<Bool, LoginError>) -> Void) {
+    func actualBearerCode(completion: @escaping (Result<Bool, LoginError>) -> Void) {
         self.processLogin(
             email: keychain.get("email")!,
             password: keychain.get("password")!,

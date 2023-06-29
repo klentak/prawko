@@ -8,7 +8,8 @@
 import SwiftUI
 import KeychainSwift
 
-struct UserInformationsView: View {
+struct UserInformationsView<LoginService>: View
+where LoginService: LoginServiceProtocol {
     var keychain: KeychainSwift = KeychainSwift()
     private let loginService: LoginService
     
@@ -40,7 +41,7 @@ struct UserInformationsView_Previews: PreviewProvider {
     static var previews: some View {
         UserInformationsView(
             loginService: LoginService(
-                appState: AppState()
+                appState: AppState(loggedIn: true)
             )
         )
     }

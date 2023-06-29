@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WatchlistRepository : ObservableObject {
+class WatchlistRepository : WatchlistRepositoryProtocol {
     @Published var elements: [WatchlistElement] = [WatchlistElement]()
     
     var decoder = JSONDecoder()
@@ -24,18 +24,7 @@ class WatchlistRepository : ObservableObject {
        return instance
     }()
     
-    func updateList() -> Void {
-        guard let data = UserDefaults.standard.data(forKey: key),
-              let savedWatchlist = try? decoder.decode(
-                [WatchlistElement].self, from: data
-        ) else {
-            return
-        }
-
-        elements = savedWatchlist
-    }
-    
-    func getList() -> [WatchlistElement] {
+    public func getList() -> [WatchlistElement] {
         guard let data = UserDefaults.standard.data(forKey: key),
               let savedWatchlist = try? decoder.decode(
                 [WatchlistElement].self, from: data
@@ -46,16 +35,7 @@ class WatchlistRepository : ObservableObject {
         return savedWatchlist
     }
     
-    func setList(_ value: [WatchlistElement]) {
-        do {
-            let data = try encoder.encode(value)
-            UserDefaults.standard.set(data, forKey: key)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func addElement(_ value: WatchlistElement) throws {
+    public func addElement(_ value: WatchlistElement) throws {
         if isAlreadyInWishlist(value) {
             throw WatchlistRespositoryError.alreadyAdded(
                 "Egzamin jest już na liście obserwowanych"
@@ -72,7 +52,7 @@ class WatchlistRepository : ObservableObject {
         self.updateList()
     }
     
-    func removeElement(_ offsets: IndexSet) {
+    public func removeElement(_ offsets: IndexSet) {
         do {
             var savedData = getList()
             savedData.remove(atOffsets: offsets)
@@ -84,7 +64,27 @@ class WatchlistRepository : ObservableObject {
         self.updateList()
     }
     
-    func isAlreadyInWishlist(_ value: WatchlistElement) -> Bool {
+    private func updateList() -> Void {
+        guard let data = UserDefaults.standard.data(forKey: key),
+              let savedWatchlist = try? decoder.decode(
+                [WatchlistElement].self, from: data
+        ) else {
+            return
+        }
+
+        elements = savedWatchlist
+    }
+    
+    private func setList(_ value: [WatchlistElement]) {
+        do {
+            let data = try encoder.encode(value)
+            UserDefaults.standard.set(data, forKey: key)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func isAlreadyInWishlist(_ value: WatchlistElement) -> Bool {
         for wishlistElement in getList() {
             if (
                 value.type == wishlistElement.type

@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class WordsFormViewModel : ObservableObject {
+class WordsFormViewModel: WordsFormVMProtocol {
     @Published var proviencesDTO: ProviencesDTO
     @Published var sortedWords: [Word]
     

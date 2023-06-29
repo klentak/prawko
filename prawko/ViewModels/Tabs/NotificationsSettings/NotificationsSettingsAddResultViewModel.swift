@@ -8,7 +8,7 @@
 import SwiftUI
 import Alamofire
 
-class NotificationsSettingsAddResultViewModel : ObservableObject, NotificationsSettingsAddResultViewModelProtocol {
+class NotificationsSettingsAddResultViewModel: NotificationsSettingsAddResultVMProtocol {
     @Published var exam: ExamDTO? = nil
     
     private var userDefaults = UserDefaults.standard

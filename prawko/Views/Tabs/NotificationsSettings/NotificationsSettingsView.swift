@@ -7,16 +7,20 @@
 
 import SwiftUI
 
-struct NotificationsSettingsView: View {
-    @StateObject var notificationsSettingsVM: NotificationsSettingsViewModel
+struct NotificationsSettingsView<NotificationSettingsVM, WatchlistRepository, SearchResultVM, WordsFormVM>: View
+where NotificationSettingsVM: NotificationsSettingsVMProtocol,
+      WatchlistRepository: WatchlistRepositoryProtocol,
+      SearchResultVM: SearchResultVMProtocol,
+      WordsFormVM: WordsFormVMProtocol {
+    @StateObject var notificationsSettingsVM: NotificationSettingsVM
     @StateObject var watchlist: WatchlistRepository
     
-    var addToWatchlistView: AddToWatchlistView
+    var addToWatchlistView: AddToWatchlistView<WordsFormVM, SearchResultVM>
     
     init(
-        notificationsSettingsVM: NotificationsSettingsViewModel,
+        notificationsSettingsVM: NotificationSettingsVM,
         watchlist: WatchlistRepository,
-        addToWatchlistView: AddToWatchlistView
+        addToWatchlistView: AddToWatchlistView<WordsFormVM, SearchResultVM>
     ) {
         self._notificationsSettingsVM = StateObject(wrappedValue: notificationsSettingsVM)
         self._watchlist = StateObject(wrappedValue: watchlist)
@@ -108,10 +112,72 @@ struct NotificationsSettingsView: View {
 
 struct NotificationsSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsSettingsView(
-            notificationsSettingsVM: NotificationsSettingsViewModel(),
-            watchlist: WatchlistRepository(),
-            addToWatchlistView: AddToWatchlistView()
-        )
+        Group {
+            NotificationsSettingsView(
+                notificationsSettingsVM: NotificationsSettingsVMMock(
+                    words: [
+                        Word(
+                            id: 1,
+                            name: "Test",
+                            provinceId: 1
+                        )
+                    ]
+                ),
+                watchlist: WatchlistRepositoryMock(elements: [
+                    WatchlistElement(
+                        category: DrivingLicencesCategoriesConst.values.first!,
+                        wordId: "1",
+                        type: ExamTypeEnum.practice,
+                        latestExam: ExamDTO(
+                            additionalInfo: nil,
+                            amount: 30,
+                            date: "2023-03-18T16:38:16",
+                            places: 3
+                        )
+                    ),
+                    WatchlistElement(
+                        category: DrivingLicencesCategoriesConst.values.first!,
+                        wordId: "1",
+                        type: ExamTypeEnum.practice,
+                        latestExam: ExamDTO(
+                            additionalInfo: nil,
+                            amount: 30,
+                            date: "2023-03-18T16:38:16",
+                            places: 3
+                        )
+                    ),
+                ]),
+                addToWatchlistView: AddToWatchlistView(
+                    searchResultViewModel: SearchResultVMMock(scheduledDays: []), wordsFormViewModel: WordsFormVMMock(
+                            proviencesDTO: ProviencesDTO(
+                                provinces: [Province](),
+                                words: [Word]()
+                            ),
+                            sortedWords: []
+                        )
+                )
+            )
+            NotificationsSettingsView(
+                notificationsSettingsVM: NotificationsSettingsVMMock(
+                    words: [
+                        Word(
+                            id: 1,
+                            name: "Test",
+                            provinceId: 1
+                        )
+                    ]
+                ),
+                watchlist: WatchlistRepositoryMock(elements: []),
+                addToWatchlistView: AddToWatchlistView(
+                    searchResultViewModel: SearchResultVMMock(scheduledDays: []), wordsFormViewModel: WordsFormVMMock(
+                            proviencesDTO: ProviencesDTO(
+                                provinces: [Province](),
+                                words: [Word]()
+                            ),
+                            sortedWords: []
+                        )
+                )
+            )
+        }
     }
 }

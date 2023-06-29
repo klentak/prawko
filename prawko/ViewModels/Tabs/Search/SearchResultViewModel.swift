@@ -9,7 +9,7 @@ import SwiftUI
 import Alamofire
 import KeychainSwift
 
-class SearchResultViewModel : ObservableObject {
+class SearchResultViewModel: SearchResultVMProtocol {
     @Published var scheduledDays: [ScheduleDayDTO]
     private var infoCarRepository: InfoCarRepository
     

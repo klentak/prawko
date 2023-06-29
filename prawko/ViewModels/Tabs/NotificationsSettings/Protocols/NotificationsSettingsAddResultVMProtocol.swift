@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NotificationsSettingsAddResultViewModelProtocol: ObservableObject {
+protocol NotificationsSettingsAddResultVMProtocol: ObservableObject {
     var exam: ExamDTO? { get }
     
     func getScheduledDays(
@@ -15,5 +15,5 @@ protocol NotificationsSettingsAddResultViewModelProtocol: ObservableObject {
         wordId: String,
         type: ExamTypeEnum,
         completion: @escaping (Result<Bool, Error>) -> Void
-    );
+    )
 }

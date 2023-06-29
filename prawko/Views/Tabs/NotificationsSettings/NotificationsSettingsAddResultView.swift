@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct NotificationsSettingsAddResultView<ViewModel>: View where ViewModel: NotificationsSettingsAddResultViewModelProtocol  {
+struct NotificationsSettingsAddResultView<ViewModel>: View
+where ViewModel: NotificationsSettingsAddResultVMProtocol {
     @ObservedObject var notificationsSettingsAddResultVM: ViewModel
 
     let category : DrivingLicenceCategory
