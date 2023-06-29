@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct SearchView: View {
+struct SearchView<WordsFormVM>: View
+where WordsFormVM: WordsFormVMProtocol {
     @State var formData: WordFormDTO = WordFormDTO(
         selectedWord: nil,
         selectedProvince: nil,
         selectedDrivingCategory: nil,
         selectedExamType: .none
     )
+    @StateObject var wordsFormViewModel: WordsFormVM
     
     var body: some View {
         NavigationView {
@@ -23,10 +25,14 @@ struct SearchView: View {
                 Spacer()
                 Section {
                     WordsForm(
-                        viewModel: CompositionRoot.wordsFormViewModel,
+                        viewModel: wordsFormViewModel,
                         formData: $formData
                     )
-                    
+                    .disabled(
+                        formData.selectedProvince == nil
+                        || formData.selectedWord == nil
+                        || formData.selectedDrivingCategory == nil
+                    )
                     NavigationLink(
                         destination: SearchResultsView(
                             searchResultVM: CompositionRoot.searchResultViewModel,
@@ -37,11 +43,6 @@ struct SearchView: View {
                     ) {
                         Label("Szukaj", systemImage: "magnifyingglass")
                     }
-                    .disabled(
-                        formData.selectedProvince == nil
-                        || formData.selectedWord == nil
-                        || formData.selectedDrivingCategory == nil
-                    )
                 }
                 Spacer()
             }
@@ -53,6 +54,14 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView<WordsFormVMMock>(
+            wordsFormViewModel: WordsFormVMMock(
+                proviencesDTO: ProviencesDTO(
+                    provinces: [Province(id: 1, name: "Test")],
+                    words: [Word(id: 1, name: "Test", provinceId: 1)]
+                ),
+                sortedWords: []
+            )
+        )
     }
 }

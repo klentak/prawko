@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct NotificationsSettingsAddResultView: View {
-    @ObservedObject var notificationsSettingsAddResultVM: NotificationsSettingsAddResultViewModel
-    
+struct NotificationsSettingsAddResultView<ViewModel>: View
+where ViewModel: NotificationsSettingsAddResultVMProtocol {
+    @ObservedObject var notificationsSettingsAddResultVM: ViewModel
+
     let category : DrivingLicenceCategory
     let wordId : String
     let type : ExamTypeEnum
     
     init(
-        notificationsSettingsAddResultVM: NotificationsSettingsAddResultViewModel,
+        notificationsSettingsAddResultVM: ViewModel,
         category: DrivingLicenceCategory,
         wordId: String,
         type: ExamTypeEnum
@@ -76,8 +77,6 @@ struct NotificationsSettingsAddResultView: View {
                     case .success:
                         loading = false
                     case .failure(let error):
-                        self.notificationsSettingsAddResultVM.showErrorAlert(view: self, error: error)
-                        
                         switch error {
                         case WatchlistRespositoryError.alreadyAdded(let error):
                             self.errorTitle = "Błąd"
@@ -86,8 +85,6 @@ struct NotificationsSettingsAddResultView: View {
                             print("default")
                         }
                         
-                        print(error)
-                        print("tutaj")
                         downloadDataAlert = true
                     }
                 }
@@ -107,17 +104,32 @@ struct NotificationsSettingsAddResultView: View {
 
 struct NotificatiopnsSettingsAddResultView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsSettingsAddResultView(
-            notificationsSettingsAddResultVM: NotificationsSettingsAddResultViewModel(
-                apiManager: APIManager(
-                    interceptor: Interceptor(
-                        loginService: LoginService(appState: AppState())
-                    )
-                )
-            ),
-            category: DrivingLicencesCategoriesConst.values.first!,
-            wordId: "1",
-            type: ExamTypeEnum.theory
-        )
+        Group {
+            NotificationsSettingsAddResultView(
+                notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(
+                        exam: ExamDTO(
+                            additionalInfo: nil,
+                            amount: 23,
+                            date: "2022-10-26T18:28:10",
+                            places: 2
+                        )
+                    ),
+                category: DrivingLicencesCategoriesConst.values.first!,
+                wordId: "1",
+                type: ExamTypeEnum.theory
+            )
+            NotificationsSettingsAddResultView(
+                notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
+                category: DrivingLicencesCategoriesConst.values.first!,
+                wordId: "1",
+                type: ExamTypeEnum.theory
+            )
+            NotificationsSettingsAddResultView(
+                notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMErrorMock(),
+                category: DrivingLicencesCategoriesConst.values.first!,
+                wordId: "1",
+                type: ExamTypeEnum.theory
+            )
+        }
     }
 }

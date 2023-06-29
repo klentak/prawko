@@ -8,7 +8,7 @@
 import SwiftUI
 import Alamofire
 
-class NotificationsSettingsAddResultViewModel : ObservableObject {
+class NotificationsSettingsAddResultViewModel: NotificationsSettingsAddResultVMProtocol {
     @Published var exam: ExamDTO? = nil
     
     private var userDefaults = UserDefaults.standard
@@ -56,10 +56,6 @@ class NotificationsSettingsAddResultViewModel : ObservableObject {
                 )
             }
         }
-    }
-    
-    public func showErrorAlert(view: NotificationsSettingsAddResultView, error: Error) {
-        
     }
     
     private func addToUserDefaults(

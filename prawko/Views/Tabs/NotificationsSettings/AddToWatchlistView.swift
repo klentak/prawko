@@ -7,10 +7,17 @@
 
 import SwiftUI
 
-struct AddToWatchlistView: View {
+struct AddToWatchlistView<WordsFormVM, SearchResultVM>: View
+where WordsFormVM: WordsFormVMProtocol,
+      SearchResultVM: SearchResultVMProtocol {
     @State var formData: WordFormDTO
     
-    init() {
+    private var searchResultViewModel: SearchResultVM
+    private var wordsFormViewModel: WordsFormVM
+    
+    init(searchResultViewModel: SearchResultVM, wordsFormViewModel: WordsFormVM) {
+        self.searchResultViewModel = searchResultViewModel
+        self.wordsFormViewModel = wordsFormViewModel
         self._formData = State(initialValue: WordFormDTO(
             selectedWord: nil,
             selectedProvince: nil,
@@ -26,13 +33,13 @@ struct AddToWatchlistView: View {
             ) {
                 Section {
                     WordsForm(
-                        viewModel: CompositionRoot.wordsFormViewModel,
+                        viewModel: wordsFormViewModel,
                         formData: $formData
                     )
                     
                     NavigationLink(
                         destination: SearchResultsView(
-                            searchResultVM: CompositionRoot.searchResultViewModel,
+                            searchResultVM: searchResultViewModel,
                             category: formData.selectedDrivingCategory ?? DrivingLicencesCategoriesConst.values.first!,
                             wordId: String(formData.selectedWord?.id ?? 1),
                             examType: formData.selectedExamType
@@ -57,6 +64,15 @@ struct AddToWatchlistView: View {
 
 struct AddToWatchlistView_Previews: PreviewProvider {
     static var previews: some View {
-        AddToWatchlistView()
+        AddToWatchlistView<WordsFormVMMock, SearchResultVMMock>(
+            searchResultViewModel: SearchResultVMMock(scheduledDays: []),
+            wordsFormViewModel: WordsFormVMMock(
+                proviencesDTO: ProviencesDTO(
+                    provinces: [Province](),
+                    words: [Word]()
+                ),
+                sortedWords: []
+            )
+        )
     }
 }

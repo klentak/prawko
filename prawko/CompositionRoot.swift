@@ -6,7 +6,7 @@
 //
 
 enum CompositionRoot {
-    static var contentView = ContentView(
+    static var contentView = ContentView<NotificationsSettingsViewModel, WatchlistRepository, SearchResultViewModel, WordsFormViewModel, LoginViewModel, LoginService>(
         appState: appState,
         loginView: loginView,
         searchView: searchView,
@@ -24,7 +24,7 @@ enum CompositionRoot {
         infoCarRepository: infoCarRepository
     )
     
-    static var appState = AppState()
+    static var appState = AppState(loggedIn: false)
 }
 
 private extension CompositionRoot {
@@ -34,15 +34,19 @@ private extension CompositionRoot {
         )
     )
     
-    private static var searchView = SearchView()
+    private static var searchView = SearchView(wordsFormViewModel: wordsFormViewModel)
     
-    private static var addToWatchlistView = AddToWatchlistView()
-    
-    private static var notificationsSettingsView = NotificationsSettingsView(
-        notificationsSettingsVM: notificationsSettingsViewModel,
-        watchlist: watchlistRepository,
-        addToWatchlistView: addToWatchlistView
+    private static var addToWatchlistView = AddToWatchlistView(
+        searchResultViewModel: searchResultViewModel,
+        wordsFormViewModel: wordsFormViewModel
     )
+    
+    private static var notificationsSettingsView =
+        NotificationsSettingsView<NotificationsSettingsViewModel, WatchlistRepository, SearchResultViewModel, WordsFormViewModel>(
+            notificationsSettingsVM: notificationsSettingsViewModel,
+            watchlist: watchlistRepository,
+            addToWatchlistView: addToWatchlistView
+        )
 
     private static var userInformationsView = UserInformationsView(
         loginService: loginService

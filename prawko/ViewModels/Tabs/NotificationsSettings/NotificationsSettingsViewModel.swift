@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class NotificationsSettingsViewModel : ObservableObject {
+class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
     @Published var words: [Word] = [Word]()
     
     func getProviences(completion: @escaping (Bool) -> Void) {

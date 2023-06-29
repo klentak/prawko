@@ -8,22 +8,28 @@
 import SwiftUI
 import KeychainSwift
 
-struct ContentView: View {
+struct ContentView<NotificationsSettingsVM, WatchlistRepository, SearchResultVM, WordsFormVM, LoginViewModel, LoginService>: View
+where NotificationsSettingsVM: NotificationsSettingsVMProtocol,
+      WatchlistRepository: WatchlistRepositoryProtocol,
+      SearchResultVM: SearchResultVMProtocol,
+      LoginViewModel: LoginVMProtocol,
+      WordsFormVM: WordsFormVMProtocol,
+      LoginService: LoginServiceProtocol {
     @StateObject var appState: AppState
 
     @State private var selection: Tab
 
-    let loginView: LoginView
-    let searchView: SearchView
-    let notificationsSettingsView: NotificationsSettingsView
-    let userInformationsView: UserInformationsView
+    let loginView: LoginView<LoginViewModel>
+    let searchView: SearchView<WordsFormVM>
+    let notificationsSettingsView: NotificationsSettingsView<NotificationsSettingsVM, WatchlistRepository, SearchResultVM, WordsFormVM>
+    let userInformationsView: UserInformationsView<LoginService>
     
     init(
         appState: AppState,
-        loginView: LoginView,
-        searchView: SearchView,
-        notificationsSettingsView: NotificationsSettingsView,
-        userInformationsView: UserInformationsView
+        loginView: LoginView<LoginViewModel>,
+        searchView: SearchView<WordsFormVM>,
+        notificationsSettingsView: NotificationsSettingsView<NotificationsSettingsVM, WatchlistRepository, SearchResultVM, WordsFormVM>,
+userInformationsView: UserInformationsView<LoginService>
     ) {
         self._appState = StateObject(wrappedValue: appState)
         self._selection = State(initialValue: .search)
@@ -68,25 +74,43 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(
-            appState: AppState(),
+        let appState = AppState(loggedIn: true)
+        let loginService = LoginServiceMockLoggedIn(
+            appState: appState
+        )
+
+        ContentView<NotificationsSettingsVMMock, WatchlistRepositoryMock, SearchResultVMMock, WordsFormVMMock, LoginVMMock, LoginServiceMockLoggedIn>(
+            appState: appState,
             loginView: LoginView(
-                viewModel: LoginViewModel(
-                    loginService: LoginService(
-                        appState: AppState()
+                viewModel: LoginVMMock(
+                    loginService: loginService
+                )
+            ),
+            searchView: SearchView(
+                wordsFormViewModel: WordsFormVMMock(
+                    proviencesDTO: ProviencesDTO(
+                        provinces: [Province(id: 1, name: "Test")],
+                        words: [Word(id: 1, name: "Test", provinceId: 1)]
+                    ),
+                    sortedWords: []
+                )
+            ),
+            notificationsSettingsView: NotificationsSettingsView(
+                notificationsSettingsVM: NotificationsSettingsVMMock(words: []),
+                watchlist: WatchlistRepositoryMock(elements: []),
+                addToWatchlistView: AddToWatchlistView(
+                    searchResultViewModel: SearchResultVMMock(scheduledDays: []),
+                    wordsFormViewModel: WordsFormVMMock(
+                        proviencesDTO: ProviencesDTO(
+                            provinces: [Province(id: 1, name: "Test")],
+                            words: [Word(id: 1, name: "Test", provinceId: 1)]
+                        ),
+                        sortedWords: []
                     )
                 )
             ),
-            searchView: SearchView(),
-            notificationsSettingsView: NotificationsSettingsView(
-                notificationsSettingsVM: NotificationsSettingsViewModel(),
-                watchlist: WatchlistRepository(),
-                addToWatchlistView: AddToWatchlistView()
-            ),
             userInformationsView: UserInformationsView(
-                loginService: LoginService(
-                    appState: AppState()
-                )
+                loginService: loginService
             )
         )
     }

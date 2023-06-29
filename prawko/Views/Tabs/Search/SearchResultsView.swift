@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct SearchResultsView: View {
-    @ObservedObject var searchResultVM: SearchResultViewModel
+struct SearchResultsView<ViewModel>: View where ViewModel: SearchResultVMProtocol {
+    @ObservedObject var searchResultVM: ViewModel
 
     @State var loading: Bool
     @State var downloadDataAlert: Bool
@@ -18,7 +18,7 @@ struct SearchResultsView: View {
     let examType: ExamTypeEnum
     
     init(
-        searchResultVM: SearchResultViewModel,
+        searchResultVM: ViewModel,
         category: DrivingLicenceCategory,
         wordId: String,
         examType: ExamTypeEnum
@@ -116,7 +116,7 @@ struct SearchResultsView_Previews: PreviewProvider {
                 infoCarRepository: InfoCarRepository(
                     apiManager: APIManager(
                         interceptor: Interceptor(
-                            loginService: LoginService(appState: AppState())
+                            loginService: LoginService(appState: AppState(loggedIn: true))
                         )
                     )
                 )

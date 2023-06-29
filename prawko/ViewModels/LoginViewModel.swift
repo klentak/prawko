@@ -8,14 +8,14 @@
 import Foundation
 
 
-class LoginViewModel : ObservableObject {
+class LoginViewModel: LoginVMProtocol {
+    var loginService: any LoginServiceProtocol
+    
     @Published public var email: String
     @Published public var password: String
     @Published public var wrongLoginData: Bool
     @Published public var unexpectedError: Bool
     @Published private(set) var loading: Bool
-    
-    private let loginService: LoginService
     
     init(loginService: LoginService) {
         self.email = ""
