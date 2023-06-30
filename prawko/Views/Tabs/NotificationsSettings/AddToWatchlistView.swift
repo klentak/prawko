@@ -34,27 +34,18 @@ where WordsFormVM: WordsFormVMProtocol,
                 Section {
                     WordsForm(
                         viewModel: wordsFormViewModel,
-                        formData: $formData
-                    )
-                    
-                    NavigationLink(
+                        formData: $formData,
                         destination: SearchResultsView(
                             searchResultVM: searchResultViewModel,
                             category: formData.selectedDrivingCategory ?? DrivingLicencesCategoriesConst.values.first!,
                             wordId: String(formData.selectedWord?.id ?? 1),
                             examType: formData.selectedExamType
-                        )
-                    ) {
-                        Label("Dodaj do obserwowanych", systemImage: "plus")
-                    }
-                    .disabled(
-                        formData.selectedProvince == nil
-                        || formData.selectedWord == nil
-                        || formData.selectedDrivingCategory == nil
-                        || formData.selectedExamType == ExamTypeEnum.none
+                        ),
+                        destinationLabelText: "Dodaj do obserwowanych",
+                        destinationLabelImage: "plus",
+                        examTypeRequired: true
                     )
                 }
-                Spacer()
             }
                 .scrollDisabled(true)
                 .navigationBarHidden(true)
@@ -68,8 +59,8 @@ struct AddToWatchlistView_Previews: PreviewProvider {
             searchResultViewModel: SearchResultVMMock(scheduledDays: []),
             wordsFormViewModel: WordsFormVMMock(
                 proviencesDTO: ProviencesDTO(
-                    provinces: [Province](),
-                    words: [Word]()
+                    provinces: [Province(id: 1, name: "Test")],
+                    words: [Word(id: 1, name: "Test", provinceId: 1)]
                 ),
                 sortedWords: []
             )

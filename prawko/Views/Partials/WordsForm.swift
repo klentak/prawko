@@ -7,15 +7,32 @@
 
 import SwiftUI
 
-struct WordsForm<WordsFormVM>: View
-where WordsFormVM: WordsFormVMProtocol {
+struct WordsForm<WordsFormVM, Destination>: View
+where WordsFormVM: WordsFormVMProtocol,
+      Destination: View {
     @StateObject private var viewModel: WordsFormVM
     
     @Binding var formData: WordFormDTO
     
-    init(viewModel: WordsFormVM, formData: Binding<WordFormDTO>) {
+    var destination: Destination
+    var destinationLabelText: String
+    var destinationLabelImage: String
+    var examTypeRequired: Bool
+    
+    init(
+        viewModel: WordsFormVM,
+        formData: Binding<WordFormDTO>,
+        destination: Destination,
+        destinationLabelText: String,
+        destinationLabelImage: String,
+        examTypeRequired: Bool
+    ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self._formData = formData
+        self.destination = destination
+        self.destinationLabelText = destinationLabelText
+        self.destinationLabelImage = destinationLabelImage
+        self.examTypeRequired = examTypeRequired
     }
     
     var body: some View {
@@ -73,6 +90,21 @@ where WordsFormVM: WordsFormVMProtocol {
                         }
                     }
                     
+                    NavigationLink(
+                        destination: self.destination
+                    ) {
+                        Label(
+                            self.destinationLabelText,
+                            systemImage: self.destinationLabelImage
+                        )
+                    }
+                        .disabled(
+                            formData.selectedProvince == nil
+                            || formData.selectedWord == nil
+                            || formData.selectedDrivingCategory == nil
+                            || (formData.selectedExamType == .none && self.examTypeRequired)
+                        )
+                    
                 }
             } else {
                 CommonProgressView()
@@ -87,11 +119,11 @@ where WordsFormVM: WordsFormVMProtocol {
 
 struct WordsForm_Previews: PreviewProvider {
     static var previews: some View {
-        WordsForm(
+        WordsForm<WordsFormVMMock, SearchResultsView<SearchResultVMMock>>(
             viewModel: WordsFormVMMock(
                 proviencesDTO: ProviencesDTO(
                     provinces: [Province(id: 1, name: "Test")],
-                    words: [Word(id: 1, name: "Test", provinceId: 1)]
+                    words: [Word(id: 2, name: "Test", provinceId: 1)]
                 ),
                 sortedWords: []
             ),
@@ -102,7 +134,16 @@ struct WordsForm_Previews: PreviewProvider {
                     selectedDrivingCategory: nil,
                     selectedExamType: .none
                 )
-            )
+            ),
+            destination: SearchResultsView(
+                searchResultVM: SearchResultVMMock(scheduledDays: []),
+                category: DrivingLicencesCategoriesConst.values.first!,
+                wordId: String( 1),
+                examType: ExamTypeEnum.practice
+            ),
+            destinationLabelText: "Szukaj",
+            destinationLabelImage: "magnifyingglass",
+            examTypeRequired: true
         )
     }
 }

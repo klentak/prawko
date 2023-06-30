@@ -15,6 +15,7 @@ where WordsFormVM: WordsFormVMProtocol {
         selectedDrivingCategory: nil,
         selectedExamType: .none
     )
+
     @StateObject var wordsFormViewModel: WordsFormVM
     
     var body: some View {
@@ -22,29 +23,21 @@ where WordsFormVM: WordsFormVMProtocol {
             VStack(
                 spacing: 10
             ) {
-                Spacer()
                 Section {
                     WordsForm(
                         viewModel: wordsFormViewModel,
-                        formData: $formData
-                    )
-                    .disabled(
-                        formData.selectedProvince == nil
-                        || formData.selectedWord == nil
-                        || formData.selectedDrivingCategory == nil
-                    )
-                    NavigationLink(
+                        formData: $formData,
                         destination: SearchResultsView(
                             searchResultVM: CompositionRoot.searchResultViewModel,
                             category: formData.selectedDrivingCategory ?? DrivingLicencesCategoriesConst.values.first!,
                             wordId: String(formData.selectedWord?.id ?? 1),
                             examType: formData.selectedExamType
-                        )
-                    ) {
-                        Label("Szukaj", systemImage: "magnifyingglass")
-                    }
+                        ),
+                        destinationLabelText: "Szukaj",
+                        destinationLabelImage: "magnifyingglass",
+                        examTypeRequired: false
+                    )
                 }
-                Spacer()
             }
                 .scrollDisabled(true)
                 .navigationTitle(Text("Szukaj"))
@@ -60,7 +53,7 @@ struct SearchView_Previews: PreviewProvider {
                     provinces: [Province(id: 1, name: "Test")],
                     words: [Word(id: 1, name: "Test", provinceId: 1)]
                 ),
-                sortedWords: []
+                sortedWords: [Word(id: 1, name: "Test", provinceId: 1)]
             )
         )
     }

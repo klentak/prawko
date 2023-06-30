@@ -78,6 +78,13 @@ struct ContentView_Previews: PreviewProvider {
         let loginService = LoginServiceMockLoggedIn(
             appState: appState
         )
+        let wordsFormVM = WordsFormVMMock(
+            proviencesDTO: ProviencesDTO(
+                provinces: [Province(id: 1, name: "Test")],
+                words: [Word(id: 1, name: "Test", provinceId: 1)]
+            ),
+            sortedWords: []
+        )
 
         ContentView<NotificationsSettingsVMMock, WatchlistRepositoryMock, SearchResultVMMock, WordsFormVMMock, LoginVMMock, LoginServiceMockLoggedIn>(
             appState: appState,
@@ -87,26 +94,14 @@ struct ContentView_Previews: PreviewProvider {
                 )
             ),
             searchView: SearchView(
-                wordsFormViewModel: WordsFormVMMock(
-                    proviencesDTO: ProviencesDTO(
-                        provinces: [Province(id: 1, name: "Test")],
-                        words: [Word(id: 1, name: "Test", provinceId: 1)]
-                    ),
-                    sortedWords: []
-                )
+                wordsFormViewModel: wordsFormVM
             ),
             notificationsSettingsView: NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(words: []),
                 watchlist: WatchlistRepositoryMock(elements: []),
                 addToWatchlistView: AddToWatchlistView(
                     searchResultViewModel: SearchResultVMMock(scheduledDays: []),
-                    wordsFormViewModel: WordsFormVMMock(
-                        proviencesDTO: ProviencesDTO(
-                            provinces: [Province(id: 1, name: "Test")],
-                            words: [Word(id: 1, name: "Test", provinceId: 1)]
-                        ),
-                        sortedWords: []
-                    )
+                    wordsFormViewModel: wordsFormVM
                 )
             ),
             userInformationsView: UserInformationsView(
