@@ -112,6 +112,18 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
 
 struct NotificationsSettingsView_Previews: PreviewProvider {
     static var previews: some View {
+        let watchListElement = WatchlistElement(
+            category: DrivingLicencesCategoriesConst.values.first!,
+            wordId: "1",
+            type: ExamTypeEnum.practice,
+            latestExam: ExamDTO(
+                additionalInfo: nil,
+                amount: 30,
+                date: "2023-03-18T16:38:16",
+                places: 3
+            )
+        )
+        
         Group {
             NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
@@ -147,6 +159,27 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                         )
                     ),
                 ]),
+                addToWatchlistView: AddToWatchlistView(
+                    searchResultViewModel: SearchResultVMMock(scheduledDays: []), wordsFormViewModel: WordsFormVMMock(
+                            proviencesDTO: ProviencesDTO(
+                                provinces: [Province](),
+                                words: [Word]()
+                            ),
+                            sortedWords: []
+                        )
+                )
+            )
+            NotificationsSettingsView(
+                notificationsSettingsVM: NotificationsSettingsVMMock(
+                    words: [
+                        Word(
+                            id: 1,
+                            name: "Test",
+                            provinceId: 1
+                        )
+                    ]
+                ),
+                watchlist: WatchlistRepositoryMock(elements: []),
                 addToWatchlistView: AddToWatchlistView(
                     searchResultViewModel: SearchResultVMMock(scheduledDays: []), wordsFormViewModel: WordsFormVMMock(
                             proviencesDTO: ProviencesDTO(
