@@ -437,6 +437,7 @@
 		A7DA712B2A485F9000AC6F22 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				A7DA71452A4A1F2C00AC6F22 /* Search */,
 				A7DA712C2A485F9E00AC6F22 /* NotificationsSettings */,
 			);
 			path = Tabs;
@@ -445,8 +446,8 @@
 		A7DA712C2A485F9E00AC6F22 /* NotificationsSettings */ = {
 			isa = PBXGroup;
 			children = (
-				A7DA71462A4A1F7700AC6F22 /* NotificationsSettings */,
-				A7DA71452A4A1F2C00AC6F22 /* Search */,
+				A7DA71372A48B9E400AC6F22 /* NotificationsSettingsViewModel */,
+				A7DA71352A48B7C900AC6F22 /* NotificationsSettingsAddResultViewModel */,
 			);
 			path = NotificationsSettings;
 			sourceTree = "<group>";
@@ -498,15 +499,6 @@
 				A7DA71472A4A1FB100AC6F22 /* SearchResultVMMock.swift */,
 			);
 			path = Search;
-			sourceTree = "<group>";
-		};
-		A7DA71462A4A1F7700AC6F22 /* NotificationsSettings */ = {
-			isa = PBXGroup;
-			children = (
-				A7DA71352A48B7C900AC6F22 /* NotificationsSettingsAddResultViewModel */,
-				A7DA71372A48B9E400AC6F22 /* NotificationsSettingsViewModel */,
-			);
-			path = NotificationsSettings;
 			sourceTree = "<group>";
 		};
 		A7DA714B2A4C976400AC6F22 /* Partials */ = {
