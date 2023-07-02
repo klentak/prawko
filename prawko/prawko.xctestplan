@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "D2F29C41-49C8-4785-9110-D39382D4941D",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:prawko.xcodeproj",
+      "identifier" : "A758E65F29491E7000C269DD",
+      "name" : "prawko"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}
