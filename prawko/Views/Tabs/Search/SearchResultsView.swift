@@ -52,7 +52,12 @@ struct SearchResultsView<ViewModel>: View where ViewModel: SearchResultVMProtoco
             } else {
                 List {
                     ForEach(searchResultVM.scheduledDays) { scheduledDay in
-                        if (searchResultVM.showDayGroup(scheduleDay: scheduledDay, examType: examType)) {
+                        if (
+                            searchResultVM.showDayGroup(
+                                scheduleDay: scheduledDay,
+                                examType: examType
+                            )
+                        ) {
                             DisclosureGroup(
                                 formatDate(
                                     date: scheduledDay.day,
@@ -74,7 +79,7 @@ struct SearchResultsView<ViewModel>: View where ViewModel: SearchResultVMProtoco
                                         ForEach(scheduledHour.theoryExams) { theoryExam in
                                             ExamRow(exam: theoryExam, examType: ExamTypeEnum.theory, category: category)
                                         }
-                                        
+
                                         ForEach(scheduledHour.practiceExams) { practiceExam in
                                             ExamRow(exam: practiceExam, examType: ExamTypeEnum.practice, category: category)
                                         }
@@ -112,18 +117,61 @@ struct SearchResultsView<ViewModel>: View where ViewModel: SearchResultVMProtoco
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultsView(
-            searchResultVM: SearchResultViewModel(
-                infoCarRepository: InfoCarRepository(
-                    apiManager: APIManager(
-                        interceptor: Interceptor(
-                            loginService: LoginService(appState: AppState(loggedIn: true))
-                        )
+            searchResultVM: SearchResultVMMock(
+                scheduledDays: [
+                    ScheduleDayDTO(
+                        day: "2023-03-03",
+                        scheduledHours: [
+                            ScheduledHoursDTO(
+                                practiceExams: [
+                                    ExamDTO(
+                                        additionalInfo: nil,
+                                        amount: 2,
+                                        date: "2023-01-12T16:30:00",
+                                        places: 2
+                                    )
+                                ],
+                                theoryExams: [
+                                    ExamDTO(
+                                        additionalInfo: nil,
+                                        amount: 2,
+                                        date: "2023-01-12T16:30:00",
+                                        places: 2
+                                    )
+                                ],
+                                time: "16:30:00"
+                            )
+                        ]
+                    ),
+                    ScheduleDayDTO(
+                        day: "2023-03-03",
+                        scheduledHours: [
+                            ScheduledHoursDTO(
+                                practiceExams: [
+                                    ExamDTO(
+                                        additionalInfo: nil,
+                                        amount: 2,
+                                        date: "2023-01-12T16:30:00",
+                                        places: 2
+                                    )
+                                ],
+                                theoryExams: [
+                                    ExamDTO(
+                                        additionalInfo: nil,
+                                        amount: 2,
+                                        date: "2023-01-12T16:30:00",
+                                        places: 2
+                                    )
+                                ],
+                                time: "16:30:00"
+                            )
+                        ]
                     )
-                )
+                ]
             ),
             category: DrivingLicencesCategoriesConst.values.first!,
             wordId: "2",
-            examType: ExamTypeEnum.theory
+            examType: ExamTypeEnum.none
         )
     }
 }

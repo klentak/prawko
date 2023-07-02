@@ -64,6 +64,8 @@
 		A7DA71572A4CC84700AC6F22 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA71562A4CC84700AC6F22 /* LoginServiceProtocol.swift */; };
 		A7DA71592A4CCABB00AC6F22 /* LoginServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA71582A4CCABB00AC6F22 /* LoginServiceMock.swift */; };
 		A7DA715B2A4CD69400AC6F22 /* LoginServiceMockLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA715A2A4CD69400AC6F22 /* LoginServiceMockLoggedIn.swift */; };
+		A7DA715D2A500AA200AC6F22 /* InfoCarRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA715C2A500AA200AC6F22 /* InfoCarRepositoryMock.swift */; };
+		A7DA715F2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA715E2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift */; };
 		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
 		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
 		A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */; };
@@ -135,6 +137,8 @@
 		A7DA71562A4CC84700AC6F22 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
 		A7DA71582A4CCABB00AC6F22 /* LoginServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceMock.swift; sourceTree = "<group>"; };
 		A7DA715A2A4CD69400AC6F22 /* LoginServiceMockLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceMockLoggedIn.swift; sourceTree = "<group>"; };
+		A7DA715C2A500AA200AC6F22 /* InfoCarRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepositoryMock.swift; sourceTree = "<group>"; };
+		A7DA715E2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepositoryProtocol.swift; sourceTree = "<group>"; };
 		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
 		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
 		A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
@@ -473,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				A7DA713D2A4A070800AC6F22 /* WatchlistRepositoryProtocol.swift */,
+				A7DA715E2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				A7DA71402A4A0AFE00AC6F22 /* WatchlistRepositoryMock.swift */,
+				A7DA715C2A500AA200AC6F22 /* InfoCarRepositoryMock.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				A73D83852A30CBA300C70CE9 /* WordFormDTO.swift in Sources */,
 				A7DA71522A4CBDFD00AC6F22 /* LoginVMProtocol.swift in Sources */,
 				A7ECC80A2A23BF5E006A2B22 /* LoginViewModel.swift in Sources */,
+				A7DA715F2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift in Sources */,
 				A7DA71442A4A177200AC6F22 /* SearchResultVMProtocol.swift in Sources */,
 				A7B992C029EDC1C7004B0510 /* LoginError.swift in Sources */,
 				A797360A29D5FC3C00E97830 /* ApiConectionError.swift in Sources */,
@@ -726,6 +733,7 @@
 				A7B0308629688A1700B79BDC /* VerticalLabelStyle.swift in Sources */,
 				A7FF8ECB2A1D466300FDBBAA /* APIManager.swift in Sources */,
 				A7B0308B2968A4D800B79BDC /* ExamCategoryConst.swift in Sources */,
+				A7DA715D2A500AA200AC6F22 /* InfoCarRepositoryMock.swift in Sources */,
 				A7DA713E2A4A070800AC6F22 /* WatchlistRepositoryProtocol.swift in Sources */,
 				A7DA71322A487FD700AC6F22 /* NotificationsSettingsAddResultVMErrorMock.swift in Sources */,
 				A79A3719294942750012930F /* LoginService.swift in Sources */,
@@ -862,6 +870,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = prawko/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -894,6 +903,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = prawko/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
