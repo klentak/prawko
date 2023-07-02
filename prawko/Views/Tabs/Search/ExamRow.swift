@@ -55,11 +55,23 @@ struct ExamRow: View {
         .contentShape(Rectangle())
         .buttonStyle(.plain)
         .sheet(isPresented: $isShowingSheet) {
+            Rectangle()
+              .frame(width: 40, height: 6)
+              .foregroundColor(.gray)
+              .cornerRadius(3)
+              .padding(.top, 6)
+              .shadow(radius: 1)
+              .padding(.bottom, 10)
+            
+            Spacer()
+
             ExamView(
                 exam: exam,
                 examType: examType,
                 category: category
             )
+            .presentationDetents([.fraction(0.40)])
+            Spacer()
         }
     }
 }
