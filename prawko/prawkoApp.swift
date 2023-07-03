@@ -10,7 +10,7 @@ import Foundation
 
 @main
 struct prawkoApp: App {
-    let watchlistTask: WatchlistTask
+    let watchlistTask: WatchlistTask<WatchlistRepository>
     
     init() {
         self.watchlistTask = CompositionRoot.watchlistTask

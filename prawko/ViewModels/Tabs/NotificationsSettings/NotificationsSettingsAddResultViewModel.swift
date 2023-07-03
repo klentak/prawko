@@ -8,15 +8,22 @@
 import SwiftUI
 import Alamofire
 
-class NotificationsSettingsAddResultViewModel: NotificationsSettingsAddResultVMProtocol {
+class NotificationsSettingsAddResultViewModel<WatchlistRepository>: NotificationsSettingsAddResultVMProtocol
+where WatchlistRepository: WatchlistRepositoryProtocol {
     @Published var exam: ExamDTO? = nil
     
     private var userDefaults = UserDefaults.standard
     
     private let apiManager: APIManager
+
+    private let watchlistRepository: WatchlistRepository
     
-    init(apiManager: APIManager) {
+    init(
+        apiManager: APIManager,
+        watchlistRepository: WatchlistRepository
+    ) {
         self.apiManager = apiManager
+        self.watchlistRepository = watchlistRepository
     }
     
     public func getScheduledDays(
@@ -71,7 +78,7 @@ class NotificationsSettingsAddResultViewModel: NotificationsSettingsAddResultVMP
             latestExam: latestExam
         )
         
-        try WatchlistRepository.shared.addElement(newWatchlistElement)
+        try watchlistRepository.addElement(newWatchlistElement)
     }
     
     private func saveResponse(

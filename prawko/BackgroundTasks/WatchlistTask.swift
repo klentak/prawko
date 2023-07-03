@@ -10,15 +10,21 @@ import SwiftUI
 import BackgroundTasks
 
 
-class WatchlistTask {
+class WatchlistTask<WatchlistRepository>
+where WatchlistRepository: WatchlistRepositoryProtocol {
     private let infoCarRepository: InfoCarRepository
+    private let watchlistRepository: WatchlistRepository
     
-    init(infoCarRepository: InfoCarRepository) {
+    init(
+        infoCarRepository: InfoCarRepository,
+        watchlistRepository: WatchlistRepository
+    ) {
         self.infoCarRepository = infoCarRepository
+        self.watchlistRepository = watchlistRepository
     }
     
     func refreshAppData() {
-        for watchlistElement in WatchlistRepository.shared.getList() {
+        for watchlistElement in watchlistRepository.getList() {
             getNearestExamWithDateBeforeWatchlistElement(watchlistElement: watchlistElement) { result in
                 switch result {
                 case .failure(_):

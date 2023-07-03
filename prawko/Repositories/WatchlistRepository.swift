@@ -18,12 +18,6 @@ class WatchlistRepository : WatchlistRepositoryProtocol {
         self.updateList()
     }
     
-    static var shared: WatchlistRepository = {
-       let instance = WatchlistRepository()
-
-       return instance
-    }()
-    
     public func getList() -> [WatchlistElement] {
         guard let data = UserDefaults.standard.data(forKey: key),
               let savedWatchlist = try? decoder.decode(
