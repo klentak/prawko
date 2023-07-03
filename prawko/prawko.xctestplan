@@ -17,7 +17,13 @@
     }
   },
   "testTargets" : [
-
+    {
+      "target" : {
+        "containerPath" : "container:prawko.xcodeproj",
+        "identifier" : "A7B07D142A52136D0011C351",
+        "name" : "prawko_Tests"
+      }
+    }
   ],
   "version" : 1
 }
