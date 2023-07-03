@@ -15,7 +15,8 @@ enum CompositionRoot {
     )
     
     static var watchlistTask = WatchlistTask(
-        infoCarRepository: infoCarRepository
+        infoCarRepository: infoCarRepository,
+        watchlistRepository: watchlistRepository
     )
     
     static var wordsFormViewModel = WordsFormViewModel()
