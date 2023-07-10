@@ -11,8 +11,7 @@ struct WordsForm<WordsFormVM, Destination>: View
 where WordsFormVM: WordsFormVMProtocol,
       Destination: View {
     @StateObject private var viewModel: WordsFormVM
-    
-    @Binding var formData: WordFormDTO
+        @Binding var formData: WordFormDTO
     
     var destination: Destination
     var destinationLabelText: String
@@ -41,7 +40,7 @@ where WordsFormVM: WordsFormVMProtocol,
         ) {
             if (!viewModel.proviencesDTO.words.isEmpty) {
                 Form {
-                    Section(header: Text("Województwo")) {
+                    Section(header: Text("Województwo") + requiredIdentificator()) {
                         Picker("Województwo", selection: $formData.selectedProvince) {
                             if (formData.selectedProvince == nil) {
                                 Text("").tag(Optional<String>(nil))
@@ -59,9 +58,9 @@ where WordsFormVM: WordsFormVMProtocol,
                         }
                     }
                     
-                    Section(header: Text("Ośrodek egzaminacyjny")) {
+                    Section(header: Text("Ośrodek egzaminacyjny") + requiredIdentificator()) {
                         Picker("Word", selection: $formData.selectedWord) {
-                            if (formData.selectedWord == nil) {
+                            if (!viewModel.sortedWords.isEmpty) {
                                 Text("").tag(Optional<String>(nil))
                             }
                             ForEach(viewModel.sortedWords) {
@@ -70,7 +69,7 @@ where WordsFormVM: WordsFormVMProtocol,
                         }
                     }
                     
-                    Section(header: Text("Kategoria prawa jazdy")) {
+                    Section(header: Text("Kategoria prawa jazdy") + requiredIdentificator()) {
                         Picker("Kategoria", selection: $formData.selectedDrivingCategory) {
                             if (formData.selectedDrivingCategory == nil) {
                                 Text("").tag(Optional<String>(nil))
@@ -81,7 +80,11 @@ where WordsFormVM: WordsFormVMProtocol,
                         }
                     }
                     
-                    Section(header: Text("Rodzaj egzaminu")) {
+                    Section(
+                        header: examTypeRequired
+                            ? Text("Rodzaj egzaminu") + requiredIdentificator()
+                            : Text("Rodzaj egzaminu")
+                    ) {
                         Picker("Rodzaj", selection: $formData.selectedExamType) {
                             ForEach(ExamTypeEnum.allCases) { value in
                                 Text(value.rawValue)
@@ -114,6 +117,12 @@ where WordsFormVM: WordsFormVMProtocol,
                     }
             }
         }
+    }
+    
+    func requiredIdentificator() -> Text {
+        Text(" *")
+            .foregroundColor(.red)
+            .bold()
     }
 }
 
