@@ -10,11 +10,6 @@ Prawko is a mobile application written in Swift using the SwiftUI framework. The
 - Driving License Exam Search: Users can search for available slots for driving license exams in their region. The application fetches data from info-share application and displays the available slots to the user.
 - Slot Monitoring: Users can monitor selected slots and receive notifications when these slots become available or are approaching. This helps users to stay informed and not miss the opportunity to book an exam.
 
-## System Requirements
-- iOS 14.0+
-- Xcode 12.0+
-- Swift 5.0+
-
 ## Installation
 
 1. Clone the repository:
