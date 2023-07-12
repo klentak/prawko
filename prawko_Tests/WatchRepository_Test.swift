@@ -70,14 +70,103 @@ final class WatchRepository_Test: XCTestCase {
         )
     }
     
-    func test_removeElement() throws {
-        try test_addElement_oneElement()
+    func test_removeElement_removeOneElement() throws {
+        let element = WatchlistElement(
+            category: DrivingLicenceCategory(id: "1", name: "Test", icon: "test"),
+            wordId: "1",
+            type: ExamTypeEnum.practice,
+            latestExam: nil
+        )
+        
+        try watchRepository.addElement(element)
         
         watchRepository.removeElement(IndexSet(integer: 0))
         
         XCTAssertEqual(
             watchRepository.getList(),
             []
+        )
+    }
+    
+    func test_removeElement_removeTwoElements() throws {
+        let element_one = WatchlistElement(
+            category: DrivingLicenceCategory(id: "1", name: "Test", icon: "test"),
+            wordId: "1",
+            type: ExamTypeEnum.practice,
+            latestExam: nil
+        )
+        
+        let element_two = WatchlistElement(
+            category: DrivingLicenceCategory(id: "2", name: "Test_2", icon: "test_2"),
+            wordId: "2",
+            type: ExamTypeEnum.practice,
+            latestExam: nil
+        )
+        
+        try watchRepository.addElement(element_one)
+        try watchRepository.addElement(element_two)
+        
+        watchRepository.removeElement(IndexSet(integer: 0))
+        watchRepository.removeElement(IndexSet(integer: 0))
+
+        
+        XCTAssertEqual(
+            watchRepository.getList(),
+            []
+        )
+    }
+    
+    func test_removeElement_removeFirstElementOfTwo() throws {
+        let element_one = WatchlistElement(
+            category: DrivingLicenceCategory(id: "1", name: "Test", icon: "test"),
+            wordId: "1",
+            type: ExamTypeEnum.practice,
+            latestExam: nil
+        )
+        
+        let element_two = WatchlistElement(
+            category: DrivingLicenceCategory(id: "2", name: "Test_2", icon: "test_2"),
+            wordId: "2",
+            type: ExamTypeEnum.practice,
+            latestExam: nil
+        )
+        
+        try watchRepository.addElement(element_one)
+        try watchRepository.addElement(element_two)
+        
+        watchRepository.removeElement(IndexSet(integer: 0))
+
+        
+        XCTAssertEqual(
+            watchRepository.getList(),
+            [element_two]
+        )
+    }
+    
+    func test_removeElement_removeSecondElementOfTwo() throws {
+        let element_one = WatchlistElement(
+            category: DrivingLicenceCategory(id: "1", name: "Test", icon: "test"),
+            wordId: "1",
+            type: ExamTypeEnum.practice,
+            latestExam: nil
+        )
+        
+        let element_two = WatchlistElement(
+            category: DrivingLicenceCategory(id: "2", name: "Test_2", icon: "test_2"),
+            wordId: "2",
+            type: ExamTypeEnum.practice,
+            latestExam: nil
+        )
+        
+        try watchRepository.addElement(element_one)
+        try watchRepository.addElement(element_two)
+        
+        watchRepository.removeElement(IndexSet(integer: 1))
+
+        
+        XCTAssertEqual(
+            watchRepository.getList(),
+            [element_one]
         )
     }
 }
