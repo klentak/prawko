@@ -12,11 +12,12 @@ class NotificationsSettingsVMMock: ObservableObject, NotificationsSettingsVMProt
     
     @Published var words: [Word]
     
-    var notificationsEnabled = false;
+    var notificationsEnabled: Bool
     
-    init(words: [Word], watchlistElements: [WatchlistElement]) {
+    init(words: [Word], watchlistElements: [WatchlistElement], notificationsEnabled: Bool) {
         self.words = words
         self.watchlistElements = watchlistElements
+        self.notificationsEnabled = notificationsEnabled
     }
     
     func getProviences(completion: @escaping (Bool) -> Void) {
@@ -32,7 +33,6 @@ class NotificationsSettingsVMMock: ObservableObject, NotificationsSettingsVMProt
     }
     
     func setAllowNotifications() {
-        self.notificationsEnabled = true;
     }
     
     func isNotificationsEnabled(completion: @escaping (Bool) -> Void) {

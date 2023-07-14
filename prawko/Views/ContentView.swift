@@ -83,7 +83,7 @@ struct ContentView_Previews: PreviewProvider {
                 provinces: [Province(id: 1, name: "Test")],
                 words: [Word(id: 1, name: "Test", provinceId: 1)]
             ),
-            sortedWords: []
+            sortedWords: [Word(id: 1, name: "Test", provinceId: 1)]
         )
 
         ContentView<NotificationsSettingsVMMock, WatchlistRepositoryMock, NotificationsSettingsAddResultVMMock, WordsFormVMMock, LoginVMMock, LoginServiceMockLoggedIn>(
@@ -99,7 +99,8 @@ struct ContentView_Previews: PreviewProvider {
             notificationsSettingsView: NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
                     words: [],
-                    watchlistElements: []
+                    watchlistElements: [],
+                    notificationsEnabled: true
                 ),
                 watchlist: WatchlistRepositoryMock(),
                 addToWatchlistView: AddToWatchlistView(

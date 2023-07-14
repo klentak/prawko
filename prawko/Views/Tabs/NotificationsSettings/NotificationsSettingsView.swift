@@ -132,7 +132,33 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                             provinceId: 1
                         )
                     ],
-                    watchlistElements: []
+                    watchlistElements: [],
+                    notificationsEnabled: false
+                ),
+                watchlist: WatchlistRepositoryMock(),
+                addToWatchlistView: AddToWatchlistView(
+                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMErrorMock(exam: nil),
+                    wordsFormVM: WordsFormVMMock(
+                        proviencesDTO: ProviencesDTO(
+                            provinces: [Province(id: 1, name: "Test")],
+                            words: [Word(id: 2, name: "Test", provinceId: 1)]
+                        ),
+                        sortedWords: []
+                    )
+                )
+            )
+            
+            NotificationsSettingsView(
+                notificationsSettingsVM: NotificationsSettingsVMMock(
+                    words: [
+                        Word(
+                            id: 1,
+                            name: "Test",
+                            provinceId: 1
+                        )
+                    ],
+                    watchlistElements: [],
+                    notificationsEnabled: true
                 ),
                 watchlist: WatchlistRepositoryMock(),
                 addToWatchlistView: AddToWatchlistView(
@@ -146,6 +172,7 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                     )
                 )
             )
+            
             NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
                     words: [
@@ -158,34 +185,12 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                     watchlistElements: [
                         watchListElement,
                         watchListElement,
-                    ]
+                    ],
+                    notificationsEnabled: true
                 ),
                 watchlist: WatchlistRepositoryMock(),
                 addToWatchlistView: AddToWatchlistView(
                     notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
-                    wordsFormVM: WordsFormVMMock(
-                        proviencesDTO: ProviencesDTO(
-                            provinces: [Province(id: 1, name: "Test")],
-                            words: [Word(id: 2, name: "Test", provinceId: 1)]
-                        ),
-                        sortedWords: []
-                    )
-                )
-            )
-            NotificationsSettingsView(
-                notificationsSettingsVM: NotificationsSettingsVMMock(
-                    words: [
-                        Word(
-                            id: 1,
-                            name: "Test",
-                            provinceId: 1
-                        )
-                    ],
-                    watchlistElements: [watchListElement]
-                ),
-                watchlist: WatchlistRepositoryMock(),
-                addToWatchlistView: AddToWatchlistView(
-                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMErrorMock(exam: nil),
                     wordsFormVM: WordsFormVMMock(
                         proviencesDTO: ProviencesDTO(
                             provinces: [Province(id: 1, name: "Test")],
