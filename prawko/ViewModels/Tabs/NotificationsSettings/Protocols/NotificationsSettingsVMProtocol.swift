@@ -8,13 +8,17 @@
 import Foundation
 
 protocol NotificationsSettingsVMProtocol: ObservableObject {
-    var words: [Word] { get };
+    var watchlistElements: [WatchlistElement] { get }
+
+    var words: [Word] { get }
     
     func getProviences(completion: @escaping (Bool) -> Void)
     
     func getWordById(wordId: String) -> Word?
     
-    func setAllowNotifications();
+    func setAllowNotifications()
     
     func isNotificationsEnabled(completion: @escaping (Bool) -> Void) -> Void
+    
+    func removeElementFromWatchlist(offsets: IndexSet)
 }

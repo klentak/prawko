@@ -8,12 +8,15 @@
 import Foundation
 
 class NotificationsSettingsVMMock: ObservableObject, NotificationsSettingsVMProtocol {
+    var watchlistElements: [WatchlistElement]
+    
     @Published var words: [Word]
     
     var notificationsEnabled = false;
     
-    init(words: [Word]) {
+    init(words: [Word], watchlistElements: [WatchlistElement]) {
         self.words = words
+        self.watchlistElements = watchlistElements
     }
     
     func getProviences(completion: @escaping (Bool) -> Void) {
@@ -34,5 +37,9 @@ class NotificationsSettingsVMMock: ObservableObject, NotificationsSettingsVMProt
     
     func isNotificationsEnabled(completion: @escaping (Bool) -> Void) {
         completion(self.notificationsEnabled);
+    }
+    
+    func removeElementFromWatchlist(offsets: IndexSet) {
+        watchlistElements.remove(atOffsets: offsets)
     }
 }
