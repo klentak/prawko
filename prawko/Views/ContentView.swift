@@ -8,10 +8,10 @@
 import SwiftUI
 import KeychainSwift
 
-struct ContentView<NotificationsSettingsVM, WatchlistRepository, SearchResultVM, WordsFormVM, LoginViewModel, LoginService>: View
+struct ContentView<NotificationsSettingsVM, WatchlistRepository, NotificationsSettingsAddResultVM, WordsFormVM, LoginViewModel, LoginService>: View
 where NotificationsSettingsVM: NotificationsSettingsVMProtocol,
       WatchlistRepository: WatchlistRepositoryProtocol,
-      SearchResultVM: SearchResultVMProtocol,
+      NotificationsSettingsAddResultVM: NotificationsSettingsAddResultVMProtocol,
       LoginViewModel: LoginVMProtocol,
       WordsFormVM: WordsFormVMProtocol,
       LoginService: LoginServiceProtocol {
@@ -21,15 +21,15 @@ where NotificationsSettingsVM: NotificationsSettingsVMProtocol,
 
     let loginView: LoginView<LoginViewModel>
     let searchView: SearchView<WordsFormVM>
-    let notificationsSettingsView: NotificationsSettingsView<NotificationsSettingsVM, WatchlistRepository, SearchResultVM, WordsFormVM>
+    let notificationsSettingsView: NotificationsSettingsView<NotificationsSettingsVM, WatchlistRepository, NotificationsSettingsAddResultVM, WordsFormVM>
     let userInformationsView: UserInformationsView<LoginService>
     
     init(
         appState: AppState,
         loginView: LoginView<LoginViewModel>,
         searchView: SearchView<WordsFormVM>,
-        notificationsSettingsView: NotificationsSettingsView<NotificationsSettingsVM, WatchlistRepository, SearchResultVM, WordsFormVM>,
-userInformationsView: UserInformationsView<LoginService>
+        notificationsSettingsView: NotificationsSettingsView<NotificationsSettingsVM, WatchlistRepository, NotificationsSettingsAddResultVM, WordsFormVM>,
+        userInformationsView: UserInformationsView<LoginService>
     ) {
         self._appState = StateObject(wrappedValue: appState)
         self._selection = State(initialValue: .search)
@@ -83,10 +83,10 @@ struct ContentView_Previews: PreviewProvider {
                 provinces: [Province(id: 1, name: "Test")],
                 words: [Word(id: 1, name: "Test", provinceId: 1)]
             ),
-            sortedWords: []
+            sortedWords: [Word(id: 1, name: "Test", provinceId: 1)]
         )
 
-        ContentView<NotificationsSettingsVMMock, WatchlistRepositoryMock, SearchResultVMMock, WordsFormVMMock, LoginVMMock, LoginServiceMockLoggedIn>(
+        ContentView<NotificationsSettingsVMMock, WatchlistRepositoryMock, NotificationsSettingsAddResultVMMock, WordsFormVMMock, LoginVMMock, LoginServiceMockLoggedIn>(
             appState: appState,
             loginView: LoginView(
                 viewModel: LoginVMMock(
@@ -97,11 +97,15 @@ struct ContentView_Previews: PreviewProvider {
                 wordsFormViewModel: wordsFormVM
             ),
             notificationsSettingsView: NotificationsSettingsView(
-                notificationsSettingsVM: NotificationsSettingsVMMock(words: []),
-                watchlist: WatchlistRepositoryMock(elements: []),
+                notificationsSettingsVM: NotificationsSettingsVMMock(
+                    words: [],
+                    watchlistElements: [],
+                    notificationsEnabled: true
+                ),
+                watchlist: WatchlistRepositoryMock(),
                 addToWatchlistView: AddToWatchlistView(
-                    searchResultViewModel: SearchResultVMMock(scheduledDays: []),
-                    wordsFormViewModel: wordsFormVM
+                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
+                    wordsFormVM: wordsFormVM
                 )
             ),
             userInformationsView: UserInformationsView(

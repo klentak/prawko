@@ -7,23 +7,21 @@
 
 import SwiftUI
 
-struct NotificationsSettingsView<NotificationSettingsVM, WatchlistRepository, SearchResultVM, WordsFormVM>: View
+struct NotificationsSettingsView<NotificationSettingsVM, WatchlistRepository, NotificationsSettingsAddResultVM, WordsFormVM>: View
 where NotificationSettingsVM: NotificationsSettingsVMProtocol,
       WatchlistRepository: WatchlistRepositoryProtocol,
-      SearchResultVM: SearchResultVMProtocol,
+      NotificationsSettingsAddResultVM: NotificationsSettingsAddResultVMProtocol,
       WordsFormVM: WordsFormVMProtocol {
     @StateObject var notificationsSettingsVM: NotificationSettingsVM
-    @StateObject var watchlist: WatchlistRepository
     
-    var addToWatchlistView: AddToWatchlistView<WordsFormVM, SearchResultVM>
+    var addToWatchlistView: AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>
     
     init(
         notificationsSettingsVM: NotificationSettingsVM,
         watchlist: WatchlistRepository,
-        addToWatchlistView: AddToWatchlistView<WordsFormVM, SearchResultVM>
+        addToWatchlistView: AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>
     ) {
         self._notificationsSettingsVM = StateObject(wrappedValue: notificationsSettingsVM)
-        self._watchlist = StateObject(wrappedValue: watchlist)
         self.addToWatchlistView = addToWatchlistView
     }
     
@@ -42,12 +40,12 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
                             Text("Aby dodać termin do obserwowanych musisz w ustawieniach nadać aplikacji dostęp do powiadomień!")
                                 .foregroundColor(.red)
                         } else {
-                            if ($watchlist.elements.isEmpty) {
+                            if (notificationsSettingsVM.watchlistElements.isEmpty) {
                                 Text("Dodaj termin do obserwowanych ↗️")
                             }
                         }
                         
-                        ForEach(watchlist.elements, id: \.self) { watchlistElement in
+                        ForEach(notificationsSettingsVM.watchlistElements, id: \.self) { watchlistElement in
                             NotificationRowView(
                                 watchlistElement: watchlistElement,
                                 wordName: getWordName(wordId: watchlistElement.wordId)
@@ -97,7 +95,7 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
     }
     
     func delete(at offsets: IndexSet) {
-        watchlist.removeElement(offsets)
+        notificationsSettingsVM.removeElementFromWatchlist(offsets: offsets)
     }
     
     func getWordName(wordId: String) -> String {
@@ -133,42 +131,23 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                             name: "Test",
                             provinceId: 1
                         )
-                    ]
+                    ],
+                    watchlistElements: [],
+                    notificationsEnabled: false
                 ),
-                watchlist: WatchlistRepositoryMock(elements: [
-                    WatchlistElement(
-                        category: DrivingLicencesCategoriesConst.values.first!,
-                        wordId: "1",
-                        type: ExamTypeEnum.practice,
-                        latestExam: ExamDTO(
-                            additionalInfo: nil,
-                            amount: 30,
-                            date: "2023-03-18T16:38:16",
-                            places: 3
-                        )
-                    ),
-                    WatchlistElement(
-                        category: DrivingLicencesCategoriesConst.values.first!,
-                        wordId: "1",
-                        type: ExamTypeEnum.practice,
-                        latestExam: ExamDTO(
-                            additionalInfo: nil,
-                            amount: 30,
-                            date: "2023-03-18T16:38:16",
-                            places: 3
-                        )
-                    ),
-                ]),
+                watchlist: WatchlistRepositoryMock(),
                 addToWatchlistView: AddToWatchlistView(
-                    searchResultViewModel: SearchResultVMMock(scheduledDays: []), wordsFormViewModel: WordsFormVMMock(
-                            proviencesDTO: ProviencesDTO(
-                                provinces: [Province](),
-                                words: [Word]()
-                            ),
-                            sortedWords: []
-                        )
+                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMErrorMock(exam: nil),
+                    wordsFormVM: WordsFormVMMock(
+                        proviencesDTO: ProviencesDTO(
+                            provinces: [Province(id: 1, name: "Test")],
+                            words: [Word(id: 2, name: "Test", provinceId: 1)]
+                        ),
+                        sortedWords: []
+                    )
                 )
             )
+            
             NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
                     words: [
@@ -177,19 +156,23 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                             name: "Test",
                             provinceId: 1
                         )
-                    ]
+                    ],
+                    watchlistElements: [],
+                    notificationsEnabled: true
                 ),
-                watchlist: WatchlistRepositoryMock(elements: []),
+                watchlist: WatchlistRepositoryMock(),
                 addToWatchlistView: AddToWatchlistView(
-                    searchResultViewModel: SearchResultVMMock(scheduledDays: []), wordsFormViewModel: WordsFormVMMock(
-                            proviencesDTO: ProviencesDTO(
-                                provinces: [Province](),
-                                words: [Word]()
-                            ),
-                            sortedWords: []
-                        )
+                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
+                    wordsFormVM: WordsFormVMMock(
+                        proviencesDTO: ProviencesDTO(
+                            provinces: [Province(id: 1, name: "Test")],
+                            words: [Word(id: 2, name: "Test", provinceId: 1)]
+                        ),
+                        sortedWords: []
+                    )
                 )
             )
+            
             NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
                     words: [
@@ -198,17 +181,23 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                             name: "Test",
                             provinceId: 1
                         )
-                    ]
+                    ],
+                    watchlistElements: [
+                        watchListElement,
+                        watchListElement,
+                    ],
+                    notificationsEnabled: true
                 ),
-                watchlist: WatchlistRepositoryMock(elements: []),
+                watchlist: WatchlistRepositoryMock(),
                 addToWatchlistView: AddToWatchlistView(
-                    searchResultViewModel: SearchResultVMMock(scheduledDays: []), wordsFormViewModel: WordsFormVMMock(
-                            proviencesDTO: ProviencesDTO(
-                                provinces: [Province](),
-                                words: [Word]()
-                            ),
-                            sortedWords: []
-                        )
+                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
+                    wordsFormVM: WordsFormVMMock(
+                        proviencesDTO: ProviencesDTO(
+                            provinces: [Province(id: 1, name: "Test")],
+                            words: [Word(id: 2, name: "Test", provinceId: 1)]
+                        ),
+                        sortedWords: []
+                    )
                 )
             )
         }

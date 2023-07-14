@@ -19,8 +19,13 @@ Prawko is a mobile application written in Swift using the SwiftUI framework. The
    ```
 
 2. Open the `prawko.xcodeproj` project file in Xcode.
+3. Install the dependencies by running the following command in the project's root directory:
 
-3. Build and run the application on the simulator or a connected device.
+   ```
+   pod install
+   ```
+
+4. Build and run the application on the simulator or a connected device.
 
 ## Usage
 

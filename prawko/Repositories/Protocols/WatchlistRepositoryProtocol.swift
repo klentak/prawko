@@ -8,8 +8,6 @@
 import Foundation
 
 protocol WatchlistRepositoryProtocol: ObservableObject {
-    var elements: [WatchlistElement] { get set }
-    
     func addElement(_ value: WatchlistElement) throws
     
     func getList() -> [WatchlistElement]
