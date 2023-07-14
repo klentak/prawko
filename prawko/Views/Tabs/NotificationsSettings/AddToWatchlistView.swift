@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct AddToWatchlistView<WordsFormVM, SearchResultVM>: View
+struct AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>: View
 where WordsFormVM: WordsFormVMProtocol,
-      SearchResultVM: SearchResultVMProtocol {
+      NotificationsSettingsAddResultVM: NotificationsSettingsAddResultVMProtocol {
     @State var formData: WordFormDTO
     
-    private var searchResultViewModel: SearchResultVM
-    private var wordsFormViewModel: WordsFormVM
+    private var notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM
+    private var wordsFormVM: WordsFormVM
     
-    init(searchResultViewModel: SearchResultVM, wordsFormViewModel: WordsFormVM) {
-        self.searchResultViewModel = searchResultViewModel
-        self.wordsFormViewModel = wordsFormViewModel
+    init(notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM, wordsFormVM: WordsFormVM) {
+        self.notificationsSettingsAddResultVM = notificationsSettingsAddResultVM
+        self.wordsFormVM = wordsFormVM
         self._formData = State(initialValue: WordFormDTO(
             selectedWord: nil,
             selectedProvince: nil,
@@ -33,13 +33,13 @@ where WordsFormVM: WordsFormVMProtocol,
             ) {
                 Section {
                     WordsForm(
-                        viewModel: wordsFormViewModel,
+                        viewModel: wordsFormVM,
                         formData: $formData,
-                        destination: SearchResultsView(
-                            searchResultVM: searchResultViewModel,
+                        destination: NotificationsSettingsAddResultView(
+                            notificationsSettingsAddResultVM: notificationsSettingsAddResultVM,
                             category: formData.selectedDrivingCategory ?? DrivingLicencesCategoriesConst.values.first!,
                             wordId: String(formData.selectedWord?.id ?? 1),
-                            examType: formData.selectedExamType
+                            type: formData.selectedExamType
                         ),
                         destinationLabelText: "Dodaj do obserwowanych",
                         destinationLabelImage: "plus",
@@ -55,9 +55,16 @@ where WordsFormVM: WordsFormVMProtocol,
 
 struct AddToWatchlistView_Previews: PreviewProvider {
     static var previews: some View {
-        AddToWatchlistView<WordsFormVMMock, SearchResultVMMock>(
-            searchResultViewModel: SearchResultVMMock(scheduledDays: []),
-            wordsFormViewModel: WordsFormVMMock(
+        AddToWatchlistView<WordsFormVMMock, NotificationsSettingsAddResultVMMock>(
+            notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(
+                exam: ExamDTO(
+                    additionalInfo: nil,
+                    amount: 30,
+                    date: "2023-03-18T16:38:16",
+                    places: 3
+                )
+            ),
+            wordsFormVM: WordsFormVMMock(
                 proviencesDTO: ProviencesDTO(
                     provinces: [Province(id: 1, name: "Test")],
                     words: [Word(id: 1, name: "Test", provinceId: 1)]

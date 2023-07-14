@@ -9,7 +9,17 @@ import Foundation
 import Alamofire
 
 class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
-    @Published var words: [Word] = [Word]()
+    @Published var watchlistElements: [WatchlistElement] = [WatchlistElement]()
+    
+    var watchlistRepository: WatchlistRepository
+    
+    @Published var words: [Word]
+    
+    init(watchlistRepository: WatchlistRepository) {
+        self.watchlistRepository = watchlistRepository
+        self.watchlistElements = watchlistRepository.getList()
+        self.words = [Word]()
+    }
     
     func getProviences(completion: @escaping (Bool) -> Void) {
         AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
@@ -44,16 +54,22 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
     }
     
     func isNotificationsEnabled(completion: @escaping (Bool) -> Void) -> Void {
-            let center = UNUserNotificationCenter.current()
+        let center = UNUserNotificationCenter.current()
 
-            center.getNotificationSettings { settings in
-                guard settings.authorizationStatus == .authorized
-                        || settings.authorizationStatus == .provisional else {
-                    completion(false)
-                    return
-                }
-
-                completion(true)
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized
+                    || settings.authorizationStatus == .provisional else {
+                completion(false)
+                return
             }
+
+            completion(true)
         }
+    }
+    
+    func removeElementFromWatchlist(offsets: IndexSet) {
+        self.watchlistRepository.removeElement(offsets)
+        
+        self.watchlistElements = self.watchlistRepository.getList()
+    }
 }
