@@ -10,8 +10,8 @@ import Foundation
 class WatchlistRepositoryMock : ObservableObject, WatchlistRepositoryProtocol {
     var elements: [WatchlistElement]
     
-    init(elements: [WatchlistElement]) {
-        self.elements = elements
+    init() {
+        self.elements = []
     }
     
     func addElement(_ value: WatchlistElement) throws {

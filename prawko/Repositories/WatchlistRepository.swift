@@ -8,8 +8,6 @@
 import Foundation
 
 class WatchlistRepository : WatchlistRepositoryProtocol {
-    @Published var elements: [WatchlistElement] = [WatchlistElement]()
-    
     var decoder = JSONDecoder()
     var encoder = JSONEncoder()
     let key = "watchlist"
@@ -65,8 +63,6 @@ class WatchlistRepository : WatchlistRepositoryProtocol {
         ) else {
             return
         }
-
-        elements = savedWatchlist
     }
     
     private func setList(_ value: [WatchlistElement]) {

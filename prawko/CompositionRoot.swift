@@ -6,7 +6,7 @@
 //
 
 enum CompositionRoot {
-    static var contentView = ContentView<NotificationsSettingsViewModel, WatchlistRepository, SearchResultViewModel, WordsFormViewModel, LoginViewModel, LoginService>(
+    static var contentView = ContentView<NotificationsSettingsViewModel, WatchlistRepository, NotificationsSettingsAddResultViewModel, WordsFormViewModel, LoginViewModel, LoginService>(
         appState: appState,
         loginView: loginView,
         searchView: searchView,
@@ -38,22 +38,29 @@ private extension CompositionRoot {
     private static var searchView = SearchView(wordsFormViewModel: wordsFormViewModel)
     
     private static var addToWatchlistView = AddToWatchlistView(
-        searchResultViewModel: searchResultViewModel,
-        wordsFormViewModel: wordsFormViewModel
+        notificationsSettingsAddResultVM: notificationsSettingsAddResultViewModel,
+        wordsFormVM: wordsFormViewModel
     )
     
     private static var notificationsSettingsView =
-        NotificationsSettingsView<NotificationsSettingsViewModel, WatchlistRepository, SearchResultViewModel, WordsFormViewModel>(
+        NotificationsSettingsView<NotificationsSettingsViewModel, WatchlistRepository, NotificationsSettingsAddResultViewModel, WordsFormViewModel>(
             notificationsSettingsVM: notificationsSettingsViewModel,
             watchlist: watchlistRepository,
             addToWatchlistView: addToWatchlistView
         )
+    
+    private static var notificationsSettingsAddResultViewModel = NotificationsSettingsAddResultViewModel(
+        apiManager: apiManager,
+        watchlistRepository: watchlistRepository
+    )
 
     private static var userInformationsView = UserInformationsView(
         loginService: loginService
     )
     
-    private static var notificationsSettingsViewModel = NotificationsSettingsViewModel()
+    private static var notificationsSettingsViewModel = NotificationsSettingsViewModel(
+        watchlistRepository: watchlistRepository
+    )
     
     private static var infoCarRepository = InfoCarRepository(
         apiManager: apiManager
