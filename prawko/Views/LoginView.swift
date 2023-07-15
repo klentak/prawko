@@ -78,9 +78,7 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(
             viewModel: LoginVMMock(
-                loginService: LoginServiceMock(
-                    appState: AppState(loggedIn: false)
-                )
+                loginService: LoginServiceMock()
             )
         )
     }

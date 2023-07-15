@@ -9,11 +9,10 @@ import Foundation
 import SwiftUI
 
 class LoginServiceMockLoggedIn: LoginServiceProtocol {
-    @StateObject var appState: AppState
+    @EnvironmentObject var appState: AppState
     
-    init (appState: AppState) {
+    init () {
         appState.loggedIn = true
-        self._appState = StateObject(wrappedValue: appState)
     }
     
     func logout() {

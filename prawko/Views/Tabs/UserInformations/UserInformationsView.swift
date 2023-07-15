@@ -40,9 +40,7 @@ where LoginService: LoginServiceProtocol {
 struct UserInformationsView_Previews: PreviewProvider {
     static var previews: some View {
         UserInformationsView(
-            loginService: LoginService(
-                appState: AppState(loggedIn: true)
-            )
+            loginService: LoginService()
         )
     }
 }

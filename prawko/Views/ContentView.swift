@@ -15,7 +15,7 @@ where NotificationsSettingsVM: NotificationsSettingsVMProtocol,
       LoginViewModel: LoginVMProtocol,
       WordsFormVM: WordsFormVMProtocol,
       LoginService: LoginServiceProtocol {
-    @StateObject var appState: AppState
+    @EnvironmentObject var appState: AppState
 
     @State private var selection: Tab
 
@@ -25,13 +25,11 @@ where NotificationsSettingsVM: NotificationsSettingsVMProtocol,
     let userInformationsView: UserInformationsView<LoginService>
     
     init(
-        appState: AppState,
         loginView: LoginView<LoginViewModel>,
         searchView: SearchView<WordsFormVM>,
         notificationsSettingsView: NotificationsSettingsView<NotificationsSettingsVM, WatchlistRepository, NotificationsSettingsAddResultVM, WordsFormVM>,
         userInformationsView: UserInformationsView<LoginService>
     ) {
-        self._appState = StateObject(wrappedValue: appState)
         self._selection = State(initialValue: .search)
         self.loginView = loginView
         self.searchView = searchView
@@ -74,10 +72,7 @@ where NotificationsSettingsVM: NotificationsSettingsVMProtocol,
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let appState = AppState(loggedIn: true)
-        let loginService = LoginServiceMockLoggedIn(
-            appState: appState
-        )
+        let loginService = LoginServiceMockLoggedIn()
         let wordsFormVM = WordsFormVMMock(
             proviencesDTO: ProviencesDTO(
                 provinces: [Province(id: 1, name: "Test")],
@@ -87,7 +82,6 @@ struct ContentView_Previews: PreviewProvider {
         )
 
         ContentView<NotificationsSettingsVMMock, WatchlistRepositoryMock, NotificationsSettingsAddResultVMMock, WordsFormVMMock, LoginVMMock, LoginServiceMockLoggedIn>(
-            appState: appState,
             loginView: LoginView(
                 viewModel: LoginVMMock(
                     loginService: loginService

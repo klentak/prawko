@@ -12,13 +12,12 @@ import KeychainSwift
 import SwiftUI
 
 class LoginService: LoginServiceProtocol {
-    @StateObject var appState: AppState
+    @EnvironmentObject var appState: AppState
 
     private var keychain: KeychainSwift = KeychainSwift()
     
-    init (appState: AppState) {
+    init () {
         appState.loggedIn = !(self.keychain.get("bearer") == nil)
-        self._appState = StateObject(wrappedValue: appState)
     }
     
     func logout() {
