@@ -99,14 +99,15 @@ struct ContentView_Previews: PreviewProvider {
             notificationsSettingsView: NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
                     words: [],
-                    watchlistElements: [],
-                    notificationsEnabled: true
+                    notificationsEnabled: true,
+                    appState: appState
                 ),
                 watchlist: WatchlistRepositoryMock(),
                 addToWatchlistView: AddToWatchlistView(
                     notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
                     wordsFormVM: wordsFormVM
-                )
+                ),
+                appState: appState
             ),
             userInformationsView: UserInformationsView(
                 loginService: loginService

@@ -7,17 +7,19 @@
 
 import Foundation
 import Alamofire
+import SwiftUI
 
 class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
-    @Published var watchlistElements: [WatchlistElement] = [WatchlistElement]()
-    
+    @StateObject var appState: AppState
+
     var watchlistRepository: WatchlistRepository
     
     @Published var words: [Word]
     
-    init(watchlistRepository: WatchlistRepository) {
+    init(watchlistRepository: WatchlistRepository, appState: AppState) {
         self.watchlistRepository = watchlistRepository
-        self.watchlistElements = watchlistRepository.getList()
+        appState.watchlistElements = watchlistRepository.getList()
+        self._appState = StateObject(wrappedValue: appState)
         self.words = [Word]()
     }
     
@@ -69,7 +71,6 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
     
     func removeElementFromWatchlist(offsets: IndexSet) {
         self.watchlistRepository.removeElement(offsets)
-        
-        self.watchlistElements = self.watchlistRepository.getList()
+        self.appState.watchlistElements = self.watchlistRepository.getList()
     }
 }

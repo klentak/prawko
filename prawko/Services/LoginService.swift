@@ -19,7 +19,7 @@ class LoginService: LoginServiceProtocol {
     init (appState: AppState) {
         appState.loggedIn = !(self.keychain.get("bearer") == nil)
         self._appState = StateObject(wrappedValue: appState)
-    }
+     }
     
     func logout() {
         keychain.clear()

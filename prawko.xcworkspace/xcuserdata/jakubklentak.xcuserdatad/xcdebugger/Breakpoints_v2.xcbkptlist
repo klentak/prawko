@@ -62,42 +62,10 @@
             filePath = "prawko/Views/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "ContentView_Previews"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "ContentView"
             landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "49441300-F4DA-40C5-87EC-09F3281B4429 - 6f08db6f0cece630"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "prawko.ContentView_Previews.init() -&gt; prawko.ContentView_Previews"
-                  moduleName = "prawko"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jakubklentak/Projects/prawko/prawko/Views/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "49441300-F4DA-40C5-87EC-09F3281B4429 - 6f08db6f0cece630"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "prawko.ContentView_Previews.init() -&gt; prawko.ContentView_Previews"
-                  moduleName = "prawko"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jakubklentak/Projects/prawko/prawko/Views/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

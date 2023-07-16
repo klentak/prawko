@@ -6,7 +6,7 @@
 //
 
 enum CompositionRoot {
-    static var contentView = ContentView<NotificationsSettingsViewModel, WatchlistRepository, NotificationsSettingsAddResultViewModel, WordsFormViewModel, LoginViewModel, LoginService>(
+    static var contentView = ContentView<NotificationsSettingsViewModel, WatchlistRepository, NotificationsSettingsAddResultViewModel<WatchlistRepository>, WordsFormViewModel, LoginViewModel, LoginService>(
         appState: appState,
         loginView: loginView,
         searchView: searchView,
@@ -25,7 +25,8 @@ enum CompositionRoot {
         infoCarRepository: infoCarRepository
     )
     
-    static var appState = AppState(loggedIn: false)
+    static var appState =
+    AppState(loggedIn: false)
 }
 
 private extension CompositionRoot {
@@ -43,15 +44,17 @@ private extension CompositionRoot {
     )
     
     private static var notificationsSettingsView =
-        NotificationsSettingsView<NotificationsSettingsViewModel, WatchlistRepository, NotificationsSettingsAddResultViewModel, WordsFormViewModel>(
+    NotificationsSettingsView<NotificationsSettingsViewModel, WatchlistRepository, NotificationsSettingsAddResultViewModel<WatchlistRepository>, WordsFormViewModel>(
             notificationsSettingsVM: notificationsSettingsViewModel,
             watchlist: watchlistRepository,
-            addToWatchlistView: addToWatchlistView
+            addToWatchlistView: addToWatchlistView,
+            appState: appState
         )
     
     private static var notificationsSettingsAddResultViewModel = NotificationsSettingsAddResultViewModel(
         apiManager: apiManager,
-        watchlistRepository: watchlistRepository
+        watchlistRepository: watchlistRepository,
+        appState: appState
     )
 
     private static var userInformationsView = UserInformationsView(
@@ -59,7 +62,8 @@ private extension CompositionRoot {
     )
     
     private static var notificationsSettingsViewModel = NotificationsSettingsViewModel(
-        watchlistRepository: watchlistRepository
+        watchlistRepository: watchlistRepository,
+        appState: appState
     )
     
     private static var infoCarRepository = InfoCarRepository(

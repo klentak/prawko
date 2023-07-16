@@ -11,19 +11,19 @@ import Alamofire
 class NotificationsSettingsAddResultViewModel<WatchlistRepository>: NotificationsSettingsAddResultVMProtocol
 where WatchlistRepository: WatchlistRepositoryProtocol {
     @Published var exam: ExamDTO? = nil
-    
     private var userDefaults = UserDefaults.standard
-    
     private let apiManager: APIManager
-
     private let watchlistRepository: WatchlistRepository
+    @StateObject private var appState: AppState
     
     init(
         apiManager: APIManager,
-        watchlistRepository: WatchlistRepository
+        watchlistRepository: WatchlistRepository,
+        appState: AppState
     ) {
         self.apiManager = apiManager
         self.watchlistRepository = watchlistRepository
+        self._appState = StateObject(wrappedValue: appState)
     }
     
     public func getScheduledDays(
@@ -79,6 +79,8 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
         )
         
         try watchlistRepository.addElement(newWatchlistElement)
+
+        appState.watchlistElements = watchlistRepository.getList()
     }
     
     private func saveResponse(

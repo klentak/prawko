@@ -11,7 +11,7 @@ struct WordsForm<WordsFormVM, Destination>: View
 where WordsFormVM: WordsFormVMProtocol,
       Destination: View {
     @StateObject private var viewModel: WordsFormVM
-        @Binding var formData: WordFormDTO
+    @Binding var formData: WordFormDTO
     
     var destination: Destination
     var destinationLabelText: String

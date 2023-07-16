@@ -6,18 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
-class NotificationsSettingsVMMock: ObservableObject, NotificationsSettingsVMProtocol {
-    var watchlistElements: [WatchlistElement]
+class NotificationsSettingsVMMock: NotificationsSettingsVMProtocol {
+    @StateObject var appState: AppState
     
     @Published var words: [Word]
     
     var notificationsEnabled: Bool
     
-    init(words: [Word], watchlistElements: [WatchlistElement], notificationsEnabled: Bool) {
+    init(words: [Word], notificationsEnabled: Bool, appState: AppState) {
         self.words = words
-        self.watchlistElements = watchlistElements
         self.notificationsEnabled = notificationsEnabled
+        self._appState = StateObject(wrappedValue: appState)
     }
     
     func getProviences(completion: @escaping (Bool) -> Void) {
@@ -40,6 +41,6 @@ class NotificationsSettingsVMMock: ObservableObject, NotificationsSettingsVMProt
     }
     
     func removeElementFromWatchlist(offsets: IndexSet) {
-        watchlistElements.remove(atOffsets: offsets)
+        self.appState.watchlistElements.remove(atOffsets: offsets)
     }
 }

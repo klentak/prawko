@@ -8,9 +8,9 @@
 import Foundation
 
 protocol NotificationsSettingsVMProtocol: ObservableObject {
-    var watchlistElements: [WatchlistElement] { get }
-
     var words: [Word] { get }
+    
+    var appState: AppState { get }
     
     func getProviences(completion: @escaping (Bool) -> Void)
     

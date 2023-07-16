@@ -13,16 +13,19 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
       NotificationsSettingsAddResultVM: NotificationsSettingsAddResultVMProtocol,
       WordsFormVM: WordsFormVMProtocol {
     @StateObject var notificationsSettingsVM: NotificationSettingsVM
+    @StateObject var appState: AppState
     
     var addToWatchlistView: AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>
     
     init(
         notificationsSettingsVM: NotificationSettingsVM,
         watchlist: WatchlistRepository,
-        addToWatchlistView: AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>
+        addToWatchlistView: AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>,
+        appState: AppState
     ) {
         self._notificationsSettingsVM = StateObject(wrappedValue: notificationsSettingsVM)
         self.addToWatchlistView = addToWatchlistView
+        self._appState = StateObject(wrappedValue: appState)
     }
     
     @State var notificationAlertsEnabled = false
@@ -40,12 +43,12 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
                             Text("Aby dodać termin do obserwowanych musisz w ustawieniach nadać aplikacji dostęp do powiadomień!")
                                 .foregroundColor(.red)
                         } else {
-                            if (notificationsSettingsVM.watchlistElements.isEmpty) {
+                            if (appState.watchlistElements.isEmpty) {
                                 Text("Dodaj termin do obserwowanych ↗️")
                             }
                         }
                         
-                        ForEach(notificationsSettingsVM.watchlistElements, id: \.self) { watchlistElement in
+                        ForEach(appState.watchlistElements, id: \.self) { watchlistElement in
                             NotificationRowView(
                                 watchlistElement: watchlistElement,
                                 wordName: getWordName(wordId: watchlistElement.wordId)
@@ -122,6 +125,20 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
             )
         )
         
+        let addToWatchlistView = AddToWatchlistView(
+            notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
+            wordsFormVM: WordsFormVMMock(
+                proviencesDTO: ProviencesDTO(
+                    provinces: [Province(id: 1, name: "Test")],
+                    words: [Word(id: 2, name: "Test", provinceId: 1)]
+                ),
+                sortedWords: []
+            )
+        )
+        
+        var emptyAppState = AppState(loggedIn: true)
+        var appStateWithWatchlistElements = AppState(loggedIn: true)
+        
         Group {
             NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
@@ -132,22 +149,14 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                             provinceId: 1
                         )
                     ],
-                    watchlistElements: [],
-                    notificationsEnabled: false
+                    notificationsEnabled: false,
+                    appState: emptyAppState
                 ),
                 watchlist: WatchlistRepositoryMock(),
-                addToWatchlistView: AddToWatchlistView(
-                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMErrorMock(exam: nil),
-                    wordsFormVM: WordsFormVMMock(
-                        proviencesDTO: ProviencesDTO(
-                            provinces: [Province(id: 1, name: "Test")],
-                            words: [Word(id: 2, name: "Test", provinceId: 1)]
-                        ),
-                        sortedWords: []
-                    )
-                )
+                addToWatchlistView: addToWatchlistView,
+                appState: emptyAppState
             )
-            
+
             NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
                     words: [
@@ -157,22 +166,14 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                             provinceId: 1
                         )
                     ],
-                    watchlistElements: [],
-                    notificationsEnabled: true
+                    notificationsEnabled: true,
+                    appState: emptyAppState
                 ),
                 watchlist: WatchlistRepositoryMock(),
-                addToWatchlistView: AddToWatchlistView(
-                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
-                    wordsFormVM: WordsFormVMMock(
-                        proviencesDTO: ProviencesDTO(
-                            provinces: [Province(id: 1, name: "Test")],
-                            words: [Word(id: 2, name: "Test", provinceId: 1)]
-                        ),
-                        sortedWords: []
-                    )
-                )
+                addToWatchlistView: addToWatchlistView,
+                appState: emptyAppState
             )
-            
+
             NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
                     words: [
@@ -182,23 +183,18 @@ struct NotificationsSettingsView_Previews: PreviewProvider {
                             provinceId: 1
                         )
                     ],
-                    watchlistElements: [
-                        watchListElement,
-                        watchListElement,
-                    ],
-                    notificationsEnabled: true
+                    notificationsEnabled: true,
+                    appState: {
+                        appStateWithWatchlistElements.watchlistElements = [
+                            watchListElement,
+                            watchListElement
+                        ]
+                        return appStateWithWatchlistElements
+                    }()
                 ),
                 watchlist: WatchlistRepositoryMock(),
-                addToWatchlistView: AddToWatchlistView(
-                    notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(exam: nil),
-                    wordsFormVM: WordsFormVMMock(
-                        proviencesDTO: ProviencesDTO(
-                            provinces: [Province(id: 1, name: "Test")],
-                            words: [Word(id: 2, name: "Test", provinceId: 1)]
-                        ),
-                        sortedWords: []
-                    )
-                )
+                addToWatchlistView: addToWatchlistView,
+                appState: appStateWithWatchlistElements
             )
         }
     }
