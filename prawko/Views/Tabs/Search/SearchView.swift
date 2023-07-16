@@ -20,6 +20,7 @@ where WordsFormVM: WordsFormVMProtocol {
     
     var body: some View {
         NavigationView {
+            Spacer()
             VStack(
                 spacing: 10
             ) {
@@ -41,6 +42,8 @@ where WordsFormVM: WordsFormVMProtocol {
             }
                 .scrollDisabled(true)
                 .navigationTitle(Text("Szukaj"))
+                .navigationBarBackButtonHidden(true)
+            Spacer()
         }
     }
 }
