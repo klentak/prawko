@@ -79,7 +79,7 @@ struct ContentView_Previews: PreviewProvider {
             appState: appState
         )
         let wordsFormVM = WordsFormVMMock(
-            proviencesDTO: ProviencesDTO(
+            proviencesDTO: Proviences(
                 provinces: [Province(id: 1, name: "Test")],
                 words: [Word(id: 1, name: "Test", provinceId: 1)]
             ),

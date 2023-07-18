@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		015BE367159F949F8D3E802C /* Pods_prawko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5AC9C239FBD4A4CAEC00116 /* Pods_prawko.framework */; };
 		A707EE30295663FA00CC4BDE /* DrivingLicenceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707EE2F295663FA00CC4BDE /* DrivingLicenceCategory.swift */; };
-		A707EE32295730C600CC4BDE /* ScheduledDayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */; };
+		A707EE32295730C600CC4BDE /* ScheduledDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707EE31295730C500CC4BDE /* ScheduledDay.swift */; };
 		A707EE362957702800CC4BDE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707EE352957702800CC4BDE /* SearchResultsView.swift */; };
 		A70E0C272965F657004528AA /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E0C262965F657004528AA /* DateExtensions.swift */; };
 		A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72AB69E296E1303000279EA /* WatchlistRepository.swift */; };
@@ -28,10 +28,10 @@
 		A758E67A2949313200C269DD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E6792949313100C269DD /* LoginView.swift */; };
 		A75B60612A5F2C03005E9793 /* WatchRepository_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75B60602A5F2C03005E9793 /* WatchRepository_Test.swift */; };
 		A7662CBC2A575D2500D894E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A7662CBB2A575D2500D894E7 /* README.md */; };
-		A76D12F4295123FC0007B11B /* ProviencesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D12F3295123FC0007B11B /* ProviencesDTO.swift */; };
+		A76D12F4295123FC0007B11B /* Proviences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D12F3295123FC0007B11B /* Proviences.swift */; };
 		A770118329745B200058CC52 /* NotificationsSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A770118229745B200058CC52 /* NotificationsSettingsViewModel.swift */; };
 		A78811952978853600DF1030 /* NoExamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78811942978853600DF1030 /* NoExamsView.swift */; };
-		A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */; };
+		A78CFA22296C9771004BDD61 /* WatchlistElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CFA21296C9771004BDD61 /* WatchlistElement.swift */; };
 		A78DC6FF29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC6FE29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift */; };
 		A797360729D5FA7400E97830 /* InfoCarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A797360629D5FA7400E97830 /* InfoCarRepository.swift */; };
 		A797360A29D5FC3C00E97830 /* ApiConectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A797360929D5FC3C00E97830 /* ApiConectionError.swift */; };
@@ -93,7 +93,7 @@
 		10A3F31058C79D874E76FE0A /* Pods-prawko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prawko.debug.xcconfig"; path = "Target Support Files/Pods-prawko/Pods-prawko.debug.xcconfig"; sourceTree = "<group>"; };
 		8C907A30438571DD09CEC698 /* Pods-prawko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prawko.release.xcconfig"; path = "Target Support Files/Pods-prawko/Pods-prawko.release.xcconfig"; sourceTree = "<group>"; };
 		A707EE2F295663FA00CC4BDE /* DrivingLicenceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLicenceCategory.swift; sourceTree = "<group>"; };
-		A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledDayDTO.swift; sourceTree = "<group>"; };
+		A707EE31295730C500CC4BDE /* ScheduledDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledDay.swift; sourceTree = "<group>"; };
 		A707EE352957702800CC4BDE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		A70E0C262965F657004528AA /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		A72AB69E296E1303000279EA /* WatchlistRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepository.swift; sourceTree = "<group>"; };
@@ -113,10 +113,10 @@
 		A758E6792949313100C269DD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A75B60602A5F2C03005E9793 /* WatchRepository_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRepository_Test.swift; sourceTree = "<group>"; };
 		A7662CBB2A575D2500D894E7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A76D12F3295123FC0007B11B /* ProviencesDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviencesDTO.swift; sourceTree = "<group>"; };
+		A76D12F3295123FC0007B11B /* Proviences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proviences.swift; sourceTree = "<group>"; };
 		A770118229745B200058CC52 /* NotificationsSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsViewModel.swift; sourceTree = "<group>"; };
 		A78811942978853600DF1030 /* NoExamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExamsView.swift; sourceTree = "<group>"; };
-		A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistElementDTO.swift; sourceTree = "<group>"; };
+		A78CFA21296C9771004BDD61 /* WatchlistElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistElement.swift; sourceTree = "<group>"; };
 		A78DC6FE29EAAAA600E1E4E4 /* BackgroundAppRefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAppRefreshService.swift; sourceTree = "<group>"; };
 		A797360429D4D7A100E97830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A797360629D5FA7400E97830 /* InfoCarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepository.swift; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 				A78CFA1E296C9140004BDD61 /* Enum */,
 				A7581E912A47862E001F7E60 /* Mocks */,
 				A73D83892A362EEE00C70CE9 /* CompositionRoot.swift */,
-				A78CFA1D296C910D004BDD61 /* DTO */,
+				A78CFA1D296C910D004BDD61 /* DataObjects */,
 				A7ECC80D2A23E17D006A2B22 /* State */,
 				A7B030892968A4A000B79BDC /* Const */,
 				A7C2C07C2A1D332100DD60BB /* Network */,
@@ -360,15 +360,15 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		A78CFA1D296C910D004BDD61 /* DTO */ = {
+		A78CFA1D296C910D004BDD61 /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				A78CFA21296C9771004BDD61 /* WatchlistElementDTO.swift */,
-				A76D12F3295123FC0007B11B /* ProviencesDTO.swift */,
-				A707EE31295730C500CC4BDE /* ScheduledDayDTO.swift */,
+				A78CFA21296C9771004BDD61 /* WatchlistElement.swift */,
+				A76D12F3295123FC0007B11B /* Proviences.swift */,
+				A707EE31295730C500CC4BDE /* ScheduledDay.swift */,
 				A73D83842A30CBA300C70CE9 /* WordFormDTO.swift */,
 			);
-			path = DTO;
+			path = DataObjects;
 			sourceTree = "<group>";
 		};
 		A78CFA1E296C9140004BDD61 /* Enum */ = {
@@ -759,7 +759,7 @@
 				A7C3E94E296CAABB0047E08E /* ExamView.swift in Sources */,
 				A7DA715B2A4CD69400AC6F22 /* LoginServiceMockLoggedIn.swift in Sources */,
 				A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */,
-				A707EE32295730C600CC4BDE /* ScheduledDayDTO.swift in Sources */,
+				A707EE32295730C600CC4BDE /* ScheduledDay.swift in Sources */,
 				A7DA713B2A48C61F00AC6F22 /* NotificationsSettingsVMMock.swift in Sources */,
 				A7E82EBC2A27DDA400305B8F /* WordsForm.swift in Sources */,
 				A7E82EBF2A2A5D5800305B8F /* WordsFormViewModel.swift in Sources */,
@@ -772,7 +772,7 @@
 				A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */,
 				A7DA71412A4A0AFE00AC6F22 /* WatchlistRepositoryMock.swift in Sources */,
 				A7DA71592A4CCABB00AC6F22 /* LoginServiceMock.swift in Sources */,
-				A76D12F4295123FC0007B11B /* ProviencesDTO.swift in Sources */,
+				A76D12F4295123FC0007B11B /* Proviences.swift in Sources */,
 				A758E67A2949313200C269DD /* LoginView.swift in Sources */,
 				A73D83872A31BF1B00C70CE9 /* AddToWatchlistView.swift in Sources */,
 				A7ACD7962966025F0009E62A /* ExamRow.swift in Sources */,
@@ -782,7 +782,7 @@
 				A70E0C272965F657004528AA /* DateExtensions.swift in Sources */,
 				A7DA71572A4CC84700AC6F22 /* LoginServiceProtocol.swift in Sources */,
 				A7DA71482A4A1FB100AC6F22 /* SearchResultVMMock.swift in Sources */,
-				A78CFA22296C9771004BDD61 /* WatchlistElementDTO.swift in Sources */,
+				A78CFA22296C9771004BDD61 /* WatchlistElement.swift in Sources */,
 				A73D83852A30CBA300C70CE9 /* WordFormDTO.swift in Sources */,
 				A7DA71522A4CBDFD00AC6F22 /* LoginVMProtocol.swift in Sources */,
 				A7ECC80A2A23BF5E006A2B22 /* LoginViewModel.swift in Sources */,

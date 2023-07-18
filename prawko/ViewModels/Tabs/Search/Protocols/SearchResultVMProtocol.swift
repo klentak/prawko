@@ -8,11 +8,11 @@
 import Foundation
 
 protocol SearchResultVMProtocol: ObservableObject {
-    var scheduledDays: [ScheduleDayDTO] { get }
+    var scheduledDays: [ScheduleDay] { get }
     
     func getScheduledDays(category: DrivingLicenceCategory, wordId: String, completion: @escaping (Bool) -> Void)
     
-    func showDayGroup(scheduleDay: ScheduleDayDTO, examType: ExamTypeEnum) -> Bool
+    func showDayGroup(scheduleDay: ScheduleDay, examType: ExamTypeEnum) -> Bool
     
     func noResultsByExamType(examType: ExamTypeEnum) -> Bool
 }

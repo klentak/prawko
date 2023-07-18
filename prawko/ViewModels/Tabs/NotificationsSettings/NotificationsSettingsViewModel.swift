@@ -25,7 +25,7 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
     
     func getProviences(completion: @escaping (Bool) -> Void) {
         AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
-            .responseDecodable(of: ProviencesDTO.self) { response in
+            .responseDecodable(of: Proviences.self) { response in
             guard let result = response.value else {
                 completion(false)
                 return

@@ -8,9 +8,9 @@
 import Foundation
 
 class SearchResultVMMock: SearchResultVMProtocol {
-    @Published var scheduledDays: [ScheduleDayDTO]
+    @Published var scheduledDays: [ScheduleDay]
     
-    init(scheduledDays: [ScheduleDayDTO]) {
+    init(scheduledDays: [ScheduleDay]) {
         self.scheduledDays = scheduledDays
     }
 
@@ -18,7 +18,7 @@ class SearchResultVMMock: SearchResultVMProtocol {
         completion(true)
     }
     
-    func showDayGroup(scheduleDay: ScheduleDayDTO, examType: ExamTypeEnum) -> Bool {
+    func showDayGroup(scheduleDay: ScheduleDay, examType: ExamTypeEnum) -> Bool {
         switch examType {
         case .theory:
            for scheduledHour in scheduleDay.scheduledHours {

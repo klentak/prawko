@@ -47,7 +47,7 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
         }
     }
     
-    func generateNotification(exam: ExamDTO) -> UNMutableNotificationContent {
+    func generateNotification(exam: Exam) -> UNMutableNotificationContent {
         let result = UNMutableNotificationContent()
         
         result.title = "Zwolnił się termin egzaminu!";
@@ -58,7 +58,7 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
     
     func generateNotificationIdentifier(
         watchlistElement: WatchlistElement,
-        exam: ExamDTO
+        exam: Exam
     ) -> String {
         var result = "newExamDate"
 
@@ -72,7 +72,7 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
     
     func getNearestExamWithDateBeforeWatchlistElement(
         watchlistElement: WatchlistElement,
-        completion: @escaping (Result<(exam: ExamDTO?, watchlistElement: WatchlistElement?), Error>) -> Void
+        completion: @escaping (Result<(exam: Exam?, watchlistElement: WatchlistElement?), Error>) -> Void
     ) {
         self.infoCarRepository.getScheduledDays(category: watchlistElement.category, wordId: watchlistElement.wordId) { result in
             switch result {
@@ -94,9 +94,9 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
     }
 
     func getNearestExamWithDateBeforeWatchlistElementFromCollection(
-        scheduleDayDTOCollection: [ScheduleDayDTO],
+        scheduleDayDTOCollection: [ScheduleDay],
         watchlistElement: WatchlistElement
-    ) -> ExamDTO? {
+    ) -> Exam? {
         for scheduleDTO in scheduleDayDTOCollection {
             for scheduledHoursDTO in scheduleDTO.scheduledHours {
                 let exams = (watchlistElement.type == ExamTypeEnum.theory)

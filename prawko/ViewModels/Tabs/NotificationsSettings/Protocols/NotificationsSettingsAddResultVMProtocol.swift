@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NotificationsSettingsAddResultVMProtocol: ObservableObject {
-    var exam: ExamDTO? { get }
+    var exam: Exam? { get }
     
     func getScheduledDays(
         category: DrivingLicenceCategory,

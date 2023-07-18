@@ -10,7 +10,7 @@ import Alamofire
 
 class NotificationsSettingsAddResultViewModel<WatchlistRepository>: NotificationsSettingsAddResultVMProtocol
 where WatchlistRepository: WatchlistRepositoryProtocol {
-    @Published var exam: ExamDTO? = nil
+    @Published var exam: Exam? = nil
     
     private var userDefaults = UserDefaults.standard
     private let apiManager: APIManager
@@ -70,7 +70,7 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
     private func addToUserDefaults(
         category: DrivingLicenceCategory,
         wordId: String,
-        latestExam: ExamDTO?,
+        latestExam: Exam?,
         type: ExamTypeEnum
     ) throws {
         let newWatchlistElement = WatchlistElement(

@@ -106,7 +106,7 @@ struct NotificatiopnsSettingsAddResultView_Previews: PreviewProvider {
         Group {
             NotificationsSettingsAddResultView(
                 notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(
-                        exam: ExamDTO(
+                        exam: Exam(
                             additionalInfo: nil,
                             amount: 23,
                             date: "2022-10-26T18:28:10",

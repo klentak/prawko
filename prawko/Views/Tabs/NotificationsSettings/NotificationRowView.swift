@@ -72,7 +72,7 @@ struct NotificationRowView_Previews: PreviewProvider {
                 category: DrivingLicencesCategoriesConst.values.first!,
                 wordId: "1",
                 type: ExamTypeEnum.practice,
-                latestExam: ExamDTO(
+                latestExam: Exam(
                     additionalInfo: nil,
                     amount: 30,
                     date: "2023-03-18T16:38:16",
