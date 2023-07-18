@@ -10,12 +10,13 @@ struct ExamRow: View {
     let exam: ExamDTO
     let examType: ExamTypeEnum
     let category: DrivingLicenceCategory
-    @State private var isShowingSheet = false
+    
+    @State private var sheetIsDisplayed = false
 
 
     var body: some View {
         Button(action: {
-            isShowingSheet = true
+            sheetIsDisplayed = true
         }) {
             HStack {
                 HStack {
@@ -54,7 +55,7 @@ struct ExamRow: View {
         }
         .contentShape(Rectangle())
         .buttonStyle(.plain)
-        .sheet(isPresented: $isShowingSheet) {
+        .sheet(isPresented: $sheetIsDisplayed) {
             Rectangle()
               .frame(width: 40, height: 6)
               .foregroundColor(.gray)

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SearchView<WordsFormVM>: View
 where WordsFormVM: WordsFormVMProtocol {
+    @ObservedObject var wordsFormVM: WordsFormVM
+
     @State var formData: WordFormDTO = WordFormDTO(
         selectedWord: nil,
         selectedProvince: nil,
         selectedDrivingCategory: nil,
         selectedExamType: .none
     )
-
-    @StateObject var wordsFormViewModel: WordsFormVM
     
     var body: some View {
         NavigationView {
@@ -26,7 +26,7 @@ where WordsFormVM: WordsFormVMProtocol {
             ) {
                 Section {
                     WordsForm(
-                        viewModel: wordsFormViewModel,
+                        viewModel: wordsFormVM,
                         formData: $formData,
                         destination: SearchResultsView(
                             searchResultVM: CompositionRoot.searchResultViewModel,

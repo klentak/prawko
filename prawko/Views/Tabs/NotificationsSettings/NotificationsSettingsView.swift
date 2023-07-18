@@ -12,7 +12,8 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
       WatchlistRepository: WatchlistRepositoryProtocol,
       NotificationsSettingsAddResultVM: NotificationsSettingsAddResultVMProtocol,
       WordsFormVM: WordsFormVMProtocol {
-    @StateObject var notificationsSettingsVM: NotificationSettingsVM
+    @ObservedObject var notificationsSettingsVM: NotificationSettingsVM
+    
     @StateObject var appState: AppState
     
     var addToWatchlistView: AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>
@@ -23,7 +24,7 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
         addToWatchlistView: AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>,
         appState: AppState
     ) {
-        self._notificationsSettingsVM = StateObject(wrappedValue: notificationsSettingsVM)
+        self._notificationsSettingsVM = ObservedObject(wrappedValue: notificationsSettingsVM)
         self.addToWatchlistView = addToWatchlistView
         self._appState = StateObject(wrappedValue: appState)
     }
