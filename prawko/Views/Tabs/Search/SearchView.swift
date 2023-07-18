@@ -51,7 +51,7 @@ where WordsFormVM: WordsFormVMProtocol {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView<WordsFormVMMock>(
-            wordsFormViewModel: WordsFormVMMock(
+            wordsFormVM: WordsFormVMMock(
                 proviencesDTO: ProviencesDTO(
                     provinces: [Province(id: 1, name: "Test")],
                     words: [Word(id: 1, name: "Test", provinceId: 1)]
