@@ -29,7 +29,6 @@ where ViewModel: NotificationsSettingsAddResultVMProtocol {
 
     @State var errorTitle = "Błąd systemu info-share"
     @State var errorMessage = "Spróbuj ponownie później"
-    
     @State var loading = true
     @State var downloadDataAlert = false
     

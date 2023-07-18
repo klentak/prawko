@@ -10,10 +10,10 @@ import SwiftUI
 struct AddToWatchlistView<WordsFormVM, NotificationsSettingsAddResultVM>: View
 where WordsFormVM: WordsFormVMProtocol,
       NotificationsSettingsAddResultVM: NotificationsSettingsAddResultVMProtocol {
-    @State var formData: WordFormDTO
+    @ObservedObject private var notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM
+    @ObservedObject private var wordsFormVM: WordsFormVM
     
-    private var notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM
-    private var wordsFormVM: WordsFormVM
+    @State var formData: WordFormDTO
     
     init(notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM, wordsFormVM: WordsFormVM) {
         self.notificationsSettingsAddResultVM = notificationsSettingsAddResultVM

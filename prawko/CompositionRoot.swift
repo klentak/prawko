@@ -36,7 +36,7 @@ private extension CompositionRoot {
         )
     )
     
-    private static var searchView = SearchView(wordsFormViewModel: wordsFormViewModel)
+    private static var searchView = SearchView(wordsFormVM: wordsFormViewModel)
     
     private static var addToWatchlistView = AddToWatchlistView(
         notificationsSettingsAddResultVM: notificationsSettingsAddResultViewModel,

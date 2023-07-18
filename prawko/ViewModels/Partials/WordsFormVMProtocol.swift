@@ -15,4 +15,3 @@ protocol WordsFormVMProtocol: ObservableObject {
     
     func sortWords(province: Province, completion: @escaping (Bool) -> Void)
 }
-

@@ -94,7 +94,7 @@ struct ContentView_Previews: PreviewProvider {
                 )
             ),
             searchView: SearchView(
-                wordsFormViewModel: wordsFormVM
+                wordsFormVM: wordsFormVM
             ),
             notificationsSettingsView: NotificationsSettingsView(
                 notificationsSettingsVM: NotificationsSettingsVMMock(
