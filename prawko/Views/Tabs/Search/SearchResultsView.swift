@@ -46,11 +46,8 @@ struct SearchResultsView<ViewModel>: View where ViewModel: SearchResultVMProtoco
                 category: category,
                 wordId: wordId
             ) { completion in
-                if (completion) {
-                    loading = false
-                } else {
-                    downloadDataAlert = true
-                }
+                downloadDataAlert = !completion
+                loading = false
             }
         }
         .alert(isPresented: $downloadDataAlert) {
@@ -138,22 +135,7 @@ struct SearchResultsView_Previews: PreviewProvider {
         Group {
             SearchResultsView(
                 searchResultVM: SearchResultVMMock(
-                    scheduledDays: [
-                        ScheduleDay(
-                            day: "2023-03-03",
-                            scheduledHours: []
-                        ),
-                        ScheduleDay(
-                            day: "2023-03-03",
-                            scheduledHours: [
-                                ScheduledHours(
-                                    practiceExams: [],
-                                    theoryExams: [],
-                                    time: "16:30:00"
-                                )
-                            ]
-                        )
-                    ]
+                    scheduledDays: []
                 ),
                 category: DrivingLicencesCategoriesConst.values.first!,
                 wordId: "2",
@@ -210,6 +192,15 @@ struct SearchResultsView_Previews: PreviewProvider {
                             ]
                         )
                     ]
+                ),
+                category: DrivingLicencesCategoriesConst.values.first!,
+                wordId: "2",
+                examType: ExamTypeEnum.none
+            )
+            
+            SearchResultsView(
+                searchResultVM: SearchResultVMMockWithError(
+                    scheduledDays: []
                 ),
                 category: DrivingLicencesCategoriesConst.values.first!,
                 wordId: "2",

@@ -69,6 +69,7 @@
 		A7DA715B2A4CD69400AC6F22 /* LoginServiceMockLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA715A2A4CD69400AC6F22 /* LoginServiceMockLoggedIn.swift */; };
 		A7DA715D2A500AA200AC6F22 /* InfoCarRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA715C2A500AA200AC6F22 /* InfoCarRepositoryMock.swift */; };
 		A7DA715F2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA715E2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift */; };
+		A7DDDAEB2A684ACA00E82DE1 /* SearchResultVMMockWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDAEA2A684ACA00E82DE1 /* SearchResultVMMockWithError.swift */; };
 		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
 		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
 		A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */; };
@@ -156,6 +157,7 @@
 		A7DA715A2A4CD69400AC6F22 /* LoginServiceMockLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceMockLoggedIn.swift; sourceTree = "<group>"; };
 		A7DA715C2A500AA200AC6F22 /* InfoCarRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepositoryMock.swift; sourceTree = "<group>"; };
 		A7DA715E2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepositoryProtocol.swift; sourceTree = "<group>"; };
+		A7DDDAEA2A684ACA00E82DE1 /* SearchResultVMMockWithError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVMMockWithError.swift; sourceTree = "<group>"; };
 		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
 		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
 		A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				A7DA71472A4A1FB100AC6F22 /* SearchResultVMMock.swift */,
+				A7DDDAEA2A684ACA00E82DE1 /* SearchResultVMMockWithError.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				A7DA713B2A48C61F00AC6F22 /* NotificationsSettingsVMMock.swift in Sources */,
 				A7E82EBC2A27DDA400305B8F /* WordsForm.swift in Sources */,
 				A7E82EBF2A2A5D5800305B8F /* WordsFormViewModel.swift in Sources */,
+				A7DDDAEB2A684ACA00E82DE1 /* SearchResultVMMockWithError.swift in Sources */,
 				A72AB69F296E1303000279EA /* WatchlistRepository.swift in Sources */,
 				A7DA714A2A4C937600AC6F22 /* WordsFormVMProtocol.swift in Sources */,
 				A7C2C07E2A1D333F00DD60BB /* Interceptor.swift in Sources */,
