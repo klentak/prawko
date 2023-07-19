@@ -18,7 +18,7 @@ class InfoCarRepository {
     func getScheduledDays(
         category: DrivingLicenceCategory,
         wordId: String,
-        completion: @escaping (Result<[ScheduleDayDTO], Error>) -> Void
+        completion: @escaping (Result<[ScheduleDay], Error>) -> Void
     ) {
         var dateComponent = DateComponents()
         dateComponent.month = 1

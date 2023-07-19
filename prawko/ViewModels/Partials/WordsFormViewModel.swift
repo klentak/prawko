@@ -9,17 +9,17 @@ import Foundation
 import Alamofire
 
 class WordsFormViewModel: WordsFormVMProtocol {
-    @Published var proviencesDTO: ProviencesDTO
+    @Published var proviencesDTO: Proviences
     @Published var sortedWords: [Word]
     
     init() {
-        self.proviencesDTO = ProviencesDTO(provinces: [Province](), words: [Word]())
+        self.proviencesDTO = Proviences(provinces: [Province](), words: [Word]())
         self.sortedWords = [Word]()
     }
     
     func getProviences(completion: @escaping (Bool) -> Void) {
         AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
-            .responseDecodable(of: ProviencesDTO.self) { response in
+            .responseDecodable(of: Proviences.self) { response in
             guard let result = response.value else { return }
             self.proviencesDTO = result
             completion(true)

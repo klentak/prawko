@@ -11,7 +11,7 @@ struct WordsForm<WordsFormVM, Destination>: View
 where WordsFormVM: WordsFormVMProtocol,
       Destination: View {
     @StateObject private var viewModel: WordsFormVM
-    @Binding var formData: WordFormDTO
+    @Binding var formData: WordFormData
     
     var destination: Destination
     var destinationLabelText: String
@@ -20,7 +20,7 @@ where WordsFormVM: WordsFormVMProtocol,
     
     init(
         viewModel: WordsFormVM,
-        formData: Binding<WordFormDTO>,
+        formData: Binding<WordFormData>,
         destination: Destination,
         destinationLabelText: String,
         destinationLabelImage: String,
@@ -130,14 +130,14 @@ struct WordsForm_Previews: PreviewProvider {
     static var previews: some View {
         WordsForm<WordsFormVMMock, SearchResultsView<SearchResultVMMock>>(
             viewModel: WordsFormVMMock(
-                proviencesDTO: ProviencesDTO(
+                proviencesDTO: Proviences(
                     provinces: [Province(id: 1, name: "Test")],
                     words: [Word(id: 2, name: "Test", provinceId: 1)]
                 ),
                 sortedWords: []
             ),
             formData: .constant(
-                WordFormDTO(
+                WordFormData(
                     selectedWord: nil,
                     selectedProvince: nil,
                     selectedDrivingCategory: nil,

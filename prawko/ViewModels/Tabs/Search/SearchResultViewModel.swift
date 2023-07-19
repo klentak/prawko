@@ -10,11 +10,12 @@ import Alamofire
 import KeychainSwift
 
 class SearchResultViewModel: SearchResultVMProtocol {
-    @Published var scheduledDays: [ScheduleDayDTO]
+    @Published var scheduledDays: [ScheduleDay]
+
     private var infoCarRepository: InfoCarRepository
     
     init(infoCarRepository: InfoCarRepository) {
-        self.scheduledDays = [ScheduleDayDTO]()
+        self.scheduledDays = [ScheduleDay]()
         self.infoCarRepository = infoCarRepository
     }
     
@@ -31,7 +32,7 @@ class SearchResultViewModel: SearchResultVMProtocol {
         }
     }
     
-    func showDayGroup(scheduleDay: ScheduleDayDTO, examType: ExamTypeEnum) -> Bool {
+    func showDayGroup(scheduleDay: ScheduleDay, examType: ExamTypeEnum) -> Bool {
         switch examType {
         case .theory:
            for scheduledHour in scheduleDay.scheduledHours {

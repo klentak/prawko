@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExamView: View {
-    let exam: ExamDTO
+    let exam: Exam
     let examType: ExamTypeEnum
     let category: DrivingLicenceCategory
 
@@ -18,8 +18,10 @@ struct ExamView: View {
                 .font(.largeTitle)
                 .textCase(.uppercase)
             Spacer()
+
             HStack {
                 Label("", systemImage: "calendar")
+                    .frame(width: 20)
                     .bold()
                 Text(
                     formatDate(
@@ -30,28 +32,41 @@ struct ExamView: View {
                 )
                 .bold()
             }
+            .frame(width: 180)
             
             Spacer()
             
             HStack {
-                Label("Informacje: ", systemImage: "info.circle")
+                Image(systemName: "info.circle")
+                    .frame(width: 20)
+                Label("Informacje: ", systemImage: "")
                 Text(exam.additionalInfo ?? "-")
+                Spacer()
             }
+            .frame(width: 180)
             
             Spacer()
                 
             HStack {
-                Label("Miejsc: ", systemImage: "person")
+                Image(systemName: "person")
+                    .frame(width: 20)
+                Label("Miejsc: ", systemImage: "")
                 Text(String(exam.places))
+                Spacer()
             }
+            .frame(width: 180)
             
             Spacer()
             
             HStack {
-                Label("Cena", systemImage: "banknote")
+                Image(systemName: "banknote")
+                    .frame(width: 20)
+                Label("Cena", systemImage: "")
                 Text(String(exam.amount) + "zł")
+                Spacer()
             }
-            Spacer()
+            .frame(width: 180)
+
         }
         .frame(height: 200)
     }
@@ -60,7 +75,7 @@ struct ExamView: View {
 struct ExamView_Previews: PreviewProvider {
     static var previews: some View {
         ExamView(
-            exam: ExamDTO(
+            exam: Exam(
                 additionalInfo: nil,
                 amount: 23,
                 date: "2022-10-26T18:28:10",

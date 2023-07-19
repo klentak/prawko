@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WordsFormVMProtocol: ObservableObject {
-    var proviencesDTO: ProviencesDTO { get }
+    var proviencesDTO: Proviences { get }
     var sortedWords: [Word] { get }
     
     func getProviences(completion: @escaping (Bool) -> Void)

@@ -13,12 +13,12 @@ where WordsFormVM: WordsFormVMProtocol,
     @ObservedObject private var notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM
     @ObservedObject private var wordsFormVM: WordsFormVM
     
-    @State var formData: WordFormDTO
+    @State var formData: WordFormData
     
     init(notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM, wordsFormVM: WordsFormVM) {
         self.notificationsSettingsAddResultVM = notificationsSettingsAddResultVM
         self.wordsFormVM = wordsFormVM
-        self._formData = State(initialValue: WordFormDTO(
+        self._formData = State(initialValue: WordFormData(
             selectedWord: nil,
             selectedProvince: nil,
             selectedDrivingCategory: nil,
@@ -57,7 +57,7 @@ struct AddToWatchlistView_Previews: PreviewProvider {
     static var previews: some View {
         AddToWatchlistView<WordsFormVMMock, NotificationsSettingsAddResultVMMock>(
             notificationsSettingsAddResultVM: NotificationsSettingsAddResultVMMock(
-                exam: ExamDTO(
+                exam: Exam(
                     additionalInfo: nil,
                     amount: 30,
                     date: "2023-03-18T16:38:16",
@@ -65,7 +65,7 @@ struct AddToWatchlistView_Previews: PreviewProvider {
                 )
             ),
             wordsFormVM: WordsFormVMMock(
-                proviencesDTO: ProviencesDTO(
+                proviencesDTO: Proviences(
                     provinces: [Province(id: 1, name: "Test")],
                     words: [Word(id: 1, name: "Test", provinceId: 1)]
                 ),

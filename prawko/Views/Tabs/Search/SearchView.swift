@@ -11,7 +11,7 @@ struct SearchView<WordsFormVM>: View
 where WordsFormVM: WordsFormVMProtocol {
     @ObservedObject var wordsFormVM: WordsFormVM
 
-    @State var formData: WordFormDTO = WordFormDTO(
+    @State var formData: WordFormData = WordFormData(
         selectedWord: nil,
         selectedProvince: nil,
         selectedDrivingCategory: nil,
@@ -52,7 +52,7 @@ struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView<WordsFormVMMock>(
             wordsFormVM: WordsFormVMMock(
-                proviencesDTO: ProviencesDTO(
+                proviencesDTO: Proviences(
                     provinces: [Province(id: 1, name: "Test")],
                     words: [Word(id: 1, name: "Test", provinceId: 1)]
                 ),

@@ -8,9 +8,9 @@
 import Foundation
 
 class NotificationsSettingsAddResultVMErrorMock: ObservableObject, NotificationsSettingsAddResultVMProtocol {
-    @Published var exam: ExamDTO?
+    @Published var exam: Exam?
 
-    init(exam: ExamDTO? = nil) {
+    init(exam: Exam? = nil) {
         self.exam = exam
     }
     
