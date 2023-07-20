@@ -11,7 +11,6 @@ protocol WordsFormVMProtocol: ObservableObject {
     var proviencesDTO: Proviences { get }
     var sortedWords: [Word] { get }
     
-    func getProviences(completion: @escaping (Bool) -> Void)
-    
-    func sortWords(province: Province, completion: @escaping (Bool) -> Void)
+    func getProviences()
+    func sortWords(province: Province)
 }
