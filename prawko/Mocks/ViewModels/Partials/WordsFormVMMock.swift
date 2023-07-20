@@ -16,11 +16,9 @@ class WordsFormVMMock: WordsFormVMProtocol {
         self.sortedWords = sortedWords
     }
     
-    func getProviences(completion: @escaping (Bool) -> Void) {
-        completion(true)
+    func getProviences() {
     }
     
-    func sortWords(province: Province, completion: @escaping (Bool) -> Void) {
-        completion(true)
+    func sortWords(province: Province) {
     }
 }

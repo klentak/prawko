@@ -51,8 +51,7 @@ where WordsFormVM: WordsFormVMProtocol,
                         }
                         .onChange(of: formData.selectedProvince) { _ in
                             if (formData.selectedProvince != nil) {
-                                viewModel.sortWords(province: formData.selectedProvince!) { _ in
-                                }
+                                viewModel.sortWords(province: formData.selectedProvince!) 
                                 formData.selectedWord = nil
                             }
                         }
@@ -112,8 +111,7 @@ where WordsFormVM: WordsFormVMProtocol,
             } else {
                 CommonProgressView()
                     .onAppear() {
-                        viewModel.getProviences() { completion in
-                        }
+                        viewModel.getProviences()
                     }
             }
         }

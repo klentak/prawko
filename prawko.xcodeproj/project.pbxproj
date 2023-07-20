@@ -70,6 +70,7 @@
 		A7DA715D2A500AA200AC6F22 /* InfoCarRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA715C2A500AA200AC6F22 /* InfoCarRepositoryMock.swift */; };
 		A7DA715F2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DA715E2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift */; };
 		A7DDDAEB2A684ACA00E82DE1 /* SearchResultVMMockWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDAEA2A684ACA00E82DE1 /* SearchResultVMMockWithError.swift */; };
+		A7DDDAF82A699A5D00E82DE1 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDDAF72A699A5D00E82DE1 /* ViewModelState.swift */; };
 		A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */; };
 		A7DE9C00296B5F9E000C212A /* NotificationsSettingsAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */; };
 		A7E42F08295A0BE40001DCA0 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */; };
@@ -158,6 +159,7 @@
 		A7DA715C2A500AA200AC6F22 /* InfoCarRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepositoryMock.swift; sourceTree = "<group>"; };
 		A7DA715E2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarRepositoryProtocol.swift; sourceTree = "<group>"; };
 		A7DDDAEA2A684ACA00E82DE1 /* SearchResultVMMockWithError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVMMockWithError.swift; sourceTree = "<group>"; };
+		A7DDDAF72A699A5D00E82DE1 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
 		A7DE9BFD296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultViewModel.swift; sourceTree = "<group>"; };
 		A7DE9BFF296B5F9E000C212A /* NotificationsSettingsAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultView.swift; sourceTree = "<group>"; };
 		A7E42F07295A0BE40001DCA0 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			children = (
 				A7ACD79729660F510009E62A /* ExamTypeEnum.swift */,
 				A707EE2F295663FA00CC4BDE /* DrivingLicenceCategory.swift */,
+				A7DDDAF72A699A5D00E82DE1 /* ViewModelState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				A7DA715F2A500AB500AC6F22 /* InfoCarRepositoryProtocol.swift in Sources */,
 				A7DA71442A4A177200AC6F22 /* SearchResultVMProtocol.swift in Sources */,
 				A7B992C029EDC1C7004B0510 /* LoginError.swift in Sources */,
+				A7DDDAF82A699A5D00E82DE1 /* ViewModelState.swift in Sources */,
 				A797360A29D5FC3C00E97830 /* ApiConectionError.swift in Sources */,
 				A758E6782949241100C269DD /* UserInformationsView.swift in Sources */,
 				A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */,

@@ -17,21 +17,19 @@ class WordsFormViewModel: WordsFormVMProtocol {
         self.sortedWords = [Word]()
     }
     
-    func getProviences(completion: @escaping (Bool) -> Void) {
+    func getProviences() {
         AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
             .responseDecodable(of: Proviences.self) { response in
             guard let result = response.value else { return }
             self.proviencesDTO = result
-            completion(true)
         }
     }
     
-    func sortWords(province: Province, completion: @escaping (Bool) -> Void) {
+    func sortWords(province: Province) {
         sortedWords = [Word]()
         for word in proviencesDTO.words {
             if word.provinceId == province.id {
                 sortedWords.append(word)
-                completion(true)
             }
         }
     }
