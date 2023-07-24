@@ -76,7 +76,7 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
             .onAppear() {
                 notificationsSettingsVM.setAllowNotifications()
                 
-                notificationsSettingsVM.getProviences() { completion in
+                notificationsSettingsVM.getWords() { completion in
                     if completion != nil {
                         downloadDataAlert = true
 

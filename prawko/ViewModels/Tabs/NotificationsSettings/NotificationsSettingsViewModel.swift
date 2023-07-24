@@ -25,7 +25,7 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
         self.words = [Word]()
     }
     
-    func getProviences(completion: @escaping  (ApiConectionError?) -> Void) {
+    func getWords(completion: @escaping  (ApiConectionError?) -> Void) {
         infoCarRepository.getProviences() { result in
             switch(result) {
             case .success(let provinces):

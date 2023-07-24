@@ -21,7 +21,7 @@ class NotificationsSettingsVMMock: NotificationsSettingsVMProtocol {
         self._appState = StateObject(wrappedValue: appState)
     }
     
-    func getProviences(completion: @escaping  (ApiConectionError?) -> Void) {
+    func getWords(completion: @escaping  (ApiConectionError?) -> Void) {
         completion(nil);
     }
     

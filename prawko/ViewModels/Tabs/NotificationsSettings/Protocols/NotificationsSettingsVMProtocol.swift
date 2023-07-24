@@ -12,7 +12,7 @@ protocol NotificationsSettingsVMProtocol: ObservableObject {
     
     var appState: AppState { get }
     
-    func getProviences(completion: @escaping  (ApiConectionError?) -> Void)
+    func getWords(completion: @escaping  (ApiConectionError?) -> Void)
 
     func getWordById(wordId: String) -> Word?
     
