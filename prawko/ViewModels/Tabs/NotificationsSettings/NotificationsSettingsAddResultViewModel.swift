@@ -54,7 +54,6 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
             switch response.result {
             case .failure(let error):
                 completion(.failure(error))
-                return
             case .success(let result):
                 self.saveResponse(
                     result: result,
@@ -110,7 +109,6 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
                             return
                         }
                         completion(.success(true))
-                        return
                     }
                 }
             }
@@ -131,13 +129,11 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
                             return
                         }
                         completion(.success(true))
-                        return
                     }
                 }
             }
         case .none:
             completion(.success(true))
-            return
         }
     }
 }

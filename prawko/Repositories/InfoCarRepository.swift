@@ -14,6 +14,17 @@ class InfoCarRepository {
     init(apiManager: APIManager) {
         self.apiManager = apiManager
     }
+    
+    func getProviences(completion: @escaping (Result<Proviences, ApiConectionError>) -> Void) {
+        AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
+            .responseDecodable(of: Proviences.self) { response in
+            guard let result = response.value else {
+                completion(.failure(.undefined))
+                return
+            }
+            completion(.success(result))
+        }
+    }
 
     func getScheduledDays(
         category: DrivingLicenceCategory,

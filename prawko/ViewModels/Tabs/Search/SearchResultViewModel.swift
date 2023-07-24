@@ -24,7 +24,6 @@ class SearchResultViewModel: SearchResultVMProtocol {
             switch result {
             case .failure(_):
                 completion(false)
-                return
             case .success(let scheduledDays):
                 self.scheduledDays = scheduledDays
                 completion(true)

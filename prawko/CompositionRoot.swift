@@ -19,7 +19,9 @@ enum CompositionRoot {
         watchlistRepository: watchlistRepository
     )
     
-    static var wordsFormViewModel = WordsFormViewModel()
+    static var wordsFormViewModel = WordsFormViewModel(
+        infoCarRepository: infoCarRepository
+    )
     
     static var searchResultViewModel = SearchResultViewModel(
         infoCarRepository: infoCarRepository
@@ -63,7 +65,8 @@ private extension CompositionRoot {
     
     private static var notificationsSettingsViewModel = NotificationsSettingsViewModel(
         watchlistRepository: watchlistRepository,
-        appState: appState
+        appState: appState,
+        infoCarRepository: infoCarRepository
     )
     
     private static var infoCarRepository = InfoCarRepository(

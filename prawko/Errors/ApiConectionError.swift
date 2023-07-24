@@ -10,4 +10,5 @@ import Foundation
 enum ApiConectionError: Error {
     case parseData(String)
     case login(String)
+    case undefined
 }
