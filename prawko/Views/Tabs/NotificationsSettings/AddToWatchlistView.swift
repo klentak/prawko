@@ -12,9 +12,9 @@ where WordsFormVM: WordsFormVMProtocol,
       NotificationsSettingsAddResultVM: NotificationsSettingsAddResultVMProtocol {
     @ObservedObject private var notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM
     @ObservedObject private var wordsFormVM: WordsFormVM
-    
+
     @State var formData: WordFormData
-    
+
     init(notificationsSettingsAddResultVM: NotificationsSettingsAddResultVM, wordsFormVM: WordsFormVM) {
         self.notificationsSettingsAddResultVM = notificationsSettingsAddResultVM
         self.wordsFormVM = wordsFormVM
@@ -25,7 +25,7 @@ where WordsFormVM: WordsFormVMProtocol,
             selectedExamType: .none
         ))
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(
