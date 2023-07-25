@@ -1,6 +1,5 @@
 # Prawko
 
-![Swift Version](https://img.shields.io/badge/Swift-5.0-orange.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
 
 Prawko is a mobile application written in Swift using the SwiftUI framework. The application allows users to search for driving license exam slots and monitor their availability.
