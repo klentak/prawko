@@ -18,7 +18,7 @@
 		A73D83872A31BF1B00C70CE9 /* AddToWatchlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D83862A31BF1B00C70CE9 /* AddToWatchlistView.swift */; };
 		A73D838A2A362EEE00C70CE9 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D83892A362EEE00C70CE9 /* CompositionRoot.swift */; };
 		A7581E962A478E94001F7E60 /* NotificationsSettingsAddResultVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7581E952A478E94001F7E60 /* NotificationsSettingsAddResultVMProtocol.swift */; };
-		A758E66429491E7000C269DD /* prawkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66329491E7000C269DD /* prawkoApp.swift */; };
+		A758E66429491E7000C269DD /* PrawkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66329491E7000C269DD /* PrawkoApp.swift */; };
 		A758E66629491E7000C269DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758E66529491E7000C269DD /* ContentView.swift */; };
 		A758E66829491E7300C269DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A758E66729491E7300C269DD /* Assets.xcassets */; };
 		A758E66B29491E7300C269DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A758E66A29491E7300C269DD /* Preview Assets.xcassets */; };
@@ -37,7 +37,6 @@
 		A797360A29D5FC3C00E97830 /* ApiConectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A797360929D5FC3C00E97830 /* ApiConectionError.swift */; };
 		A79A3719294942750012930F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A3718294942750012930F /* LoginService.swift */; };
 		A79A371B294943BE0012930F /* UrlConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A371A294943BE0012930F /* UrlConst.swift */; };
-		A7A77086297DEB2400074D18 /* UserInformationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A77085297DEB2400074D18 /* UserInformationsViewModel.swift */; };
 		A7AA2B9B2975FF5E00667D89 /* CommonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA2B9A2975FF5E00667D89 /* CommonProgressView.swift */; };
 		A7ACD7962966025F0009E62A /* ExamRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ACD7952966025F0009E62A /* ExamRow.swift */; };
 		A7ACD79829660F520009E62A /* ExamTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ACD79729660F510009E62A /* ExamTypeEnum.swift */; };
@@ -45,7 +44,7 @@
 		A7B030882968A44800B79BDC /* CommonMethodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B030872968A44800B79BDC /* CommonMethodsService.swift */; };
 		A7B0308B2968A4D800B79BDC /* ExamCategoryConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0308A2968A4D800B79BDC /* ExamCategoryConst.swift */; };
 		A7B0308D2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */; };
-		A7B07D182A52136D0011C351 /* prawko_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B07D172A52136D0011C351 /* prawko_Tests.swift */; };
+		A7B07D182A52136D0011C351 /* Prawko_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B07D172A52136D0011C351 /* Prawko_Tests.swift */; };
 		A7B992BE29EDBCA9004B0510 /* WatchlistTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */; };
 		A7B992C029EDC1C7004B0510 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992BF29EDC1C7004B0510 /* LoginError.swift */; };
 		A7B992C229F7171C004B0510 /* WatchlistRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */; };
@@ -105,7 +104,7 @@
 		A73D83892A362EEE00C70CE9 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 		A7581E952A478E94001F7E60 /* NotificationsSettingsAddResultVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsAddResultVMProtocol.swift; sourceTree = "<group>"; };
 		A758E66029491E7000C269DD /* prawko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prawko.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A758E66329491E7000C269DD /* prawkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prawkoApp.swift; sourceTree = "<group>"; };
+		A758E66329491E7000C269DD /* PrawkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrawkoApp.swift; sourceTree = "<group>"; };
 		A758E66529491E7000C269DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A758E66729491E7300C269DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A758E66A29491E7300C269DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -125,7 +124,6 @@
 		A797360929D5FC3C00E97830 /* ApiConectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConectionError.swift; sourceTree = "<group>"; };
 		A79A3718294942750012930F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A79A371A294943BE0012930F /* UrlConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlConst.swift; sourceTree = "<group>"; };
-		A7A77085297DEB2400074D18 /* UserInformationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationsViewModel.swift; sourceTree = "<group>"; };
 		A7AA2B9A2975FF5E00667D89 /* CommonProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonProgressView.swift; sourceTree = "<group>"; };
 		A7ACD7952966025F0009E62A /* ExamRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamRow.swift; sourceTree = "<group>"; };
 		A7ACD79729660F510009E62A /* ExamTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTypeEnum.swift; sourceTree = "<group>"; };
@@ -134,7 +132,7 @@
 		A7B0308A2968A4D800B79BDC /* ExamCategoryConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCategoryConst.swift; sourceTree = "<group>"; };
 		A7B0308C2968A57E00B79BDC /* DrivingLicencesCategoriesConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLicencesCategoriesConst.swift; sourceTree = "<group>"; };
 		A7B07D152A52136D0011C351 /* prawko_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = prawko_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7B07D172A52136D0011C351 /* prawko_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prawko_Tests.swift; sourceTree = "<group>"; };
+		A7B07D172A52136D0011C351 /* Prawko_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prawko_Tests.swift; sourceTree = "<group>"; };
 		A7B992BD29EDBCA9004B0510 /* WatchlistTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTask.swift; sourceTree = "<group>"; };
 		A7B992BF29EDC1C7004B0510 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		A7B992C129F7171C004B0510 /* WatchlistRepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRepositoryError.swift; sourceTree = "<group>"; };
@@ -276,7 +274,7 @@
 				A70E0C252965F643004528AA /* Extensions */,
 				A79A37172949419C0012930F /* ViewModels */,
 				A758E6712949229200C269DD /* Views */,
-				A758E66329491E7000C269DD /* prawkoApp.swift */,
+				A758E66329491E7000C269DD /* PrawkoApp.swift */,
 				A758E66729491E7300C269DD /* Assets.xcassets */,
 				A758E66929491E7300C269DD /* Preview Content */,
 			);
@@ -388,7 +386,6 @@
 		A78CFA1F296C916B004BDD61 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				A7A77084297DEAF300074D18 /* UserInformations */,
 				A7DE9BFC296B5393000C212A /* NotificationsSettings */,
 				A76D12F2295123950007B11B /* Search */,
 			);
@@ -427,14 +424,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		A7A77084297DEAF300074D18 /* UserInformations */ = {
-			isa = PBXGroup;
-			children = (
-				A7A77085297DEB2400074D18 /* UserInformationsViewModel.swift */,
-			);
-			path = UserInformations;
-			sourceTree = "<group>";
-		};
 		A7B030892968A4A000B79BDC /* Const */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,7 +435,7 @@
 		A7B07D162A52136D0011C351 /* prawko_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A7B07D172A52136D0011C351 /* prawko_Tests.swift */,
+				A7B07D172A52136D0011C351 /* Prawko_Tests.swift */,
 				A75B60602A5F2C03005E9793 /* WatchRepository_Test.swift */,
 			);
 			path = prawko_Tests;
@@ -613,6 +602,7 @@
 				A758E65D29491E7000C269DD /* Frameworks */,
 				A758E65E29491E7000C269DD /* Resources */,
 				1305CE315882500D07DE4FDF /* [CP] Embed Pods Frameworks */,
+				A744F65F2A704BF0009B004B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -739,6 +729,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A744F65F2A704BF0009B004B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -753,7 +760,6 @@
 				A7DA712E2A48610200AC6F22 /* NotificationsSettingsAddResultVMMock.swift in Sources */,
 				A758E674294922FD00C269DD /* SearchView.swift in Sources */,
 				A73D838A2A362EEE00C70CE9 /* CompositionRoot.swift in Sources */,
-				A7A77086297DEB2400074D18 /* UserInformationsViewModel.swift in Sources */,
 				A7ACD79829660F520009E62A /* ExamTypeEnum.swift in Sources */,
 				A78811952978853600DF1030 /* NoExamsView.swift in Sources */,
 				A7ECC80F2A250B03006A2B22 /* AppState.swift in Sources */,
@@ -803,7 +809,7 @@
 				A72AB6A129709A12000279EA /* NotificationRowView.swift in Sources */,
 				A7DA71542A4CBF1600AC6F22 /* LoginVMMock.swift in Sources */,
 				A7581E962A478E94001F7E60 /* NotificationsSettingsAddResultVMProtocol.swift in Sources */,
-				A758E66429491E7000C269DD /* prawkoApp.swift in Sources */,
+				A758E66429491E7000C269DD /* PrawkoApp.swift in Sources */,
 				A7DE9BFE296B53B8000C212A /* NotificationsSettingsAddResultViewModel.swift in Sources */,
 				A7B0308629688A1700B79BDC /* VerticalLabelStyle.swift in Sources */,
 				A7FF8ECB2A1D466300FDBBAA /* APIManager.swift in Sources */,
@@ -819,7 +825,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7B07D182A52136D0011C351 /* prawko_Tests.swift in Sources */,
+				A7B07D182A52136D0011C351 /* Prawko_Tests.swift in Sources */,
 				A75B60612A5F2C03005E9793 /* WatchRepository_Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

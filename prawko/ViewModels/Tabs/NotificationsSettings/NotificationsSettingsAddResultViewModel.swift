@@ -11,13 +11,13 @@ import Alamofire
 class NotificationsSettingsAddResultViewModel<WatchlistRepository>: NotificationsSettingsAddResultVMProtocol
 where WatchlistRepository: WatchlistRepositoryProtocol {
     @Published var exam: Exam? = nil
-    
+
     private var userDefaults = UserDefaults.standard
     private let apiManager: APIManager
     private let watchlistRepository: WatchlistRepository
-    
+
     @StateObject private var appState: AppState
-    
+
     init(
         apiManager: APIManager,
         watchlistRepository: WatchlistRepository,
@@ -27,7 +27,7 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
         self.watchlistRepository = watchlistRepository
         self._appState = StateObject(wrappedValue: appState)
     }
-    
+
     public func getScheduledDays(
         category: DrivingLicenceCategory,
         wordId: String,
@@ -36,10 +36,10 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
     ) {
         var dateComponent = DateComponents()
         dateComponent.month = 1
-        
+
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())!
-        
+
         apiManager.session.request(
             UrlConst.mainUrl + UrlConst.examSchedule,
             method: .put,
@@ -47,7 +47,7 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
                 "category": category.name,
                 "endDate": startDate.description,
                 "startDate": endDate.description,
-                "wordId": wordId,
+                "wordId": wordId
             ],
             encoding: JSONEncoding.default
         ).responseDecodable(of: Root.self) { response in
@@ -65,7 +65,7 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
             }
         }
     }
-    
+
     private func addToUserDefaults(
         category: DrivingLicenceCategory,
         wordId: String,
@@ -78,12 +78,12 @@ where WatchlistRepository: WatchlistRepositoryProtocol {
             type: type,
             latestExam: latestExam
         )
-        
+
         try watchlistRepository.addElement(newWatchlistElement)
 
         appState.watchlistElements = watchlistRepository.getList()
     }
-    
+
     private func saveResponse(
         result: Root,
         category: DrivingLicenceCategory,
