@@ -13,25 +13,27 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
     @StateObject var appState: AppState
 
     var watchlistRepository: WatchlistRepository
+    var infoCarRepository: InfoCarRepository
     
     @Published var words: [Word]
     
-    init(watchlistRepository: WatchlistRepository, appState: AppState) {
+    init(watchlistRepository: WatchlistRepository, appState: AppState, infoCarRepository: InfoCarRepository) {
         self.watchlistRepository = watchlistRepository
+        self.infoCarRepository = infoCarRepository
         appState.watchlistElements = watchlistRepository.getList()
         self._appState = StateObject(wrappedValue: appState)
         self.words = [Word]()
     }
     
-    func getProviences(completion: @escaping (Bool) -> Void) {
-        AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
-            .responseDecodable(of: Proviences.self) { response in
-            guard let result = response.value else {
-                completion(false)
-                return
+    func getWords(completion: @escaping  (ApiConectionError?) -> Void) {
+        infoCarRepository.getProviences() { result in
+            switch(result) {
+            case .success(let provinces):
+                self.words = provinces.words
+                completion(nil)
+            case .failure(let exception):
+                completion(exception)
             }
-            self.words = result.words
-            completion(true)
         }
     }
     

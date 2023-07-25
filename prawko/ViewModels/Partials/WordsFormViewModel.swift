@@ -12,16 +12,22 @@ class WordsFormViewModel: WordsFormVMProtocol {
     @Published var proviencesDTO: Proviences
     @Published var sortedWords: [Word]
     
-    init() {
+    var infoCarRepository: InfoCarRepository
+    
+    init(infoCarRepository: InfoCarRepository) {
         self.proviencesDTO = Proviences(provinces: [Province](), words: [Word]())
         self.sortedWords = [Word]()
+        self.infoCarRepository = infoCarRepository
     }
     
     func getProviences() {
-        AF.request(UrlConst.mainUrl + UrlConst.Dict.provinces)
-            .responseDecodable(of: Proviences.self) { response in
-            guard let result = response.value else { return }
-            self.proviencesDTO = result
+        infoCarRepository.getProviences() { result in
+            switch result {
+            case .failure(_):
+                return
+            case .success(let provinces):
+                self.proviencesDTO = provinces
+            }
         }
     }
     

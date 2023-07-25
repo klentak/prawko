@@ -76,13 +76,12 @@ where NotificationSettingsVM: NotificationsSettingsVMProtocol,
             .onAppear() {
                 notificationsSettingsVM.setAllowNotifications()
                 
-                notificationsSettingsVM.getProviences() { completion in
-                    switch completion {
-                    case true:
-                        loading = false
-                    case false:
+                notificationsSettingsVM.getWords() { completion in
+                    if completion != nil {
                         downloadDataAlert = true
+
                     }
+                    loading = false
                 }
                 
                 notificationsSettingsVM.isNotificationsEnabled() { result in
