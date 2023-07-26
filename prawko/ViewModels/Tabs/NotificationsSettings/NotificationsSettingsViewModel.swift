@@ -14,9 +14,9 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
 
     var watchlistRepository: WatchlistRepository
     var infoCarRepository: InfoCarRepository
-    
+
     @Published var words: [Word]
-    
+
     init(watchlistRepository: WatchlistRepository, appState: AppState, infoCarRepository: InfoCarRepository) {
         self.watchlistRepository = watchlistRepository
         self.infoCarRepository = infoCarRepository
@@ -24,10 +24,10 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
         self._appState = StateObject(wrappedValue: appState)
         self.words = [Word]()
     }
-    
+
     func getWords(completion: @escaping  (ApiConectionError?) -> Void) {
-        infoCarRepository.getProviences() { result in
-            switch(result) {
+        infoCarRepository.getProviences { result in
+            switch result {
             case .success(let provinces):
                 self.words = provinces.words
                 completion(nil)
@@ -36,17 +36,15 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
             }
         }
     }
-    
+
     func getWordById(wordId: String) -> Word? {
-        for word in words {
-            if (word.id == Int(wordId)) {
-                return word
-            }
+        for word in words where word.id == Int(wordId) {
+            return word
         }
-        
+
         return nil
     }
-    
+
     func setAllowNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
@@ -56,7 +54,7 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
             }
         }
     }
-    
+
     func isNotificationsEnabled(completion: @escaping (Bool) -> Void) -> Void {
         let center = UNUserNotificationCenter.current()
 
@@ -70,7 +68,7 @@ class NotificationsSettingsViewModel: NotificationsSettingsVMProtocol {
             completion(true)
         }
     }
-    
+
     func removeElementFromWatchlist(offsets: IndexSet) {
         self.watchlistRepository.removeElement(offsets)
         self.appState.watchlistElements = self.watchlistRepository.getList()

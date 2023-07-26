@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 @main
-struct prawkoApp: App {
+struct PrawkoApp: App {
     let watchlistTask: WatchlistTask<WatchlistRepository>
     
     init() {

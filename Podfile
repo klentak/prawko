@@ -7,6 +7,7 @@ target 'prawko' do
 
   pod 'Alamofire'
   pod 'KeychainSwift'
+  pod 'SwiftLint'
 
   # Pods for prawko
 
